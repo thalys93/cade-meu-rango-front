@@ -1,0 +1,138 @@
+
+/* Card */
+.cardHover{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150pt;    
+    transition: 0.5s;   
+    
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-moz-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ;     
+}
+
+.cardList{
+    display: flex;    
+    flex-wrap: wrap;        
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15pt;
+    margin-top: 15pt;       
+
+    user-select: none;
+}
+
+.cardBlank{
+    height: 150pt;
+    width: 120pt;
+}
+
+.cardHover:hover{
+    scale: 1.1;
+}
+
+/* Receita */
+.exitDiv{         
+    position: absolute;
+    margin:5pt;
+    margin-left: 15pt;
+}
+
+#linkArrow{
+    font-size: 25pt;    
+}
+
+#linkArrow i {
+    transition: 0.5s;
+}
+
+#linkArrow i:hover{
+    color: #FD6543;
+}
+
+#receitaSection{
+    display: flex;
+    flex-direction: column;        
+    border-radius: 10pt;    
+    margin: 10pt;
+    margin-left: 200pt;
+    margin-right: 200pt;
+    padding-bottom: 50pt;
+}
+
+#receitaDetails{
+    display: flex;     
+    flex-direction: row;   
+    justify-content: center;
+    align-items: center;
+    margin-top: 50pt;
+    margin-left: 80pt;
+}
+
+#receitaDetailsBlank{
+    display: flex;     
+    flex-direction: row;   
+    justify-content: center;    
+    align-items: center;    
+    margin-top: 50pt;    
+    margin-left: 80pt;
+}
+
+
+#TitleDiv{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 250pt;
+    margin: 5pt;
+    padding: 5pt;   
+}
+
+
+.TitleLines{
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 5px;    
+}
+
+.listItem{
+    display:flex;
+    flex-direction: row;
+    gap: 5pt;
+}
+
+.ingredient{
+    display: flex;
+    margin-top: -2.5pt;    
+}
+
+/* SectionLeft */
+.DetailsLeft{
+    display: flex;
+    flex-direction: column;    
+    margin: 5pt;    
+}
+
+/* SectionRight */
+.DetailsRight{
+    display: flex;
+    flex-direction: column;
+    margin: 5pt;    
+}
+
+.ReceitaImg{
+    display: flex;
+    width: 150pt;
+    margin: 15pt;
+    border-radius: 15pt;
+}
+
+.blankImg{    
+    width: 150pt;
+    height: 70pt;    
+    margin-bottom: 15pt;
+}

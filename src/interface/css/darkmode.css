@@ -1,0 +1,109 @@
+.Darkbody{
+    background-color: #2b2d31;  
+    
+    background-image: url(/assets/img/bgPatternDark.png);
+    background-size: 20%;    
+}
+
+.DarkSection{
+    background-color: #2e3035;    
+}
+
+.DarkFooter{
+    background-color: #2b2d31;
+    color: aliceblue;
+}
+
+.DarkTxt{
+    font-family : 'Rubik', sans-serif;        
+    font-weight: 300;
+    color: aliceblue;
+}
+
+.DarkSubtitle {
+    font-family : 'Rubik', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.DarkRegular{
+    font-family : 'Rubik', sans-serif; 
+    font-weight: 300; 
+    color: #ffffff;
+}
+
+
+.DarkTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40pt;
+    font-family: 'Satisfy' , cursive;
+    color: #FD6543;    
+    text-shadow: 0px 0px #000000, -2px -1px #000000;
+}
+
+.DarkTitleSubtitle{
+    font-family : 'Satisfy', cursive;
+    color: #ffc445;        
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px #000000, -2px -1px #000000;
+    transition: 1s;
+}
+
+.DarkTitleSubtitleVar{
+    font-family : 'Satisfy', cursive;
+    color: aliceblue;
+    font-size: 25pt;    
+
+    display: flex;
+    justify-content: center;    
+}
+
+.btnLoginDark{
+    display: flex;
+    background-color: #2e3035;    
+    color: #FFFFFF;    
+    border: none;
+    padding: 7pt;
+    font-size: 20pt;
+    border-radius: 50pt;
+    transition: 0.5s;
+}
+
+.custom-tabsDark{
+    margin: 10pt;
+    gap: 5pt;    
+}
+
+
+.custom-tabs .nav-pills .nav-link {        
+    color: #ffffff;    
+}
+
+.custom-tabsDark .nav-link.active{
+    background-color: #ff5732;
+    color: white;
+}
+
+.custom-tabsDark .nav-link:hover{    
+    color: #f7bbad;
+}
+
+.DarkBanner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    width: 100%;     
+    margin-bottom: 15pt;    
+        
+    background-image: url('/assets/img/bannerDark.png');
+    background-size: cover;
+    transition: 1s;
+}
+

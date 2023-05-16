@@ -1,0 +1,87 @@
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20pt;
+}
+
+button.buttonDif{
+    padding-left: 50pt;
+    padding-right: 50pt;
+
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-moz-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ;     
+    
+}
+
+a{
+    transition: 0.5s;
+}
+
+a:hover{
+    color: #0a0403;    
+}
+
+.CadDiv{
+    margin-top: 15pt;
+    text-align: center;
+}
+
+.CardLogin{    
+    width: 500pt;
+    margin-top: 15pt;
+
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-moz-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ;     
+}
+
+.CardCadastro{    
+    width: 500pt;
+
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
+	-moz-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ;     
+}
+
+.CardDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 50pt;
+    top: 50pt;
+}
+
+.FormularioLogin{
+    margin-top: 15pt;    
+    padding-left: 110pt;
+    padding-right: 110pt;
+}
+
+
+#termos{        
+    text-align: center;
+    margin-top: 15pt;
+}
+
+#checkTermos{
+    position: absolute;
+    right: 310pt;
+
+    border: 1px solid #0a0403;
+}
+
+#name{
+    background-color: #ECE7E7;;
+}
+
+#email{
+    background-color: #ECE7E7;;
+}
+
+#password{
+    background-color: #ECE7E7;;
+}
