@@ -1,3 +1,8 @@
+# Atenção Branch de Produção
+Essa branch tem a finalidade de ser a **branch** que é usada para atualizar o **front end** do projeto lá no **firebase**
+o link para acessar a página rodando : https://cade-meu-rango-front.web.app/
+
+
 # Cadê Meu Rango
 Cade meu rango é uma aplicação SPA **(single page aplication)** que permite aos usuários encontrar receitas e dicas culinárias de acordo com seus interesses e preferências. 
 A aplicação conta com recursos como **autenticação**, **modo escuro**, **criação de receitas e dicas**, **categorização por ingredientes**, e também uma api que busca dados de receitas em um banco de dados mysql. 
