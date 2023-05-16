@@ -52,7 +52,7 @@ function Home() {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt text-secondary disabled' :'txt'}>Dicas</Nav.Link>
+            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt text-secondary disabled' :'txt disabled'}>Dicas</Nav.Link>
             </Nav.Item>
           </Nav>            
         </div>
