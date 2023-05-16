@@ -39,7 +39,7 @@ function Home() {
     <section id='homeSection'>      
         <Banner />
       <Tab.Container className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'} defaultActiveKey='home' activeKey={activeTab} onSelect={tabSelect} >
-      <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'}>
+      <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'} id='navDiv'>
         <Nav variant="pills" defaultActiveKey='home' className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'}>
           <Nav.Item>
             <Nav.Link eventKey='home' className={isDarkMode ? 'DarkTxt' :'txt'}>Home</Nav.Link>
@@ -50,7 +50,7 @@ function Home() {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt' :'txt'}>Dicas</Nav.Link>
+            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt text-secondary disabled' :'txt'}>Dicas</Nav.Link>
             </Nav.Item>
           </Nav>            
         </div>

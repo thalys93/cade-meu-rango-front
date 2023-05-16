@@ -10,12 +10,10 @@ function Banner () {
 
   return (    
     <div className={isDarkMode ? 'DarkBanner' : 'banner'}>
-        <div className='ButtonDiv mb-4'>
-          <Link to='Login'>
-            <button className={isDarkMode ? 'btnLoginDark' : 'btnLogin'}>
-              <BiUserCircle/>
-            </button>
-          </Link>
+        <div className='ButtonDiv mb-4'>          
+            <Link to='/login'  className={isDarkMode ? 'btn btn-dark btnLoginDark disabled' : 'btnLogin btn btn-danger disabled '}>            
+                <BiUserCircle/>            
+            </Link>          
           <div>
             <button className={ isDarkMode ? 'btnLoginDark mt-2' : 'btnLogin mt-2'} onClick={toggleDarkMode}>              
               <BsMoonStars/>

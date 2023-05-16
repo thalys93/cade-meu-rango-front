@@ -26,11 +26,31 @@
         align-items: center;
     }
 
+    .NavTabs{
+        display: flex;
+        justify-content: center;
+
+        transition: 0.5s;
+    }
+
+
+
         /* Receita */
     #receitaDetails{
         display: flex;
         flex-direction: column;    
     }
+
+
+    /* Banner */
+    .container-culinary{
+        scale: 0.67;        
+    }
+
+    .container-culinary h1{
+        margin-top: -15pt;
+    }
+ 
 }
 
 /* Medium Devices - Smartphones */
@@ -58,10 +78,32 @@
         align-items: center;            
     }
 
+    .NavTabs{
+        display: flex;
+        background-color: #ffffff;
+        justify-content: start;
+        transition: 0.5s;
+        
+        
+        height: 45pt;
+        margin-top: -17pt;
+        margin-bottom: 15pt;
+
+        border-radius: 0pt 0pt 5pt 5pt;
+    }
+
         /* Receita */
     #receitaDetails{
         display: flex;
         flex-direction: row;
+    }
+
+        .container-culinary{
+        scale: 1;        
+    }
+
+    .container-culinary h1{
+        margin-top: -15pt;
     }
 }
 
