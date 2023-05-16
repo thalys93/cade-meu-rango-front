@@ -22,7 +22,7 @@ function App() {
 
   return (
     <main>
-      {/* <TestingDev/> */}
+      <TestingDev/>
       {/* Rotas */}
       <Outlet />      
 
