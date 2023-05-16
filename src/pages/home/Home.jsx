@@ -19,7 +19,7 @@ function Home() {
 
   const { isDarkMode } = React.useContext(DarkModeContext)
 
-  const [activeTab, setActiveTab] = React.useState('');
+  const [activeTab, setActiveTab] = React.useState('Home');
 
   useEffect(() => {
     const savedTab = localStorage.getItem('defaultActiveKey');
