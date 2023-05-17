@@ -1,121 +1,79 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { Image, Placeholder } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
+import { getRecipesById } from '../../../utils/api/services/api'
 
 import './Receita.css'
+import ReceitaPlaceholder from './ReceitaPlaceholder'
+import Voltar from '../../../interface/buttons/back-component/BackBtn'
 
 
 function Receita() {  
+  // Dark Mode Context
   const { isDarkMode } = React.useContext(DarkModeContext)
   
-  const {nome} = useParams(); 
+  // Nested Routes
+  const {nome} = useParams();
+  const {id} = useParams();
+  const errorID = 404;
 
+
+  // States Loading e da Receita
   const [isLoading, setIsLoading] = React.useState(true)
   const [receita, setReceita] = React.useState([])
+  const [falha , setFalha] = React.useState(false)
 
-  
+  // Busca a Informação na api
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1500);
-    
-    return () => clearTimeout(timer)
-  }, []);
+    const fetchData = async () => {
+    try {
+      const data = await getRecipesById(id);
+      setReceita(data);      
+      setFalha(false);
+    } catch (error) {
+      console.log('Falha Ao Obter Dados Da API' , error);
+      setFalha(true);
+    }
+  };
+  fetchData();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
 
+  }, [id]);  
+
+  if (falha) {
+    return (
+      <section className={isDarkMode ? 'DarkSection' : 'bg-body'} >     
+          <Voltar/>
+          <h1 className={isDarkMode? 'text-warning text-center mt-5' : 'text-danger text-center mt-5'}> Atenção </h1>
+          <h4 className={isDarkMode ? 'DarkTxt text-center' : 'txt text-center'}>Falha Ao Obter Dados Da API : {errorID} </h4>        
+      </section>
+    )
+  }  
 
 
   return (      
-    <main>      
+    <main className='container-fluid'>
       <Helmet>
         <title> {`CMR - ${nome} `}</title>
         <link rel="icon" href="https://res.cloudinary.com/dh39ahmpj/image/upload/v1683412274/favicons.dev/cade_meu_rango_nyjbxs.png"/>
       </Helmet>
-      
-        <Link className={isDarkMode ? 'text-light m-2' : 'text-dark m-2'} id="linkArrow" to='/'>                    
-          <i class="bi bi-arrow-left"></i> 
-        </Link>
+      <Voltar/>
     <section className={isDarkMode ? 'DarkSection' : 'bg-body'} id='receitaSection'>
       {isLoading ? (
-        <section id='receitaDetailsBlank'>
-          <article className='DetailsLeft'>
-            <div id='TitleDiv'>
-              {/* Titulo */}
-              <Placeholder as='h5' animation="wave">
-                <Placeholder xs={6} className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>
-              </Placeholder>                   
-              {/* Descrição */}
-              <Placeholder xs={6} as='p' animation="wave" className='text-center'>                
-                <Placeholder xs={6} className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} /> <br/>
-                <Placeholder xs={7} className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} /> <br/>
-                <Placeholder xs={8} className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} />
-              </Placeholder>
-
-              {/* Ingredientes */}
-              <Placeholder xs={6} animation="wave" className='text-center'>
-                <Placeholder xs={12} as='h5' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} /> 
-              </Placeholder>
-
-              {/* Lista de Ingredientes */}
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                  <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/> 
-                  <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>                 
-              </Placeholder>
-
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                  <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/> 
-                  <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>                 
-              </Placeholder>
-
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>
-                <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>                 
-              </Placeholder>
-            </div>
-          </article>
-
-          <article className='DetailsRight'>            
-            <div id='TitleDiv'>
-              <Placeholder xs={6} as='h1' animation="wave">                
-                <Placeholder className={isDarkMode ? 'blankImg bg-body' : 'blankImg'}/>
-              </Placeholder>
-
-                            {/* Ingredientes */}
-              <Placeholder xs={6} animation="wave" className='text-center'>
-                <Placeholder xs={12} as='h5' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/> 
-              </Placeholder>
-
-              {/* Lista de Ingredientes */}
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                  <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/> 
-                  <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>                 
-              </Placeholder>
-
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                  <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/> 
-                  <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>                 
-              </Placeholder>
-
-              <Placeholder xs={6} animation="wave" className='listItem'>                
-                <Placeholder xs={2} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} />
-                <Placeholder xs={6} as='h6' className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'} />                 
-              </Placeholder>
-              
-            </div>
-          </article>
-        </section>
+        <ReceitaPlaceholder/>
       ) : (
-        <section id='receitaDetails'>
-          <article className='DetailsLeft'>            
+        <section className='receitaDetails'>
+          <article className='DetailsLeft container'>            
           <div id='TitleDiv'> 
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
-              Titulo da Receita
-            </h5>
+              {nome}
+            </h5>            
             <p className={isDarkMode ? 'DarkTxt':'txt'}>
-              descrição da receita <br/>
-              informações e detalhes da receita <br/>
-              informações e detalhes da receita <br/>              
+              {receita?.descricao}
             </p>                      
           </div>          
           <div id='TitleDiv'>
@@ -139,9 +97,10 @@ function Receita() {
                 </li>
             </ol>
           </div>
-          </article>          
-          <article className='DetailsRight'>
-            <Image className='ReceitaImg' src="https://media.istockphoto.com/id/491517422/pt/foto/fuba-bolo.jpg?s=612x612&w=0&k=20&c=8EwL15sJ1Gcstj0P9dJRi1DPgZAm5AYaGTfjHfM0_KQ=" height={130} fluid/>
+          </article>
+
+          <article className='DetailsRight container'>
+            <Image className='ReceitaImg' src={receita?.imagem} height={130} fluid/>
               <div id='TitleDiv'>
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
               Modo de Preparo                      

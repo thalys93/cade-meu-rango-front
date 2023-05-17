@@ -8,7 +8,7 @@ function TestingDev() {
   const { isDarkMode } = React.useContext(DarkModeContext)
   return (
       <Badge bg={isDarkMode? 'warning' :'danger'} className='user-select-none' id='badgeDev'>
-        <h2 className={isDarkMode? 'DarkTxt' : 'txt'}> BETA </h2>
+        <h2 className={isDarkMode? 'DarkTxt' : 'txt'}> Dev </h2>
       </Badge>
   )
 }

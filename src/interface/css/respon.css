@@ -1,30 +1,6 @@
 /* Small Devices - Little Smartphones */
 @media (min-width: 375px) {
         /* Home */
-    #homeSection{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;    
-        align-items: center; 
-        width: 100%;
-        height: 100%;        
-    }
-    .subtitlesDiv{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        user-select: none;    
-        
-        margin-left: 0rem;
-    }
-
-    #container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 
     .NavTabs{
         display: flex;
@@ -33,13 +9,46 @@
         transition: 0.5s;
     }
 
-
-
         /* Receita */
-    #receitaDetails{
+    .receitaDetails{
         display: flex;
-        flex-direction: column;    
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;          
     }
+
+    #receitaDetailsBlank{
+        display: flex;     
+        flex-direction: column;   
+        justify-content: center;    
+        align-items: center;            
+        padding-bottom: 5pt;        
+        margin-top: -5pt;
+        margin-right: -25pt;
+    }
+
+    #receitaSection{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;        
+    }
+
+    /* Receita Gallery */
+    #recipesList{
+        display: flex;        
+        justify-content: center;
+        align-items: center;        
+    }
+
+    #receitaBorder{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;        
+    }
+
 
 
     /* Banner */
@@ -53,31 +62,10 @@
  
 }
 
-/* Medium Devices - Smartphones */
-@media (min-width: 768px) {}
-
-/* Large Devices - Laptops */
-@media (min-width: 992px) {}
-
 /* Extra Large Devices - Big Monitors */
 @media (min-width: 1200px) {
-            /* Home */
-    .subtitlesDiv{
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: start;
-        width: 100%;
-        user-select: none;    
-        margin-left: 15.8840rem;        
-    }
 
-    #container{
-        display: flex;
-        flex-direction: row;
-        align-items: center;            
-    }
-
+    /* NavTabs Index */
     .NavTabs{
         display: flex;
         background-color: #ffffff;
@@ -93,12 +81,51 @@
     }
 
         /* Receita */
-    #receitaDetails{
+    .receitaDetails{
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;        
     }
 
-        .container-culinary{
+    #receitaDetailsBlank{
+        display: flex;     
+        flex-direction: row;   
+        justify-content: center;    
+        align-items: center;
+        padding-left: 25pt;        
+        padding-bottom: 5pt;
+        margin-top: -5pt;
+    }
+
+    #receitaSection{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 25%;        
+        height: auto;        
+        width: 50%;
+        margin-bottom: 15pt;        
+    }
+
+    /* RecipeGallery */
+        #recipesList{
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+    }
+
+    #receitaBorder{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;        
+    }
+
+    /* Banner */
+    .container-culinary{
         scale: 1;        
     }
 
@@ -106,6 +133,3 @@
         margin-top: -15pt;
     }
 }
-
-/* Extra Extra Large Devices - FullHD Monitors*/
-@media (min-width: 1400px) {}

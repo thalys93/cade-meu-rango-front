@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext';
-import Card from 'react-bootstrap/Card';
 import { Placeholder} from 'react-bootstrap';
+import { DeveLoperContext } from '../../utils/api/context/devContext/DevContext';
+import { AiFillDelete } from 'react-icons/ai';
+import Card from 'react-bootstrap/Card';
 
 import '../container/receita/receita.css'
 
-function ReceitaCard({title, imgLink}) {
+function ReceitaCard({id, title, imgLink}) {
    
  const { isDarkMode } = React.useContext(DarkModeContext)
  const [carregou , setCarregou] = React.useState(false);
+ const { isDev } = React.useContext(DeveLoperContext)
 
   useEffect(() => {
     setCarregou(true);
@@ -18,7 +21,11 @@ function ReceitaCard({title, imgLink}) {
   return (
     <main>      
       { carregou ? ( 
-      <Card className={isDarkMode ? 'cardHover bg-dark' :'cardHover'}>
+      <Card className={isDarkMode ? 'bg-dark' :'bg-body'}>
+        {isDev && 
+          <button className='btn btn-danger animate__animated animate__fadeIn' id='deleteBtn'>
+            <AiFillDelete/>
+          </button>}
         <Card.Img variant="top" src={imgLink} height={130}/>        
           <Card.Body>                      
               <Card.Title>
@@ -27,7 +34,7 @@ function ReceitaCard({title, imgLink}) {
               <div className='mb-1'>
                 <span className={isDarkMode ? 'text-light-emphasis text-center container-fluid' : 'text-secondary-emphasis text-center container-fluid '}> Nome do Usuario </span>
               </div>
-              <Link to={'receita' + '/' + title} className={isDarkMode ? 'btn btn-outline-light disabled container-fluid text-center' : 'btn btn-primary disabled container-fluid text-center'}>
+              <Link to={'receita' + '/' + id + '/' + title} className={isDarkMode ? 'btn btn-outline-light container-fluid text-center' : 'btn btn-primary container-fluid text-center'}>
                   Saiba Mais
               </Link>                                          
           </Card.Body>

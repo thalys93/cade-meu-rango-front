@@ -39,9 +39,9 @@ const router = createBrowserRouter([
                 path: 'receita/',
                 element: <Receita/>,
                 children: [
-                {
-                    path: ':id/:nome',
-                    element: <ReceitaCard/>,
+                {                    
+                    path: ':id/:nome',            
+                    element: <Receita/>,
                 },  
                 ]        
             },

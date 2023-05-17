@@ -1,8 +1,10 @@
 // Axios
 import axios from "axios";
 
-// Variável de Ambiente
-let receitaAPI = "http://26.153.141.161:8080/receitas";
+// Variáveis de Ambiente
+
+// Receitas
+const receitaAPI = 'http://26.153.141.161:8080/receitas/';
 
 // Exportações Receitas
 
@@ -14,14 +16,13 @@ export const getRecipes = async () => {
         // ,console.log(response.data);
     } catch (error) {
         console.error('Falha ao Se Comunicar com o Servidor', error);
-        throw error;
     }
 }
 
 // Receitas (GET) por ID
 export const getRecipesById = async (id) => {
     try {
-        const response = await axios.get(receitaAPI + "/" + id);
+        const response = await axios.get(receitaAPI + id);
         return response.data;
         // ,console.log(response.data);
     } catch (error) {
@@ -57,7 +58,7 @@ export const putRecipes = async (data) => {
 // Receitas (DELETE)
 export const deleteRecipes = async (id) => {
     try {
-        const response = await axios.delete(receitaAPI + "/" + id);
+        const response = await axios.delete(receitaAPI + id);
         return response.data;
         // ,console.log(response.data);
     } catch (error) { 

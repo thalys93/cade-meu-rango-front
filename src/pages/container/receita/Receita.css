@@ -31,55 +31,12 @@
     width: 120pt;
 }
 
-.cardHover:hover{
-    scale: 1.1;
-}
 
 /* Receita */
 .exitDiv{         
     position: absolute;
     margin:5pt;
     margin-left: 15pt;
-}
-
-#linkArrow{
-    font-size: 25pt;    
-}
-
-#linkArrow i {
-    transition: 0.5s;
-}
-
-#linkArrow i:hover{
-    color: #FD6543;
-}
-
-#receitaSection{
-    display: flex;
-    flex-direction: column;        
-    border-radius: 10pt;    
-    margin: 10pt;
-    margin-left: 200pt;
-    margin-right: 200pt;
-    padding-bottom: 50pt;
-}
-
-#receitaDetails{
-    display: flex;     
-    flex-direction: row;   
-    justify-content: center;
-    align-items: center;
-    margin-top: 50pt;
-    margin-left: 80pt;
-}
-
-#receitaDetailsBlank{
-    display: flex;     
-    flex-direction: row;   
-    justify-content: center;    
-    align-items: center;    
-    margin-top: 50pt;    
-    margin-left: 80pt;
 }
 
 
@@ -90,6 +47,10 @@
     width: 250pt;
     margin: 5pt;
     padding: 5pt;   
+}
+
+#TitleDiv h5 {
+    margin-bottom: 15pt;
 }
 
 
@@ -135,4 +96,11 @@
     width: 150pt;
     height: 70pt;    
     margin-bottom: 15pt;
+}
+
+#deleteBtn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 120pt;
 }

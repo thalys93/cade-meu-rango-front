@@ -1,21 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-// Icons
-import { BsDoorOpen } from 'react-icons/bs'
+import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
 
 // CSS
 import './voltar.css'
 
 function Voltar() {
+  // Dark Mode Context
+  const { isDarkMode } = React.useContext(DarkModeContext)
+
+
   return (
-    <div id='buttonDiv'>
-        <Link to='/'>
-            <button id='buttonExit'>
-                <BsDoorOpen id='IconStyle'/>
-            </button>
+        <Link className={isDarkMode ? 'text-light ms-4' : 'text-dark ms-4'} id="linkArrow" to='/'>                    
+          <i class="bi bi-arrow-left"/>
         </Link>
-    </div>
   )
 }
 

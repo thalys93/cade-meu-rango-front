@@ -1,27 +1,11 @@
-#buttonDiv{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    margin: 5pt;    
-}
-
-#buttonExit{
-    transition: 0.5s;
-    user-select: none;
-
-    background-color: #424649;
-    border-radius: 15pt;
-    border: none;
-    padding: 7pt;
-    
-}
-
-#buttonExit:hover{
-    background-color: #5a6064;
-    scale: 1.1;
-}
-
-#IconStyle{
-    color: aliceblue;
+#linkArrow{
     font-size: 25pt;    
+}
+
+#linkArrow i {
+    transition: 0.5s;
+}
+
+#linkArrow i:hover{
+    color: #FD6543;
 }
