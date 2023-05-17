@@ -11,15 +11,14 @@ import './home.css'
 import Inicio from './Inicio'
 import ReceitaTab from '../receita/ReceitaTab'
 import Dicas from '../dicas/Dicas'
+import { Helmet } from 'react-helmet'
 
 
-function Home() {
-  document.title = 'Cadê Meu Rango - Inicio '
-  document.head.querySelector('link[rel="icon"]').href = 'https://res.cloudinary.com/dh39ahmpj/image/upload/v1683412274/favicons.dev/cade_meu_rango_nyjbxs.png'
+function Home() {    
 
   const { isDarkMode } = React.useContext(DarkModeContext)
 
-  const [activeTab, setActiveTab] = React.useState('');
+  const [activeTab, setActiveTab] = React.useState('Home');
 
   useEffect(() => {
     const savedTab = localStorage.getItem('defaultActiveKey');
@@ -36,10 +35,13 @@ function Home() {
   };
 
   return (
-    <section id='homeSection'>      
+    <section id='homeSection'>
+      <Helmet>    
+        <title>Cadê Meu Rango</title>            
+      </Helmet> 
         <Banner />
       <Tab.Container className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'} defaultActiveKey='home' activeKey={activeTab} onSelect={tabSelect} >
-      <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'}>
+      <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'} id='navDiv'>
         <Nav variant="pills" defaultActiveKey='home' className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'}>
           <Nav.Item>
             <Nav.Link eventKey='home' className={isDarkMode ? 'DarkTxt' :'txt'}>Home</Nav.Link>
@@ -50,7 +52,7 @@ function Home() {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt' :'txt'}>Dicas</Nav.Link>
+            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt text-secondary disabled' :'txt disabled'}>Dicas</Nav.Link>
             </Nav.Item>
           </Nav>            
         </div>
@@ -58,7 +60,7 @@ function Home() {
 
         <Tab.Content>
           <Tab.Pane eventKey='home'>
-            <Inicio/>
+            <Inicio/>            
           </Tab.Pane>
         </Tab.Content>
 

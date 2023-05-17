@@ -11,12 +11,12 @@
     flex-direction: column;    
     align-items: end;
     margin-left: 250pt;
-    margin-bottom: -10pt;
+    margin-bottom: -5pt;
     
     width: 70px;
 }
 
-.container-culinary .title{
+.container-culinary h1{
     display: flex;
     justify-content: center;
     align-items: center;

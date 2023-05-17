@@ -10,8 +10,10 @@ function CadeMeuRango() {
   return (
     <div className='container-culinary'>
         <img src={culinary} alt='chapeu-culinario'/>  
-            <h1 className={isDarkMode ? 'DarkTitle' : 'title'}>Cadê Meu Rango</h1>
-            <h2 className={isDarkMode ? 'DarkTitleSubtitle' : 'TitleSubtitle'}>Seu livro de receitas favoritos</h2>     
+          <div>
+              <h1 className={isDarkMode ? 'DarkTitle' : 'title'}>Cadê Meu Rango</h1>
+              <h2 className={isDarkMode ? 'DarkTitleSubtitle' : 'TitleSubtitle'}>Seu livro de receitas favoritos</h2>     
+          </div>
     </div>
   )
 }
