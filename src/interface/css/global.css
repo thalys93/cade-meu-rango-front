@@ -3,8 +3,7 @@
 /* Resetar CSS */
 *{
     margin: 0;
-    padding: 0;        
-    font-weight: 400;    
+    padding: 0;    
 
     transition: 0.1s;    
 }
@@ -12,11 +11,25 @@
 /* Corpo e Fontes */
 body{    
     background-color: #cdcdcd;  
-    height: 100%;
+    height: 100vh;
+    box-sizing: border-box;
     
     background-image: url(/assets/img/bgPattern.png);
     background-size: 20%;    
 }
+
+body::-webkit-scrollbar {
+    width: 0.5rem;    
+}
+
+body::-webkit-scrollbar-track {
+    background: #ffffff;
+}  
+
+body::-webkit-scrollbar-thumb {
+    background: #FD6543;        
+}
+
 
 .title {
     font-family: 'Satisfy' , cursive;
@@ -35,7 +48,7 @@ body{
 
 .TitleSubtitleVar{
     font-family: 'Satisfy', cursive; 
-    font-size: 25pt;
+    font-size: 2.0900rem;
 }
 
 .subtitle {
@@ -67,9 +80,9 @@ body{
     background-color: #FD6543;    
     color: #FFFFFF;    
     border: none;
-    padding: 7pt;
-    font-size: 20pt;
-    border-radius: 50pt;
+    padding: 0.5852rem;
+    font-size: 1.6720rem;
+    border-radius: 4.1800rem;
     transition: 0.5s;
 }
 
@@ -87,8 +100,8 @@ body{
     background-color: #FD6543;    
     color: #FFFFFF;    
     border: 1px black;
-    padding: 7pt;
-    font-size: 15pt;    
+    padding: 0.5852rem;
+    font-size: 1.2540rem;    
     transition: 0.5s;    
 }
 

@@ -1,15 +1,15 @@
 #bookRecipeImg{
-    width: 150pt;
+    width: 12.5400rem;
 }
 
 #containerBook{
-    width: 190pt;
+    width: 15.8840rem;
 }
 
 #recipeList{
     display: flex;
     flex-direction: row;
-    gap: 15pt;   
+    gap: 0.1672rem;   
 }
 
 #recipeList li{

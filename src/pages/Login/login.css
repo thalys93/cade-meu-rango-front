@@ -2,12 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20pt;
+    margin-top: 1.6720rem;
 }
 
 button.buttonDif{
-    padding-left: 50pt;
-    padding-right: 50pt;
+    padding-left: 4.1800rem;
+    padding-right: 4.1800rem;
 
     box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
 	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
@@ -24,13 +24,13 @@ a:hover{
 }
 
 .CadDiv{
-    margin-top: 15pt;
+    margin-top: 1.2540rem;
     text-align: center;
 }
 
 .CardLogin{    
-    width: 500pt;
-    margin-top: 15pt;
+    width: 41.8000rem;
+    margin-top: 1.2540rem;
 
     box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
 	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
@@ -38,7 +38,7 @@ a:hover{
 }
 
 .CardCadastro{    
-    width: 500pt;
+    width: 41.8000rem;
 
     box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
 	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
@@ -51,25 +51,25 @@ a:hover{
     align-items: center;
 
     position: absolute;
-    left: 50pt;
-    top: 50pt;
+    left: 4.1800rem;
+    top: 4.1800rem;
 }
 
 .FormularioLogin{
-    margin-top: 15pt;    
-    padding-left: 110pt;
-    padding-right: 110pt;
+    margin-top: 1.2540rem;    
+    padding-left: 9.1960rem;
+    padding-right: 9.1960rem;
 }
 
 
 #termos{        
     text-align: center;
-    margin-top: 15pt;
+    margin-top: 1.2540rem;
 }
 
 #checkTermos{
     position: absolute;
-    right: 310pt;
+    right: 25.9160rem;
 
     border: 1px solid #0a0403;
 }

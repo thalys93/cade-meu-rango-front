@@ -22,9 +22,9 @@
         flex-direction: column;   
         justify-content: center;    
         align-items: center;            
-        padding-bottom: 5pt;        
-        margin-top: -5pt;
-        margin-right: -25pt;
+        padding-bottom: 0.4180rem;        
+        margin-top: -0.4180rem;
+        margin-right: -2.0900rem;
     }
 
     #receitaSection{
@@ -57,7 +57,7 @@
     }
 
     .container-culinary h1{
-        margin-top: -15pt;
+        margin-top: -1.2540rem;
     }
  
 }
@@ -73,9 +73,9 @@
         transition: 0.5s;
         
         
-        height: 45pt;
-        margin-top: -17pt;
-        margin-bottom: 15pt;
+        height: 3.7620rem;
+        margin-top: -1.4212rem;
+        margin-bottom: 1.2540rem;
 
         border-radius: 0pt 0pt 5pt 5pt;
     }
@@ -93,9 +93,9 @@
         flex-direction: row;   
         justify-content: center;    
         align-items: center;
-        padding-left: 25pt;        
-        padding-bottom: 5pt;
-        margin-top: -5pt;
+        padding-left: 2.0900rem;        
+        padding-bottom: 0.4180rem;
+        margin-top: -0.4180rem;
     }
 
     #receitaSection{
@@ -106,7 +106,7 @@
         margin-left: 25%;        
         height: auto;        
         width: 50%;
-        margin-bottom: 15pt;        
+        margin-bottom: 1.2540rem;        
     }
 
     /* RecipeGallery */
@@ -130,6 +130,6 @@
     }
 
     .container-culinary h1{
-        margin-top: -15pt;
+        margin-top: -1.2540rem;
     }
 }

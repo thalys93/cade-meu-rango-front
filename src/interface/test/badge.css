@@ -1,15 +1,15 @@
 #badgeDev{
     position: absolute;
-    top: 5pt;    
-    left: -35pt;
-    width: 130pt;
+    top: 0.4180rem;    
+    left: -2.9260rem;
+    width: 10.8680rem;
     rotate: -45deg;
 
     border-radius: 0;
 }
 
 #badgeDev h2{    
-    margin: 5pt;
-    padding-left: 5pt;
-    padding-right: 5pt;    
+    margin: 0.4180rem;
+    padding-left: 0.4180rem;
+    padding-right: 0.4180rem;    
 }

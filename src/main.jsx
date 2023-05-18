@@ -12,12 +12,10 @@ import 'animate.css'
 import { DeveloperProvider } from './utils/api/context/devContext/DevContext'
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(  
     <DarkModeProvider>
       <DeveloperProvider>
         <Routes />
       </DeveloperProvider>
-    </DarkModeProvider>
-  </React.StrictMode>,
+    </DarkModeProvider>  
 )

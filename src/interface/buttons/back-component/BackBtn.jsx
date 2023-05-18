@@ -12,7 +12,7 @@ function Voltar() {
 
   return (
         <Link className={isDarkMode ? 'text-light ms-4' : 'text-dark ms-4'} id="linkArrow" to='/'>                    
-          <i class="bi bi-arrow-left"/>
+          <i className="bi bi-arrow-left"/>
         </Link>
   )
 }

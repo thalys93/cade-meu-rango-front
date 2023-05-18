@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 150pt;    
+    width: 12.5400rem;    
     transition: 0.5s;   
     
     box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3)  ; 
@@ -20,23 +20,23 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15pt;
-    margin-top: 15pt;       
+    gap: 1.2540rem;
+    margin-top: 1.2540rem;       
 
     user-select: none;
 }
 
 .cardBlank{
-    height: 150pt;
-    width: 120pt;
+    height: 12.5400rem;
+    width: 10.0320rem;
 }
 
 
 /* Receita */
 .exitDiv{         
     position: absolute;
-    margin:5pt;
-    margin-left: 15pt;
+    margin:0.4180rem;
+    margin-left: 1.2540rem;
 }
 
 
@@ -44,63 +44,63 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 250pt;
-    margin: 5pt;
-    padding: 5pt;   
+    width: 20.9000rem;
+    margin: 0.4180rem;
+    padding: 0.4180rem;   
 }
 
 #TitleDiv h5 {
-    margin-bottom: 15pt;
+    margin-bottom: 1.2540rem;
 }
 
 
 .TitleLines{
     text-decoration: underline;
-    text-decoration-thickness: 0.5px;
-    text-underline-offset: 5px;    
+    text-decoration-thickness: 0.03125rem;
+    text-underline-offset: 0.3125rem;    
 }
 
 .listItem{
     display:flex;
     flex-direction: row;
-    gap: 5pt;
+    gap: 0.4180rem;
 }
 
 .ingredient{
     display: flex;
-    margin-top: -2.5pt;    
+    margin-top: -0.2090rem;    
 }
 
 /* SectionLeft */
 .DetailsLeft{
     display: flex;
     flex-direction: column;    
-    margin: 5pt;    
+    margin: 0.4180rem;    
 }
 
 /* SectionRight */
 .DetailsRight{
     display: flex;
     flex-direction: column;
-    margin: 5pt;    
+    margin: 0.4180rem;    
 }
 
 .ReceitaImg{
     display: flex;
-    width: 150pt;
-    margin: 15pt;
-    border-radius: 15pt;
+    width: 12.5400rem;
+    margin: 1.2540rem;
+    border-radius: 1.2540rem;
 }
 
 .blankImg{    
-    width: 150pt;
-    height: 70pt;    
-    margin-bottom: 15pt;
+    width: 12.5400rem;
+    height: 5.8520rem;    
+    margin-bottom: 1.2540rem;
 }
 
 #deleteBtn{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    margin-left: 120pt;
+    margin-left: 10.0320rem;
 }

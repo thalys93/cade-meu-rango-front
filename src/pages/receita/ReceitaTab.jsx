@@ -23,7 +23,7 @@ function ReceitaTab() {
         try {
           const data = await getRecipes();
           setCardReceitas(data);
-          setCarregou(true);
+          setCarregou(false);
         } catch (error) {
           console.log('Falha Ao Obter Dados Da API' , error);
           setfalha(true);     
