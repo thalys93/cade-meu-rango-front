@@ -10,9 +10,9 @@ function ReceitaPlaceholder() {
     const { isDarkMode } = React.useContext(DarkModeContext)
     
   return (
-    <section id='receitaDetailsBlank'>
-          <article className='DetailsLeft'>
-            <div id='TitleDiv'>
+    <section id='receitaDetailsBlank' className={isDarkMode? 'DarkSection' : 'bg-body'}>
+          <article>
+            <div className='BlankTitleDiv'>
               {/* Titulo */}
               <Placeholder as='h5' animation="wave">
                 <Placeholder xs={6} className={isDarkMode ? 'TitleLines subtitle bg-body' : 'TitleLines subtitle'}/>
@@ -47,8 +47,8 @@ function ReceitaPlaceholder() {
             </div>
           </article>
 
-          <article className='DetailsRight'>            
-            <div id='TitleDiv'>
+          <article>
+            <div className='BlankTitleDiv'>
               <Placeholder xs={6} as='h1' animation="wave">                
                 <Placeholder className={isDarkMode ? 'blankImg bg-body' : 'blankImg'}/>
               </Placeholder>

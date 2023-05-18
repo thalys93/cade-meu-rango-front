@@ -82,38 +82,43 @@
 
         /* Receita */
     .receitaDetails{
-        display: flex;
+        display: flex;                
         flex-direction: row;
         justify-content: center;
-        align-items: center;        
+        align-items: center;
+        margin-top: -25pt;
+        margin-bottom: 25pt;
+        border-radius: 15pt;
     }
 
     #receitaDetailsBlank{
-        display: flex;     
-        flex-direction: row;   
-        justify-content: center;    
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        padding-left: 2.0900rem;        
-        padding-bottom: 0.4180rem;
-        margin-top: -0.4180rem;
+        padding-left: 50pt;
+        
+        
+        margin-top: -25pt;
+        margin-bottom: 25pt;
+        border-radius: 15pt;
     }
 
     #receitaSection{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-left: 25%;        
-        height: auto;        
-        width: 50%;
-        margin-bottom: 1.2540rem;        
+        flex-direction: column;                
+        width: auto;
+        margin-bottom: 100pt;
+        /* margin-left: 25%;*/
+        /* width: 50%; */
     }
 
     /* RecipeGallery */
         #recipesList{
         display: flex;
         justify-content: center;
-        align-items: center;    
+        align-items: center;   
+        margin-bottom: 20pt; 
     }
 
     #receitaBorder{

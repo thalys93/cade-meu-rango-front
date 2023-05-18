@@ -3,10 +3,12 @@ import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import { DarkModeContext } from './utils/api/context/darkModeContext/DarkModeContext'
 import { DeveLoperContext } from './utils/api/context/devContext/DevContext'
-import TestingDev from './interface/test/TestingDev'
+
 
 // Import dos Componentes
 import Footer from './interface/footer-component/Footer'
+import TestingDev from './interface/test/TestingDev'
+import Banner from './interface/banner/Banner'
 
 
 function App() {  
@@ -29,6 +31,9 @@ function App() {
         <TestingDev/>
       </div>
       }
+      <header>
+        <Banner/>
+      </header>
 
       {/* Rotas */}
       <Outlet />      

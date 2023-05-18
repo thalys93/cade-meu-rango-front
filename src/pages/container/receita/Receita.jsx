@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { Image } from 'react-bootstrap'
 import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
@@ -39,8 +39,8 @@ function Receita() {
   };
   fetchData();
     setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+      setIsLoading(true);
+    }, 250);
 
   }, [id]);  
 
@@ -60,14 +60,14 @@ function Receita() {
       <Helmet>
         <title> {`CMR - ${nome} `}</title>
         <link rel="icon" href="https://res.cloudinary.com/dh39ahmpj/image/upload/v1683412274/favicons.dev/cade_meu_rango_nyjbxs.png"/>
-      </Helmet>
+      </Helmet>      
       <Voltar/>
-    <section className={isDarkMode ? 'DarkSection' : 'bg-body'} id='receitaSection'>
+    <section id='receitaSection'>
       {isLoading ? (
         <ReceitaPlaceholder/>
       ) : (
-        <section className='receitaDetails'>
-          <article className='DetailsLeft container'>            
+        <section className={isDarkMode ? 'DarkSection receitaDetails' : 'bg-body receitaDetails'}>
+          <article className='DetailsLeft container'>
           <div id='TitleDiv'> 
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
               {nome}

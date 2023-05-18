@@ -1,6 +1,5 @@
 // React
 import React, { useEffect } from 'react'
-import Banner from '../../interface/banner/Banner'
 import { Tab } from 'react-bootstrap'
 import { Nav } from 'react-bootstrap'
 import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
@@ -38,8 +37,7 @@ function Home() {
     <section id='homeSection'>
       <Helmet>    
         <title>Cadê Meu Rango</title>            
-      </Helmet> 
-        <Banner />
+      </Helmet>         
       <Tab.Container className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'} defaultActiveKey='home' activeKey={activeTab} onSelect={tabSelect} >
       <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'} id='navDiv'>
         <Nav variant="pills" defaultActiveKey='home' className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'}>

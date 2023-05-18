@@ -31,6 +31,15 @@
     width: 10.0320rem;
 }
 
+.BlankTitleDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    width: 20.9000rem;
+    margin: 0.4180rem;
+    padding: 0.4180rem;    
+}
+
 
 /* Receita */
 .exitDiv{         
@@ -46,7 +55,7 @@
     height: auto;
     width: 20.9000rem;
     margin: 0.4180rem;
-    padding: 0.4180rem;   
+    padding: 0.4180rem;
 }
 
 #TitleDiv h5 {

@@ -9,21 +9,28 @@ import '../home/home.css'
 import { DeveLoperContext } from '../../utils/api/context/devContext/DevContext';
 
 function ReceitaTab() {
-
+  // Contexto do Modo Desenvolvedor
   const { isDev } = React.useContext(DeveLoperContext)
 
+  // Estado do Card
   const [cardReceitas, setCardReceitas] = React.useState([]);
 
+  // Estado do Carregamento
   const [carregou , setCarregou] = React.useState(false);
+
+  // Estado da Falha
   const [falha, setfalha] = React.useState(false);
+
+  // Estado do Contador
   const [contador, setContador] = React.useState(0);
 
+  // Obter Dados Da API
   useEffect(() => {  
       const fetchData = async () => {
         try {
           const data = await getRecipes();
           setCardReceitas(data);
-          setCarregou(false);
+          setCarregou(true);
         } catch (error) {
           console.log('Falha Ao Obter Dados Da API' , error);
           setfalha(true);     
@@ -32,12 +39,12 @@ function ReceitaTab() {
       fetchData();
   }, []);
 
-
+  // Animação de Carregamento
   useEffect(() => {
     if (carregou) {
       const timer = setInterval(() => {
         setContador((contador) => contador + 1);
-      }, 500);
+      }, 210);
 
       return () => {
         clearInterval(timer);
@@ -49,7 +56,8 @@ function ReceitaTab() {
   // Contexto do Modo Escuro
   const { isDarkMode } = React.useContext(DarkModeContext)
 
-  const [progressBar, setProgressBar] = React.useState(100);
+  // ProgressBar
+  const [progressBar] = React.useState(100);
 
 
   // Caso A API Não Carregue
