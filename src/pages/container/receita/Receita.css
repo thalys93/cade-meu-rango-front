@@ -48,7 +48,6 @@
     margin-left: 1.2540rem;
 }
 
-
 #TitleDiv{
     display: flex;
     flex-direction: column;
@@ -112,4 +111,20 @@
     justify-content: flex-end;
     align-items: flex-end;
     margin-left: 10.0320rem;
+}
+
+.modeNumber{
+    margin-top: -5pt;
+}
+
+.ConfirmButton{
+    color: green;
+    transition: 0.5s;
+}
+
+.ConfirmButton:hover{
+    color: #00FF00;
+    scale: 1.1;
+    transition: 0.5s;
+    cursor: pointer;
 }

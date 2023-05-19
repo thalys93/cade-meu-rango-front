@@ -1,7 +1,7 @@
 {
   "name": "cademeurango",
   "private": true,
-  "version": "Prod 1.0",
+  "version": "Dev 1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

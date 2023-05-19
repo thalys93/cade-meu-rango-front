@@ -10,7 +10,7 @@ function ReceitaPlaceholder() {
     const { isDarkMode } = React.useContext(DarkModeContext)
     
   return (
-    <section id='receitaDetailsBlank' className={isDarkMode? 'DarkSection' : 'bg-body'}>
+        <>
           <article>
             <div className='BlankTitleDiv'>
               {/* Titulo */}
@@ -76,7 +76,7 @@ function ReceitaPlaceholder() {
               
             </div>
           </article>
-        </section>
+        </>
   )
 }
 

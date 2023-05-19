@@ -3,46 +3,37 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { Image } from 'react-bootstrap'
 import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
-import { getRecipesById } from '../../../utils/api/services/api'
+import { DeveLoperContext } from '../../../utils/api/context/devContext/DevContext'
+import { ReceitaUtils} from './receitaUtils'
+import { AiOutlineCheckCircle } from 'react-icons/ai'
 
-import './Receita.css'
 import ReceitaPlaceholder from './ReceitaPlaceholder'
 import Voltar from '../../../interface/buttons/back-component/BackBtn'
+import './Receita.css'
 
 
 function Receita() {  
   // Dark Mode Context
   const { isDarkMode } = React.useContext(DarkModeContext)
+  const {isDev} = React.useContext(DeveLoperContext)
   
   // Nested Routes
-  const {nome} = useParams();
-  const {id} = useParams();
+  const {nome} = useParams();  
   const errorID = 404;
 
+  // Hook de Estado e Carregamento
+  const { 
+    isLoading , 
+    receita , 
+    falha, 
+    ingredientes, 
+    modoPreparo,
+    modificarIngredientes,
+    modificarModoPreparo
+  } = ReceitaUtils()
 
-  // States Loading e da Receita
-  const [isLoading, setIsLoading] = React.useState(true)
-  const [receita, setReceita] = React.useState([])
-  const [falha , setFalha] = React.useState(false)
+  
 
-  // Busca a Informação na api
-  useEffect(() => {
-    const fetchData = async () => {
-    try {
-      const data = await getRecipesById(id);
-      setReceita(data);      
-      setFalha(false);
-    } catch (error) {
-      console.log('Falha Ao Obter Dados Da API' , error);
-      setFalha(true);
-    }
-  };
-  fetchData();
-    setTimeout(() => {
-      setIsLoading(true);
-    }, 250);
-
-  }, [id]);  
 
   if (falha) {
     return (
@@ -56,18 +47,18 @@ function Receita() {
 
 
   return (      
-    <main className='container-fluid'>
+    <main className='RecipeMain'>
       <Helmet>
         <title> {`CMR - ${nome} `}</title>
         <link rel="icon" href="https://res.cloudinary.com/dh39ahmpj/image/upload/v1683412274/favicons.dev/cade_meu_rango_nyjbxs.png"/>
       </Helmet>      
-      <Voltar/>
-    <section id='receitaSection'>
+      <Voltar/>    
+      <section className={isDarkMode ? 'DarkSection receitaSection ' : 'bg-body receitaSection '}>
       {isLoading ? (
         <ReceitaPlaceholder/>
       ) : (
-        <section className={isDarkMode ? 'DarkSection receitaDetails' : 'bg-body receitaDetails'}>
-          <article className='DetailsLeft container'>
+      <>
+        <article className='container'>
           <div id='TitleDiv'> 
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
               {nome}
@@ -81,50 +72,37 @@ function Receita() {
               Ingredientes                      
             </h5>
             <ol className='container-fluid list-group'>
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(Medida)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Ingrediente 1 </p>
-                </li>    
-
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(Medida)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Ingrediente 2 </p>
-                </li>
-
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(Medida)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Ingrediente 3 </p>
-                </li>
+              {ingredientes?.map((ingrediente, i) => (                
+                <li className='listItem' key={i}>    
+                    <h4 className='enfatize modeNumber'>{ingrediente.quantidade}</h4>
+                    <h6 className='enfatizeSecondary'>{ingrediente.unidade}</h6>
+                    <span className={isDarkMode? 'DarkTxt user-select-none' : 'txt user-select-none'}> / </span>
+                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ingrediente.nome} </p>                                                                         
+                    <AiOutlineCheckCircle hidden={!isDev} className={isDarkMode ? 'ConfirmButtonDark' : 'ConfirmButton'} onClick={() => modificarIngredientes(ingrediente.id)}/>                                                         
+                </li>                                             
+              ))}
             </ol>
           </div>
-          </article>
+        </article>
 
-          <article className='DetailsRight container'>
-            <Image className='ReceitaImg' src={receita?.imagem} height={130} fluid/>
-              <div id='TitleDiv'>
-            <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
-              Modo de Preparo                      
-            </h5>
-            <ol className='container-fluid list-group'>
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(passo)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Modo de Preparo 1 </p>
-                </li>    
-
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(passo)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Modo de Preparo 2 </p>
-                </li>
-
-                <li className='listItem'>                 
-                    <h6 className='enfatize'>(passo)</h6>
-                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> Modo de Preparo 3 </p>
-                </li>
-            </ol>
+        <article className='container'>
+          <Image className='ReceitaImg' src={receita?.imagem} height={130} fluid/>
+            <div id='TitleDiv'>
+          <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
+            Modo de Preparo                      
+          </h5>
+          <ol className='container-fluid list-group'>
+            {modoPreparo?.map((modo, i) => (
+            <li className='listItem' key={i}>                 
+              <h4 className='enfatize modeNumber'>{modo.id}</h4>
+              <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {modo.descricao} </p>
+            </li>    
+            ))}
+          </ol>
           </div>
-          </article>
-        </section>
-      )}      
+        </article>  
+      </>          
+      )}   
     </section>
   </main>
   )

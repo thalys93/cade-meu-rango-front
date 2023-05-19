@@ -75,6 +75,12 @@ body::-webkit-scrollbar-thumb {
     color: #FD6543;
 }
 
+.enfatizeSecondary {
+    font-family : 'Rubik', sans-serif;  
+    font-weight: 500;
+    color: #b84930;
+}
+
 .btnLogin{
     display: flex;            
     background-color: #FD6543;    

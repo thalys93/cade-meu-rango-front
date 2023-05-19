@@ -10,7 +10,7 @@ import CadeMeuRango from '../../interface/banner/CadeMeuRango'
 
 function Banner () {
   const { isDarkMode, toggleDarkMode } = React.useContext(DarkModeContext)
-  const { isDev, toggleDevMode } = React.useContext(DeveLoperContext)
+  const { toggleDevMode } = React.useContext(DeveLoperContext)
 
   return (    
     <div className={isDarkMode ? 'DarkBanner' : 'banner'}>

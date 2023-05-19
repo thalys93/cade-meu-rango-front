@@ -10,14 +10,13 @@
     }
 
         /* Receita */
-    .receitaDetails{
+    .receitaSection{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;          
+        flex-direction: column;        
+        align-items: center;         
     }
 
-    #receitaDetailsBlank{
+    .receitaDetailsBlank{
         display: flex;     
         flex-direction: column;   
         justify-content: center;    
@@ -27,12 +26,20 @@
         margin-right: -2.0900rem;
     }
 
-    #receitaSection{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;        
+    .ConfirmButtonDark{
+        color: green;
+        font-size: 15pt;
+        margin-top: -2pt;
+        transition: 0.5s;
+
     }
+
+    .ConfirmButtonDark:hover{
+        color: #00FF00;
+        cursor: pointer;
+    }
+
+
 
     /* Receita Gallery */
     #recipesList{
@@ -81,17 +88,24 @@
     }
 
         /* Receita */
-    .receitaDetails{
-        display: flex;                
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: -25pt;
-        margin-bottom: 25pt;
-        border-radius: 15pt;
+    .RecipeMain{
+        margin-bottom: 80pt;
     }
 
-    #receitaDetailsBlank{
+    .receitaSection{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;        
+        width: fit-content;        
+        margin-left: 25%;        
+    }
+
+    .receitaSection article{
+        margin: 2%;
+    }
+
+    .receitaDetailsBlank{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -104,14 +118,7 @@
         border-radius: 15pt;
     }
 
-    #receitaSection{
-        display: flex;
-        flex-direction: column;                
-        width: auto;
-        margin-bottom: 100pt;
-        /* margin-left: 25%;*/
-        /* width: 50%; */
-    }
+
 
     /* RecipeGallery */
         #recipesList{
