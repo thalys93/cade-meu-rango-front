@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
-import { getRecipesById } from '../../../utils/api/services/api'
+import { getRecipesById } from './api/services/api'
 
 export function ReceitaUtils() {
 

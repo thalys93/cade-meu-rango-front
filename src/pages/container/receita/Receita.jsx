@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { Image } from 'react-bootstrap'
 import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
 import { DeveLoperContext } from '../../../utils/api/context/devContext/DevContext'
-import { ReceitaUtils} from './receitaUtils'
+import { ReceitaUtils } from '../../../utils/receitaUtils'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 
 import ReceitaPlaceholder from './ReceitaPlaceholder'
@@ -74,10 +74,11 @@ function Receita() {
             <ol className='container-fluid list-group'>
               {ingredientes?.map((ingrediente, i) => (                
                 <li className='listItem' key={i}>    
+                  {/* Receita Normal */}
                     <h4 className='enfatize modeNumber'>{ingrediente.quantidade}</h4>
                     <h6 className='enfatizeSecondary'>{ingrediente.unidade}</h6>
                     <span className={isDarkMode? 'DarkTxt user-select-none' : 'txt user-select-none'}> / </span>
-                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ingrediente.nome} </p>                                                                         
+                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ingrediente.nome} </p>                  
                     <AiOutlineCheckCircle hidden={!isDev} className={isDarkMode ? 'ConfirmButtonDark' : 'ConfirmButton'} onClick={() => modificarIngredientes(ingrediente.id)}/>                                                         
                 </li>                                             
               ))}

@@ -1,0 +1,68 @@
+import { useState, useEffect } from "react";
+import { getRecipes } from "./api/services/api";
+
+export function TabUtils() {
+  // Estados
+
+  // Estado de Timeout
+  const TIMEOUT_LIMIT = 1500;
+  const [timeOut, setTimeOut] = useState(false);
+
+  // Estado do Card
+  const [cardReceitas, setCardReceitas] = useState([]);
+
+  // Estado do Carregamento
+  const [carregou, setCarregou] = useState(false);
+
+  // Estado da Falha
+  const [falha, setfalha] = useState(false);
+
+  // Estado do Contador
+  const [contador, setContador] = useState(0);
+
+  // Obter Dados Da API
+  useEffect(() => {
+    setTimeOut(false);
+    const timer = setTimeout(() => {
+      setTimeOut(true);
+    }, TIMEOUT_LIMIT);
+
+    const fetchData = async () => {
+      try {
+        const data = await getRecipes();
+        clearTimeout(timer);
+        setCardReceitas(data);
+        setCarregou(true);
+      } catch (error) {
+        setfalha(true);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Animação de Carregamento
+  useEffect(() => {
+    if (carregou) {
+      const timer = setInterval(() => {
+        setContador((contador) => contador + 1);
+      }, 210);
+
+      return () => {
+        clearInterval(timer);
+      };
+    }
+  }, [carregou]);
+
+  // ProgressBar
+  const [progressBar] = useState(100);
+
+
+  return { 
+        cardReceitas,
+        falha,
+        carregou,
+        timeOut,
+        contador,
+        progressBar    
+  }
+}

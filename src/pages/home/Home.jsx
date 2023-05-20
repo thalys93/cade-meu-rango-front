@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Tab } from 'react-bootstrap'
 import { Nav } from 'react-bootstrap'
 import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
@@ -11,27 +11,16 @@ import Inicio from './Inicio'
 import ReceitaTab from '../receita/ReceitaTab'
 import Dicas from '../dicas/Dicas'
 import { Helmet } from 'react-helmet'
+import { homeUtils } from '../../utils/homeUtils'
 
 
 function Home() {    
 
+  // Contexto Modo Escuro
   const { isDarkMode } = React.useContext(DarkModeContext)
 
-  const [activeTab, setActiveTab] = React.useState('Home');
-
-  useEffect(() => {
-    const savedTab = localStorage.getItem('defaultActiveKey');
-
-    if (savedTab) {
-      setActiveTab(savedTab);
-    }
-
-  }, []);
-
-  const tabSelect = (selectedTab) => {
-    setActiveTab(selectedTab);
-    localStorage.setItem('defaultActiveKey', selectedTab);
-  };
+  // Funções do Home
+  const { activeTab, tabSelect } = homeUtils();
 
   return (
     <section id='homeSection'>
