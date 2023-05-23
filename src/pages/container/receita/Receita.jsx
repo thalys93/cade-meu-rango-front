@@ -71,17 +71,15 @@ function Receita() {
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
               Ingredientes                      
             </h5>
-            <ol className='container-fluid list-group'>
-              {ingredientes?.map((ingrediente, i) => (                
-                <li className='listItem' key={i}>    
+            <ol className='container-fluid list-group'>              
+                <li className='listItem' key={receita.ingrediente.id}>    
                   {/* Receita Normal */}
-                    <h4 className='enfatize modeNumber'>{ingrediente.quantidade}</h4>
-                    <h6 className='enfatizeSecondary'>{ingrediente.unidade}</h6>
+                    <h4 className='enfatize modeNumber'>{receita.ingrediente.quantidade}</h4>
+                    {/* <h6 className='enfatizeSecondary'>{ingrediente.unidade}</h6> */}
                     <span className={isDarkMode? 'DarkTxt user-select-none' : 'txt user-select-none'}> / </span>
-                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ingrediente.nome} </p>                  
-                    <AiOutlineCheckCircle hidden={!isDev} className={isDarkMode ? 'ConfirmButtonDark' : 'ConfirmButton'} onClick={() => modificarIngredientes(ingrediente.id)}/>                                                         
-                </li>                                             
-              ))}
+                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {receita.ingrediente.nome} </p>
+                    {/* <AiOutlineCheckCircle hidden={!isDev} className={isDarkMode ? 'ConfirmButtonDark' : 'ConfirmButton'} onClick={() => modificarIngredientes(ingrediente.id)}/>                                                          */}
+                </li>                                                           
             </ol>
           </div>
         </article>
@@ -92,13 +90,11 @@ function Receita() {
           <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
             Modo de Preparo                      
           </h5>
-          <ol className='container-fluid list-group'>
-            {modoPreparo?.map((modo, i) => (
-            <li className='listItem' key={i}>                 
-              <h4 className='enfatize modeNumber'>{modo.id}</h4>
-              <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {modo.descricao} </p>
-            </li>    
-            ))}
+          <ol className='container-fluid list-group'>            
+            <li className='listItem' key={receita.modoDePreparo.id}>                 
+              <h4 className='enfatize modeNumber'>{receita.modoDePreparo.id}</h4>
+              <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {receita.modoDePreparo.descricao} </p>
+            </li>                
           </ol>
           </div>
         </article>  

@@ -4,14 +4,14 @@ import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkMod
 
 import './home.css'
 
-function Inicio() {
+function Inicio() {    
     const { isDarkMode } = React.useContext(DarkModeContext)
-
   return (
     <section className={isDarkMode ? 'DarkSection m-2 p-3 border-3' : 'bg-body m-2 p-3 border-2'}>
         <article className='container-fluid'>
             <h3 className={isDarkMode ? 'DarkSubtitle' :'subtitle'}> Bem-vindo ao Cadê Meu Rango </h3>
-            <h5 className={isDarkMode ? 'DarkRegular' :'regular'}> o seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br/>
+            <h5 className={isDarkMode ? 'DarkRegular' :'regular'}> 
+                o seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br/>
                 Nosso site é um paraíso culinário projetado para entusiastas da cozinha e amantes da gastronomia. 
             </h5>
         </article>
@@ -83,7 +83,7 @@ function Inicio() {
                         </a>
                         <Figure.Caption>
                             <h5 className={isDarkMode ? 'DarkTxt' : 'txt'}> Nathan </h5>
-                            <span className={isDarkMode ? 'DarkTxt' : ''}> Front End (react) </span>
+                            <span className={isDarkMode ? 'DarkTxt' : ''}> Back End (java) </span>
                         </Figure.Caption>
                     </Figure>
                 </li>
