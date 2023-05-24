@@ -1,8 +1,12 @@
+// Libs
 import React from 'react'
 import { Placeholder } from 'react-bootstrap'
-import { DarkModeContext } from '../../../utils/api/context/darkModeContext/DarkModeContext'
 
-import './Receita.css'
+// Utils
+import { DarkModeContext } from '../../../utils/context/DarkModeContext'
+
+// CSS
+import '../css/Receita.css'
 
 
 function ReceitaPlaceholder() {

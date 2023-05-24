@@ -1,13 +1,14 @@
-// React
+// Libs
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Routes from './routes'
 
-import { DarkModeProvider } from './utils/api/context/darkModeContext/DarkModeContext'
-import { DeveloperProvider } from './utils/api/context/devContext/DevContext'
-import { UserAutenticatedProvider } from './utils/api/context/userAutenticatedContext/isLogged'
+// Utils
+import { DarkModeProvider } from './utils/context/DarkModeContext'
+import { DeveloperProvider } from './utils/context/DevContext'
+import { UserAutenticatedProvider } from './utils/context/UserContext'
 
-// Import do CSS
+// CSS
 import './interface/css/global.css'
 import './interface/css/respon.css'
 import './interface/css/darkmode.css'

@@ -1,7 +1,7 @@
-// Import do React
+// Libs
 import React from 'react'
 
-// Import do CSS
+// CSS
 import './footer.css'
 
 function Footer() {

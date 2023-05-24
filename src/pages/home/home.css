@@ -107,9 +107,21 @@ h4.subtitle{
 }
 
 .break-line-list {
-    flex-wrap: wrap;
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
+    padding: 0;    
+    margin: 0;
+    scale: 0.98;
+    max-height: 24.2440rem;
+}
+
+.break-line-list-Blank{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 15pt;
     padding: 0;    
     margin: 0;
     scale: 0.98;

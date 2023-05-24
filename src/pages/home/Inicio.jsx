@@ -111,5 +111,3 @@ function Inicio() {
     </section>
   )
 }
-
-export default Inicio

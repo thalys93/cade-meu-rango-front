@@ -1,11 +1,13 @@
-// Import do React
+// Libs
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import { DarkModeContext } from './utils/api/context/darkModeContext/DarkModeContext'
-import { DeveLoperContext } from './utils/api/context/devContext/DevContext'
+
+// Utils
+import { DarkModeContext } from './utils/context/DarkModeContext'
+import { DeveLoperContext } from './utils/context/DevContext'
 
 
-// Import dos Componentes
+// Componentes
 import Footer from './interface/footer-component/Footer'
 import TestingDev from './interface/test/TestingDev'
 import Banner from './interface/banner/Banner'

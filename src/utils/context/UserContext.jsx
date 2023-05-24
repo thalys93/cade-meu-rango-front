@@ -17,8 +17,8 @@ const UserAutenticatedProvider = ({children}) => {
     //     const userAutenticated = !isLogged;
     //     setIsLogged(userAutenticated);
     //     localStorage.setItem('userAutenticated', JSON.stringify(userAutenticated));
-    // }
-    
+    // }        
+
     return(
         <UserAutenticatedContext.Provider value={{isLogged}}>
             {children}
@@ -26,4 +26,4 @@ const UserAutenticatedProvider = ({children}) => {
     );
 }
 
-export {UserAutenticatedContext, UserAutenticatedProvider};
+export {UserAutenticatedContext, UserAutenticatedProvider,};

@@ -1,0 +1,14 @@
+.footerCanvas{    
+    position: absolute;    
+    right: 0;
+    left: 0;
+    bottom: 10pt;
+}
+
+.offCanvasTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 85pt;
+}

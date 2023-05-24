@@ -128,3 +128,7 @@
     transition: 0.5s;
     cursor: pointer;
 }
+
+.errorBorder{
+    border: 1px solid red;
+}

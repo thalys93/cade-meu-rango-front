@@ -1,6 +1,10 @@
+// Libs
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// Utils
+
+// CSS
 import './error.css'
 
 const errorMsg = `Ocorreu um erro inesperado 404.`

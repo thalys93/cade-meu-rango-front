@@ -1,7 +1,11 @@
+// Libs
 import React from 'react'
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
 import { Badge } from 'react-bootstrap'
 
+// Utils
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
+
+// CSS
 import './badge.css'
 
 function TestingDev() {

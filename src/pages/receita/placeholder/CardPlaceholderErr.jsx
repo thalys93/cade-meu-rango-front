@@ -1,17 +1,20 @@
+// Libs
 import React from 'react'
 import { Card , Placeholder } from 'react-bootstrap'
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext';
+import { DarkModeContext } from '../../../utils/context/DarkModeContext';
 
-import '../container/receita/receita.css'
+// CSS
+import '../css/Receita.css'
 
-function CardPlaceholder() {   
-    const { isDarkMode } = React.useContext(DarkModeContext)
+
+function CardPlaceholderError() {   
+const { isDarkMode } = React.useContext(DarkModeContext)
     
   return (
-          <div className='flex-column'>
-        <Card className={isDarkMode ? 'cardHover bg-dark' : 'cardHover'}>
-          <Placeholder as='h1' animation="glow">
-            <Placeholder xs={5} className={isDarkMode ? 'bg-body' : ''} style={{width: 150 , height: 100, marginTop: 10}}/>
+        <div className='flex-column'>
+        <Card className={isDarkMode ? 'cardHover bg-dark errorBorder' : 'cardHover errorBorder'}>
+          <Placeholder as='h1'>
+            <Placeholder xs={5} className={isDarkMode ? 'bg-body' : ''} style={{width: 150 , height: 100, marginTop: 10}}/>            
           </Placeholder>
           <Card.Body>
             <Placeholder as='p'  xs={10} animation="glow">
@@ -26,4 +29,4 @@ function CardPlaceholder() {
   )
 }
 
-export default CardPlaceholder
+export default CardPlaceholderError

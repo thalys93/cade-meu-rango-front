@@ -5,20 +5,18 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 // App
 import App from './App'
 
+// Página Inicial
+import Index from './pages'
+
 // Página de Error
 import Error from './interface/error/Error'
 
 // Receita
-import Receita from './pages/container/receita/Receita'
-import ReceitaCard from './pages/receita/ReceitaCard'
-
-// Página Inicial
-import Home from './pages/home/Home'
+import Receita from './pages/receita/container/Receita'
 
 // Login
 import Login from './pages/Login/Login'
-
-// Criar Conta
+// Cadastro
 import Cadastro from './pages/Login/Cadastro'
 
 
@@ -32,7 +30,7 @@ const router = createBrowserRouter([
             // Página Inicial
             {
                 path: '/',
-                element: <Home/>                
+                element: <Index/>                
             },
                 // Receita
             {
@@ -45,12 +43,6 @@ const router = createBrowserRouter([
                 },  
                 ]        
             },
-                // Dicas
-            {
-                path: 'Tips',
-                //element: Livros
-                //children: []
-            }
         ]
     },
     

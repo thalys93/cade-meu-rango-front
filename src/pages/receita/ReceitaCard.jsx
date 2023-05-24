@@ -1,12 +1,18 @@
+// Libs
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext';
-import { DeveLoperContext } from '../../utils/api/context/devContext/DevContext';
 import { AiFillDelete } from 'react-icons/ai';
 import Card from 'react-bootstrap/Card';
 
-import CardPlaceholder from './CardPlaceholder';
-import '../container/receita/receita.css'
+// Utils
+import { DarkModeContext } from '../../utils/context/DarkModeContext';
+import { DeveLoperContext } from '../../utils/context/DevContext';
+
+// Componente
+import CardPlaceholder from './placeholder/CardPlaceholder';
+
+// CSS
+import './css/Receita.css'
 
 function ReceitaCard({id, title, imgLink}) {
    
@@ -46,7 +52,7 @@ function ReceitaCard({id, title, imgLink}) {
               </Link>                                          
           </Card.Body>
       </Card>          
-    ) : (
+    ) : (      
       <CardPlaceholder/>
     )}        
     </main>                         

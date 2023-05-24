@@ -1,13 +1,18 @@
+// Libs
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import { Helmet } from 'react-helmet'
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
 
+// Utils
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
+
+// Componentes
 import CadeMeuRangoVar from '../../interface/banner/CadeMeuRangoVar'
-
-import './login.css'
 import Voltar from '../../interface/buttons/back-component/BackBtn'
+
+// CSS
+import './login.css'
 
 function Login() {
   const { isDarkMode } = React.useContext(DarkModeContext)  

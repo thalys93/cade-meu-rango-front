@@ -1,7 +1,12 @@
+// Libs
 import React from 'react'
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
 
+// Utils
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
+
+// CSS
 import './CadeMeuRango.css'
+
 function CadeMeuRango() {
   const { isDarkMode } = React.useContext(DarkModeContext)
 

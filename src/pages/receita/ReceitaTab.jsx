@@ -1,9 +1,16 @@
+// Libs
 import React from 'react'
-import { DarkModeContext } from '../../utils/api/context/darkModeContext/DarkModeContext'
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { ProgressBar } from 'react-bootstrap';
 import { TabUtils } from '../../utils/ReceitaTabUtils';
-import ReceitaCard from './ReceitaCard'
 
+// Componente
+import ReceitaCard from './ReceitaCard'
+import CardPlaceholder from './placeholder/CardPlaceholder'
+import CardPlaceholderError from './placeholder/CardPlaceholderErr'
+
+
+// CSS
 import '../home/home.css'
 
 function ReceitaTab() {  
@@ -11,34 +18,46 @@ function ReceitaTab() {
   const { isDarkMode } = React.useContext(DarkModeContext)
     
   // Hook de Estado e Carregamento
-  const {cardReceitas, falha, carregou, timeOut, contador, progressBar} = TabUtils();
+  const {cardReceitas, falha, carregou, timeOut, contador, progressBar, blankCard} = TabUtils();
 
   // Caso A API Não Carregue
   if(!carregou) {
     return (
 <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
-        <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
+        <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Aguarde, Carregando as Receitas que preparamos para você hoje! </h3>
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
-            <ol className='list-group container break-line-list'>
-              <li className="animate__animated animate__fadeIn">
-                <h2 className={isDarkMode? 'list-group-item bg-warning text-center border-0 txt' : 'list-group-item bg-warning text-center border-0 txt'}> Carregando API </h2>
-                <ProgressBar animated  now={progressBar} variant='warning'/>
-              </li>              
-            </ol>
+            <ol className='list-group container break-line-list-Blank'>
+              {blankCard.map((index) => (
+                <div>
+                <li className="animate__animated animate__fadeIn" key={index}>
+                  <CardPlaceholder/>
+                </li>
+              </div> 
+              ))}                            
+            </ol>            
         </div>
+          <div className='mt-4 user-select-none'>
+            <h2 className={isDarkMode? 'list-group-item bg-warning text-center border-0 txt' : 'list-group-item bg-warning text-center border-0 txt'}> Carregando API </h2>
+            <ProgressBar animated  now={progressBar} variant='warning'/>
+          </div>
     </section>
     ) 
     } else if (falha) {
     return (
     <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
-          <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
+          <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Error </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
-              <ol className='list-group container break-line-list'>              
-                <li className="animate__animated animate__fadeIn">
-                  <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (500) </h2>
-                  <ProgressBar animated  now={progressBar} variant='danger'/>
+              <ol className='list-group container break-line-list-Blank'>
+                {blankCard.map((index) => (
+                <li className="animate__animated animate__fadeIn" key={index}>
+                  <CardPlaceholderError/>
                 </li>              
+              ))}
               </ol>
+          </div>
+          <div className='mt-4 user-select-none'>
+            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (500) </h2>
+            <ProgressBar animated  now={progressBar} variant='danger'/>
           </div>
       </section>
       )
@@ -47,12 +66,17 @@ function ReceitaTab() {
         <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
           <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
-              <ol className='list-group container break-line-list'>              
-                <li className="animate__animated animate__fadeIn">
-                  <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (timeout) </h2>
-                  <ProgressBar animated  now={progressBar} variant='secondary'/>
+              <ol className='list-group container break-line-list-Blank'>
+                {blankCard.map((index) => (
+                <li className="animate__animated animate__fadeIn" key={index}>
+                  <CardPlaceholderError/>
                 </li>              
+              ))}
               </ol>
+          </div>
+          <div className='mt-5 user-select-none'>
+            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (timeout) </h2>
+            <ProgressBar animated  now={progressBar} variant='secondary'/>
           </div>
       </section>
       )

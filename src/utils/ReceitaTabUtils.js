@@ -5,11 +5,12 @@ export function TabUtils() {
   // Estados
 
   // Estado de Timeout
-  const TIMEOUT_LIMIT = 1500;
-  const [timeOut, setTimeOut] = useState(false);
+  const TIMEOUT_LIMIT = 500;
+  const [timeOut, setTimeOut] = useState(true);
 
   // Estado do Card
   const [cardReceitas, setCardReceitas] = useState([]);
+  const [blankCard] = useState([1, 2, 3, 4]);
 
   // Estado do Carregamento
   const [carregou, setCarregou] = useState(false);
@@ -32,7 +33,7 @@ export function TabUtils() {
         const data = await getRecipes();
         clearTimeout(timer);
         setCardReceitas(data);
-        setCarregou(true);
+        setCarregou(true);        
       } catch (error) {
         setfalha(true);
       }
@@ -63,6 +64,7 @@ export function TabUtils() {
         carregou,
         timeOut,
         contador,
-        progressBar    
+        progressBar,
+        blankCard
   }
 }
