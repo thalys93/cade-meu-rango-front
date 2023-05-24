@@ -8,21 +8,13 @@ export function ReceitaUtils() {
 
     // Estados do React
     const [receita, setReceita] = useState([])
+    const [ingredientes, setIngredientes] = useState([])
+    const [modoDePreparo, setModoDePreparo] = useState([])
+
+
     const [falha, setFalha] = useState(false)
-<<<<<<< Updated upstream
-    const [isLoading, setIsloading] = useState(false)    
-=======
-    const [isLoading, setIsloading] = useState(false)
+    const [isLoading, setIsloading] = useState(false) 
 
-    const [confirmaIngrediente, setConfirmaIngrediente] = useState('');
-
-    const [modoPreparo, setModoPreparo] = useState([
-        { id: 1, descricao: "Misture todos os ingredientes" },
-        { id: 2, descricao: "Prepare o Molho" },
-        { id: 3, descricao: "Cozinhe a massa" },
-        { id: 4, descricao: "Sirva" },
-    ]);    
->>>>>>> Stashed changes
 
 
     // Lógica para Buscar Dados Na Api
@@ -31,6 +23,9 @@ export function ReceitaUtils() {
             try {
                 const data = await getRecipesById(id);
                 setReceita(data);
+                setIngredientes(data.ingredientes);
+                setModoDePreparo(data.modoDePreparo);
+                console.log('Dados da Api', data)
                 setFalha(false);                            
             } catch (error) {
                 console.log('Erro Na Api', error)
@@ -44,19 +39,11 @@ export function ReceitaUtils() {
         fetchData();
     }, [id]);    
 
-<<<<<<< Updated upstream
     return { 
-        receita, 
+        receita,
+        ingredientes,
+        modoDePreparo,
         falha, 
         isLoading        
-=======
-
-
-    return { 
-        receita, 
-        falha, 
-        isLoading,        
-        modoPreparo,
->>>>>>> Stashed changes
     };
 }

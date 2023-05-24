@@ -44,31 +44,23 @@ function BannerUtils() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ol className="list-group gap-3 text-center">
-            <Link
-              to="/login"
-              className={isDarkMode? "btn btn-outline-primary": "btn btn-outline-primary"}
+            <Link to="/login" className={isDarkMode? "btn btn-outline-primary disabled": "btn btn-outline-primary disabled"}
             >
-              <BiUserCircle />
-              <span> Login </span>
+              <BiUserCircle className='icon'/>
+              <span> Login (INATIVO) </span>
             </Link>
 
             <Link to='/config' className={ isDarkMode ? "btn btn-outline-light" : "btn btn-outline-secondary"}>
-              <BiCog /> <span> Configurações </span>
+              <BiCog className='icon'/> <span> Configurações </span>
             </Link>
 
-            <button
-              className={isDarkMode? "btn btn-outline-warning": "btn btn-outline-warning"}
-              onClick={toggleDevMode}
-            >
-              <AiOutlineTool /> <span> Ativar DevMode </span>
+            <button className={isDarkMode? "btn btn-outline-warning disabled": "btn btn-outline-warning disabled "} onClick={toggleDevMode} >
+              <AiOutlineTool className='icon'/> <span> Ativar DevMode </span>
             </button>
 
             <button
-              className={
-                isDarkMode ? "btn btn-outline-danger" : "btn btn-outline-danger"
-              }
-            >
-              <BiExit /> <span> Logout </span>
+              className={isDarkMode ? "btn btn-outline-danger" : "btn btn-outline-danger "} onClick={toggle}>
+              <BiExit className='icon'/> <span> Logout </span>
             </button>
           </ol>
           <footer className='text-center footerCanvas user-select-none'>
