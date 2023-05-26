@@ -25,7 +25,7 @@ export function ReceitaUtils() {
                 setReceita(data);
                 setIngredientes(data.ingredientes);
                 setModoDePreparo(data.modoDePreparo);
-                console.log('Dados da Api', data)
+                // console.log('Dados da Api', data)
                 setFalha(false);                            
             } catch (error) {
                 console.log('Erro Na Api', error)

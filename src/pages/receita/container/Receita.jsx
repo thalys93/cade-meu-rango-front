@@ -34,9 +34,7 @@ function Receita() {
     modoDePreparo,
     falha, 
   } = ReceitaUtils()
-
   
-
   if (falha) {
     return (
       <section className={isDarkMode ? 'DarkSection' : 'bg-body'} >     
@@ -60,7 +58,7 @@ function Receita() {
         <ReceitaPlaceholder/>
       ) : (
       <>
-        <article className='container'>
+        <article className='container-fluid'>
           <div id='TitleDiv'> 
             <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
               {nome}
@@ -77,24 +75,21 @@ function Receita() {
             {ingredientes.map(( ing ) => (
                 <li className='listItem' key={ing.id}>    
                   {/* Receita Normal */}
-                    <h4 className='enfatize modeNumber'>{ing.quantidade}</h4>
-                    {/* <h6 className='enfatizeSecondary'>{ingrediente.unidade}</h6> */}
-                    <span className={isDarkMode? 'DarkTxt user-select-none' : 'txt user-select-none'}> / </span>
-                    <p  className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ing.nome} </p>
+                    <h4 className='enfatize modeNumber'>{ing.quantidade}</h4>                    
+                    <span className={isDarkMode? 'DarkTxt user-select-none' : 'txt user-select-none'}> / </span> 
+                    <p className={isDarkMode ? 'ingredient DarkTxt' : 'ingredient txt'}> {ing.nome} </p>
                 </li>                                                           
             ))}
             </ol>
           </div>
         </article>
 
-        <article className='container'>
+        <article className='container-fluid'>
           <Image className='ReceitaImg' src={receita?.imagem} height={130} fluid/>
             <div id='TitleDiv'>
           <h5 className={isDarkMode? 'TitleLines DarkSubtitle' : 'TitleLines subtitle'}>
             Modo de Preparo                      
-          </h5>
-
-          
+          </h5>          
           <ol className='container-fluid list-group'>            
           {modoDePreparo.map((mode, index) => (
             <li className='listItem' key={mode.id}>                 

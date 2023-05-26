@@ -48,11 +48,7 @@ a:hover{
 .CardDiv{
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    left: 4.1800rem;
-    top: 4.1800rem;
+    margin-top: 15pt;
 }
 
 .FormularioLogin{
@@ -62,6 +58,7 @@ a:hover{
 }
 
 
+/* Registrar */
 #termos{        
     text-align: center;
     margin-top: 1.2540rem;
@@ -74,14 +71,7 @@ a:hover{
     border: 1px solid #0a0403;
 }
 
-#name{
+.formBG{
     background-color: #ECE7E7;;
 }
 
-#email{
-    background-color: #ECE7E7;;
-}
-
-#password{
-    background-color: #ECE7E7;;
-}

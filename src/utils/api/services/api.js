@@ -23,8 +23,7 @@ export const getRecipes = async () => {
 export const getRecipesById = async (id) => {
     try {
         const response = await axios.get(receitaAPI + id);
-        return response.data;
-        // ,console.log(response.data);
+        return response.data        
     } catch (error) {
         console.error('Falha ao Se Comunicar com o Servidor', error);
         throw error;

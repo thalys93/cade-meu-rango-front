@@ -1,9 +1,11 @@
 import React, {createContext, useState, useEffect} from "react";
+import { loginUtils } from "../auth/login";
 
 const UserAutenticatedContext = createContext();
 
 const UserAutenticatedProvider = ({children}) => {
-    const {isLogged, setIsLogged} = useState(false);
+
+    const {isLogged, setIsLogged} = loginUtils();
 
     useEffect(() => {
         const storedMode = localStorage.getItem('isLogged');
@@ -12,15 +14,14 @@ const UserAutenticatedProvider = ({children}) => {
         }
     }, []);
 
-    // Ativar o Usuário (a ideia é que ele busque o usuário na api e valide o login)
-    // const toggleUserAutenticated = () => {
-    //     const userAutenticated = !isLogged;
-    //     setIsLogged(userAutenticated);
-    //     localStorage.setItem('userAutenticated', JSON.stringify(userAutenticated));
-    // }        
+    const toggleLoggedMode = () => {
+        const loggedMode = !isLogged;
+        setIsLogged(loggedMode);
+        localStorage.setItem('isLogged', JSON.stringify(loggedMode));
+    };
 
-    return(
-        <UserAutenticatedContext.Provider value={{isLogged}}>
+    return(        
+        <UserAutenticatedContext.Provider value={{isLogged, toggleLoggedMode}}>
             {children}
         </UserAutenticatedContext.Provider>
     );
