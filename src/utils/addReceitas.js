@@ -5,6 +5,7 @@ import axios from "axios";
 export function addReceitasUtils() {
 
   const [image, setImage] = useState('https://via.placeholder.com/350x150')
+  const [imageURL, setImageURL] = useState('')
   const [preparoList , setPreparoList] = useState([1])
   const [ingredientList , setIngredientList] = useState([1])
 
@@ -22,14 +23,19 @@ export function addReceitasUtils() {
       if (file) {
         try {
         const reader = new FileReader();
-        reader.append('file' , file)        
-        reader.append('upload_preset', 'cade_meu_rango')
+        reader.append('file' , file);
+        reader.append('upload_preset', 'cade_meu_rango');
 
         const response = await axios.post(
-            // Terminar de concluir a lógica!
-        )
-
-
+            'https://api.cloudinary.com/v1_1/dh39ahmpj/image/upload',
+            reader
+        );
+          const { secure_url} = response.data;
+          setImageURL(secure_url);
+          setImage(secure_url);
+        } catch (error) {
+          console.error('Falha ao Cadastrar Receita', error);        
+        }
         reader.onload = () => setImage(reader.result);
         reader.readAsDataURL(file);
         }

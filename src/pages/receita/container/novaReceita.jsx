@@ -13,6 +13,7 @@ import Voltar from '../../../interface/buttons/back-component/BackBtn'
 
 // CSS
 import '../css/Receita.css'
+import { CloudinaryContext } from 'cloudinary-react'
 
 function NovaReceita() {
 
@@ -76,7 +77,9 @@ function NovaReceita() {
         <article className='container-fluid'>
 
           <Form.Group controlId='RecipeImg' className='mt-3'>
-            {image && <Image src={image} alt='Imagem da Receita' className='img-fluid rounded-2 mb-2 animate__animated animate__fadeIn'/>}
+            <CloudinaryContext cloudName='dh39ahmpj'>
+              {image && <Image src={image} alt='Imagem da Receita' className='img-fluid rounded-2 mb-2 animate__animated animate__fadeIn'/>}
+            </CloudinaryContext>
             <Form.Control type='file' onChange={handleImageChange} name='RecipeImg' accept="image/png " className={isDarkMode? 'btn btn-outline-light' : 'btn btn-outline-primary'} required/>
           </Form.Group>
 
