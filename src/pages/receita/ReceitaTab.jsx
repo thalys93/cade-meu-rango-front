@@ -1,8 +1,15 @@
 // Libs
 import React from 'react'
-import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { ProgressBar } from 'react-bootstrap';
+import { AiOutlinePlusCircle } from 'react-icons/ai'
+import { CgDanger } from 'react-icons/cg'
+
+
+
+// Utils
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { TabUtils } from '../../utils/ReceitaTabUtils';
+import { UserAutenticatedContext } from '../../utils/context/UserContext';
 
 // Componente
 import ReceitaCard from './ReceitaCard'
@@ -12,10 +19,12 @@ import CardPlaceholderError from './placeholder/CardPlaceholderErr'
 
 // CSS
 import '../home/home.css'
+import { Link } from 'react-router-dom';
 
 function ReceitaTab() {  
   // Dark Mode Context
   const { isDarkMode } = React.useContext(DarkModeContext)
+  const { isLogged } = React.useContext(UserAutenticatedContext)
     
   // Hook de Estado e Carregamento
   const {cardReceitas, falha, carregou, timeOut, contador, progressBar, blankCard} = TabUtils();
@@ -28,7 +37,7 @@ function ReceitaTab() {
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group container break-line-list-Blank'>
               {blankCard.map((index) => (
-                <div>
+                <div key={index}>
                 <li className="animate__animated animate__fadeIn" key={index}>
                   <CardPlaceholder/>
                 </li>
@@ -85,22 +94,31 @@ function ReceitaTab() {
       <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center text-decoration-none' : 'subtitle text-center text-decoration-none'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
-            <ol className='list-group list-group-horizontal gap-4 container break-line-list' id='recipesList'>
-                
-                {cardReceitas.map((card, index) => (    
-                contador > index ? (                  
-                  <div>                   
-                <li key={index} className="animate__animated animate__fadeIn">
-                    <ReceitaCard
-                    id={card.id}
-                    key={card}
-                    title={card.titulo}
-                    imgLink={card.imagem}/>
-                  </li>
-                </div>                                                           
-                ) : null                
-
-              ))}                    
+            <ol className='list-group list-group-horizontal gap-4 container break-line-list' id='recipesList'>                
+                {cardReceitas.length > 0 ? (
+                  cardReceitas.map((card, index) => (    
+                  contador > index ? (
+                    <li key={index} className="animate__animated animate__fadeIn">
+                      <ReceitaCard
+                      id={card.id}
+                      key={card}
+                      title={card.titulo}
+                      imgLink={card.imagem}/>
+                    </li>
+                  ) : (                
+                    null
+                  )
+                  ))
+                ) : (
+                  <div>
+                    <Link to='/receita/adicionar_receita'>
+                    <button hidden={isLogged} className={isDarkMode ? 'btn btn-success DarkTxt' : 'btn btn-primary DarkTxt'}>
+                        <AiOutlinePlusCircle/> Adicionar Receita
+                    </button>
+                    </Link> 
+                    <h2 hidden={!isLogged} className={isDarkMode ? 'DarkTxt text-warning' : 'txt text-danger'}>  Receitas Não Encontradas <CgDanger className='mb-1'/> </h2>
+                  </div>
+                )}                                  
             </ol>
           </div>
       </section>

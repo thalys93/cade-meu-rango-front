@@ -87,7 +87,7 @@ function Inicio() {
                         </a>
                         <Figure.Caption>
                             <h5 className={isDarkMode ? 'DarkTxt' : 'txt'}> Nathan </h5>
-                            <span className={isDarkMode ? 'DarkTxt' : ''}> Front End (react) </span>
+                            <span className={isDarkMode ? 'DarkTxt' : ''}> Back End (java) </span>
                         </Figure.Caption>
                     </Figure>
                 </li>

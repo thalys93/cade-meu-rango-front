@@ -9,10 +9,11 @@ import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import './badge.css'
 
 function TestingDev() {
-  const { isDarkMode } = React.useContext(DarkModeContext)
+  const { isDarkMode } = React.useContext(DarkModeContext)    
+
   return (
-      <Badge bg={isDarkMode? 'warning' :'danger'} className='user-select-none' id='badgeDev'>
-        <h2 className={isDarkMode? 'DarkTxt' : 'txt'}> Dev </h2>
+      <Badge bg={isDarkMode? 'success' :'success'} className='user-select-none' id='badgeDev'>
+        <h2 className='DarkTxt'> Admin </h2>
       </Badge>
   )
 }

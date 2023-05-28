@@ -61,7 +61,7 @@ function BannerUtils({salvaUsuario}) {
             </Link>
 
             <button hidden={!isLogged} className={isDarkMode? "btn btn-outline-warning" : "btn btn-outline-warning "} onClick={toggleDevMode} >
-              <AiOutlineTool className='icon'/> <span> Ativar DevMode </span>
+              <AiOutlineTool className='icon'/> <span> Ativar Edição </span>
             </button>
 
             <button

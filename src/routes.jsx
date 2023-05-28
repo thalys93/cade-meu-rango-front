@@ -1,5 +1,5 @@
 // Import do React e do Router
-import React from 'react'
+import React, { useContext } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 // App
@@ -13,12 +13,12 @@ import Error from './interface/error/Error'
 
 // Receita
 import Receita from './pages/receita/container/Receita'
+import NovaReceita from './pages/receita/container/novaReceita'
 
 // Login
 import Login from './pages/Login/Login'
 // Cadastro
 import Cadastro from './pages/Login/Cadastro'
-
 
 const router = createBrowserRouter([
     // Index
@@ -40,9 +40,13 @@ const router = createBrowserRouter([
                 {                    
                     path: ':id/:nome',            
                     element: <Receita/>,
-                },  
-                ]        
+                },
+                ]
             },
+            {
+                    path: 'Receita/Adicionar_Receita',                    
+                    element: <NovaReceita/>,
+            }        
         ]
     },
     

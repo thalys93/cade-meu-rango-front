@@ -117,18 +117,12 @@
     margin-top: -5pt;
 }
 
-.ConfirmButton{
-    color: green;
-    transition: 0.5s;
-}
-
-.ConfirmButton:hover{
-    color: #00FF00;
-    scale: 1.1;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
 .errorBorder{
     border: 1px solid red;
+}
+
+/* Add Receita */
+
+.addIcon{
+    font-size: 16pt;
 }
