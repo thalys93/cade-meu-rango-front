@@ -12,6 +12,8 @@ import { homeUtils } from '../utils/homeUtils'
 // Componentes
 import Inicio from './home/Home'
 import ReceitaTab from './receita/ReceitaTab'
+import Dicas from './tips/Dicas'
+import Livros from './books/Livros'
 
 // CSS
 import './home/home.css'
@@ -33,37 +35,48 @@ function Index() {
       <div className={isDarkMode ? 'NavTabs DarkSection' : 'NavTabs'} id='navDiv'>
         <Nav variant="pills" defaultActiveKey='home' className={isDarkMode ? 'custom-tabsDark' : 'custom-tabs'}>
           <Nav.Item>
-            <Nav.Link eventKey='home' className={isDarkMode ? 'DarkTxt' :'txt'}>Home</Nav.Link>
+            <Nav.Link eventKey='Home' className={isDarkMode ? 'DarkTxt' :'txt'}>Home</Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey='receitas' className={isDarkMode ? 'DarkTxt' :'txt'}>Receitas</Nav.Link>
+            <Nav.Link eventKey='Receitas' className={isDarkMode ? 'DarkTxt' :'txt'}>Receitas</Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt text-secondary disabled' :'txt disabled'}>Dicas</Nav.Link>
+            <Nav.Link eventKey='Dicas' className={isDarkMode ? 'DarkTxt' :'txt'}>Dicas</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+            <Nav.Link eventKey='Livros' className={isDarkMode ? 'DarkTxt' :'txt'}>Livros</Nav.Link>
             </Nav.Item>
           </Nav>            
         </div>
         
 
         <Tab.Content>
-          <Tab.Pane eventKey='home'>
+          <Tab.Pane eventKey='Home'>
             <Inicio/>            
           </Tab.Pane>
         </Tab.Content>
 
         <Tab.Content>
-          <Tab.Pane eventKey="receitas">
+          <Tab.Pane eventKey="Receitas">
             <ReceitaTab/>
           </Tab.Pane>
         </Tab.Content>
 
-          <Tab.Content>
-        <Tab.Pane eventKey="Dicas">
-          <h1> Desativado </h1>              
+        <Tab.Content>
+          <Tab.Pane eventKey="Dicas">
+            <Dicas/>      
           </Tab.Pane>
         </Tab.Content>
+
+        <Tab.Content>
+          <Tab.Pane eventKey="Livros">
+            <Livros/>
+          </Tab.Pane>
+        </Tab.Content>
+
       </Tab.Container>              
       
     </section>

@@ -1,6 +1,7 @@
 // Libs
 import React from 'react'
 import { Figure } from 'react-bootstrap'
+import { Helmet } from 'react-helmet'
 
 // Utils
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
@@ -11,8 +12,11 @@ import './home.css'
 function Inicio() {
     const { isDarkMode } = React.useContext(DarkModeContext)
 
-  return (
+  return (    
     <section className={isDarkMode ? 'DarkSection m-2 p-3 border-3' : 'bg-body m-2 p-3 border-2'}>
+    <Helmet>
+        <title>Cadê Meu Rango - Inicio</title>
+    </Helmet>
         <article className='container-fluid'>
             <h3 className={isDarkMode ? 'DarkSubtitle' :'subtitle'}> Bem-vindo ao Cadê Meu Rango </h3>
             <h5 className={isDarkMode ? 'DarkRegular' :'regular'}> o seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br/>
@@ -111,8 +115,7 @@ function Inicio() {
                 </ul>
             </div>            
         </article>
-
-    </section>
+    </section>    
   )
 }
 

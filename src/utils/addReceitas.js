@@ -1,9 +1,13 @@
+// Libs
 import { useEffect, useState } from "react"
-import { postRecipes } from "./api/services/api";
 import axios from "axios";
 
-export function addReceitasUtils() {
+// Services
+import { postRecipes } from "./api/services/api";
 
+
+
+export function addReceitasUtils() {
   const [image, setImage] = useState('https://via.placeholder.com/350x150')
   const [imageURL, setImageURL] = useState('')
   const [preparoList , setPreparoList] = useState([1])
@@ -17,7 +21,7 @@ export function addReceitasUtils() {
     setPreparoList([...preparoList, preparoList.length + 1 ])
   }  
     
-  const handleImageChange = (e) => {
+  const handleImageChange  = async (e) => {
       const file = e.target.files[0];      
 
       if (file) {
@@ -39,8 +43,7 @@ export function addReceitasUtils() {
         reader.onload = () => setImage(reader.result);
         reader.readAsDataURL(file);
         }
-      }
-    }     
+      }         
 
     const PostReceita = async (receita) => {
         receita.preventDefault()

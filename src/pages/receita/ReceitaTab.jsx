@@ -3,6 +3,7 @@ import React from 'react'
 import { ProgressBar } from 'react-bootstrap';
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { CgDanger } from 'react-icons/cg'
+import { Helmet } from 'react-helmet';
 
 
 
@@ -33,6 +34,9 @@ function ReceitaTab() {
   if(!carregou) {
     return (
 <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
+            <Helmet>
+              <title> Carregando Receitas.. </title>
+            </Helmet>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Aguarde, Carregando as Receitas que preparamos para você hoje! </h3>
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group container break-line-list-Blank'>
@@ -54,6 +58,9 @@ function ReceitaTab() {
     } else if (falha) {
     return (
     <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
+            <Helmet>
+              <title> Cadê Meu Rango - Falha Interna </title>
+            </Helmet>
           <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Error </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
               <ol className='list-group container break-line-list-Blank'>
@@ -73,6 +80,9 @@ function ReceitaTab() {
     } else if (timeOut) {
       return (
         <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
+            <Helmet>
+              <title> Cadê Meu Rango - Timeout </title>
+            </Helmet>
           <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
               <ol className='list-group container break-line-list-Blank'>
@@ -92,6 +102,9 @@ function ReceitaTab() {
     } else {
   return (
       <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'} id='receitaBorder'>
+          <Helmet>
+            <title> Cadê Meu Rango - Receitas </title>
+          </Helmet>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center text-decoration-none' : 'subtitle text-center text-decoration-none'} id='Title'> Veja as receitas que preparamos para você hoje! </h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group list-group-horizontal gap-4 container break-line-list' id='recipesList'>                
@@ -112,11 +125,11 @@ function ReceitaTab() {
                 ) : (
                   <div>
                     <Link to='/receita/adicionar_receita'>
-                    <button hidden={isLogged} className={isDarkMode ? 'btn btn-success DarkTxt' : 'btn btn-primary DarkTxt'}>
+                    <button hidden={!isLogged} className={isDarkMode ? 'btn btn-success DarkTxt' : 'btn btn-primary DarkTxt'}>
                         <AiOutlinePlusCircle/> Adicionar Receita
                     </button>
-                    </Link> 
-                    <h2 hidden={!isLogged} className={isDarkMode ? 'DarkTxt text-warning' : 'txt text-danger'}>  Receitas Não Encontradas <CgDanger className='mb-1'/> </h2>
+                    </Link>                     
+                    <h2 hidden={isLogged} className={isDarkMode ? 'DarkTxt text-warning' : 'txt text-danger'}>  Receitas Não Encontradas <CgDanger className='mb-1'/> </h2>
                   </div>
                 )}                                  
             </ol>

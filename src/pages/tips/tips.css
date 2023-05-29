@@ -1,0 +1,32 @@
+/* Dicas */
+.editBtn{
+    position: absolute;    
+    top: 20pt;        
+    z-index: 1;    
+}
+
+.editBtn button{
+    border-radius: 15pt;    
+    margin-top: -5pt;
+}
+
+/* Dicas Placeholder */
+
+
+/* Dicas Card */
+
+#CardShadow{
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+}
+
+.TipCard{
+    display: flex;
+    flex-direction: row;
+}
+
+.Icon{
+    font-size: 45pt;
+    padding-bottom: 25pt;
+}
