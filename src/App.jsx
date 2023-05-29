@@ -16,7 +16,7 @@ import Banner from './interface/banner/Banner'
 function App() {  
   const { isDarkMode } = React.useContext(DarkModeContext)
   const { isDev } = React.useContext(DeveLoperContext)
-  
+
 
   useEffect(() => {
     if (isDarkMode) {

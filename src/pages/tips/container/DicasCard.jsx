@@ -1,6 +1,6 @@
 // Libs
-import React from 'react'
-import { Card, OverlayTrigger, Popover } from 'react-bootstrap'
+import React , {useParams} from 'react'
+import { Card, Overlay, OverlayTrigger, Popover } from 'react-bootstrap'
 import { IoIosQuote } from 'react-icons/io'
 import { BsTrashFill } from 'react-icons/bs'
 import { BsPencilFill } from 'react-icons/bs';
@@ -14,65 +14,132 @@ import { TipUtils } from '../../../utils/TipUtils';
 // CSS
 import '../tips.css'
 
-function DicasCard({id, title, descricao, cardData, onUpdateCard, cardSelecionado, deletarDica, atualizarDica}) {
-  const { isDarkMode } = React.useContext(DarkModeContext)  
+function DicasCard(props) {
+  const { isDarkMode } = React.useContext(DarkModeContext);
+
   const {
-    aviso,
-    confirma,
+    aviso,    
+    dadosEditados,
+    modoDeEdicao,
+    setModoDeEdicao,
+    setDadosEditados,
+    editarDicas,        
     setAviso,
-    setConfirma
+    setConfirma,
+    atualizarDica,
+    deletarDica
   } = TipUtils();
 
+
+  
+
+  const PopoverConfirmação = <Popover show={!aviso} className={isDarkMode ? 'bg-dark txt mb-2' : 'txt mb-2'} placement='none'>
+    <Popover.Header className='text-center' as="h3">Tem Certeza?</Popover.Header>
+    <Popover.Body>
+      <div className='text-center'>
+        <button
+          className={isDarkMode ? 'btn btn-outline-success me-2' : 'btn btn-success me-2'}
+          onClick={() => deletarDica(props.id)} 
+          onClickCapture={() => setConfirma(true)}
+        >
+          Sim
+        </button>
+        <button
+          className={isDarkMode ? 'btn btn-outline-danger' : 'btn btn-danger'}
+          onClick={() => setConfirma(false)}
+          onClickCapture={() => setAviso(false)}
+        >
+          Não
+        </button>
+      </div>
+    </Popover.Body>
+  </Popover>
+    
+
+    if(modoDeEdicao) {
+      return (
+        <>
+        <Card key={props.id} className={isDarkMode? 'bg-dark animate__animated animate__fadeIn user-select-none' : 'bg-light user-select-none'} id="CardShadow" style={{ width: '17rem'}}>
+          <Card.Header>
+            <div className='text-end butonDiv'>
+              <button
+                className={props.isDarkMode? 'me-3 btn btn-outline-success' : 'me-3 btn btn-success'}
+                onClick={() => setDadosEditados(dadosEditados) || atualizarDica(dadosEditados)}
+                onClickCapture={() => setConfirma(true)}
+                hidden={!props.cardSelecionado || !props.isDev}
+              >
+                <BsPencilFill/> Confirmar
+              </button>
+
+              <button
+                className={props.isDarkMode? 'me-3 btn btn-outline-danger' : 'me-3 btn btn-danger'}
+                onClick={() => setModoDeEdicao(false)}                
+                hidden={!props.cardSelecionado || !props.isDev}
+              >
+                <BsTrashFill/> Cancelar
+              </button>
+
+            </div>
+          </Card.Header>
+          <Card.Body>
+            <Card.Title className={isDarkMode? 'DarkTxt' : 'txt'}>
+              Dica De Hoje: <small className='text-light-empashis'>{props.cardData}</small> <br/>
+
+              <input
+                className='txt'
+                type='text'
+                value={dadosEditados.titulo}
+                onChange={(e) => setDadosEditados({...dadosEditados, titulo: e.target.value})}
+                placeholder='Titulo Da Dica'
+              />
+            </Card.Title>
+            <Card.Text className='text-center TipCard'>
+              <IoIosQuote className={isDarkMode? 'Icon enfatize': 'Icon enfatize'}/>
+              <textarea
+                className='txt'
+                type='text'
+                value={dadosEditados.descricao}
+                onChange={(e) => setDadosEditados({...dadosEditados, descricao: e.target.value})}
+                placeholder='Descrição Da Dica'
+              />
+            </Card.Text>
+          </Card.Body>
+        </Card>                                        
+        </>
+      )
+    } else {
   return (
-    <>
-    <Card key={id} className={isDarkMode? 'bg-dark animate__animated animate__fadeIn user-select-none' : 'bg-light user-select-none'} id="CardShadow" style={{ width: '17rem'}}>
+    <>      
+    <Card key={props.id} className={isDarkMode? 'bg-dark animate__animated animate__fadeIn user-select-none' : 'bg-light user-select-none'} id="CardShadow" style={{ width: '17rem'}}>
       <Card.Header>
         <div className='text-end'>
-
-        {MotrarAvisoDeletar()}
-
-        <button 
-        className={isDarkMode? 'me-3 btn btn-outline-danger' : 'me-3 btn btn-danger'} 
-        hidden={!cardSelecionado} onClick={() => setAviso(true)}> <BsTrashFill/> Apagar </button>
-
-        <button 
-        className={isDarkMode? 'me-3 btn btn-outline-success' : 'me-3 btn btn-success'} 
-        hidden={!cardSelecionado}> <BsPencilFill/> Editar </button>
+          {PopoverConfirmação}
+          <button 
+          className={props.isDarkMode? 'me-3 btn btn-outline-danger' : 'me-3 btn btn-danger'} 
+          onClick={() => setAviso(!aviso,)}
+          hidden={!props.cardSelecionado || !props.isDev}
+          disabled={aviso}
+          > <BsTrashFill/> Apagar </button>
+          <button 
+          className={props.isDarkMode? 'me-3 btn btn-outline-success' : 'me-3 btn btn-success'}           
+          hidden={!props.cardSelecionado || !props.isDev}
+          onClick={editarDicas}
+          > <BsPencilFill/> Editar </button>
         </div>
       </Card.Header>
       <Card.Body>
-        <Card.Title className={isDarkMode? 'DarkTxt' : 'txt'}>
-            Dica De Hoje <small className='text-light-empashis'>{cardData}</small> <br/>
-            <small className={isDarkMode? 'DarkTxt text-secondary' : 'txt text-secondary'}>{title}</small>
+        <Card.Title className={isDarkMode? 'DarkTxt' : 'txt'}>            
+            Dica De Hoje: <small className='text-light-empashis'>{props.cardData}</small> <br/>
+            <small className={isDarkMode? 'DarkTxt text-secondary' : 'txt text-secondary'}>{props.title}</small>
           </Card.Title>
         <Card.Text className='text-center TipCard'>                  
             <IoIosQuote className={isDarkMode? 'Icon enfatize': 'Icon enfatize'}/> 
-            <p className={isDarkMode? 'DarkTxt': 'txt'}> {descricao}</p>
+            <p className={isDarkMode? 'DarkTxt': 'txt'}> {props.descricao}</p>
         </Card.Text>
       </Card.Body>
-    </Card>
-    </>
-  )
+    </Card>    
+    </>        
+  )}
 }
 
 export default DicasCard
-
-
-function MotrarAvisoDeletar() {  
-  const deletar = (
-      <Popover>
-        <Popover.Header className='text-center'>
-          <span>Deseja Deletar a Dica?</span>
-        </Popover.Header>
-        <Popover.Body className='text-center'>
-          <button className="btn btn-outline-danger me-2">Sim</button>
-          <button className="btn btn-outline-primary">Não</button>
-        </Popover.Body>
-      </Popover>
-    )
-
-  return( 
-    <OverlayTrigger trigger='click' placement='top' overlay={deletar}>
-    </OverlayTrigger>
-  )
-}

@@ -6,7 +6,7 @@ import { BsPencilFill } from 'react-icons/bs';
 
 //Utils
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
-import { UserAutenticatedContext } from '../../utils/context/UserContext';
+import { DeveLoperContext } from '../../utils/context/DevContext';
 import { TipUtils } from '../../utils/TipUtils.js'
 
 
@@ -20,7 +20,7 @@ import './tips.css'
 
 function Dicas() {
   const { isDarkMode } = React.useContext(DarkModeContext);
-  const { isUserAutenticated } = React.useContext(UserAutenticatedContext);
+  const { isDev } = React.useContext(DeveLoperContext);
 
   const { 
     cardTips,
@@ -107,10 +107,11 @@ function Dicas() {
               {cardTips.map((Card, i) => ( 
                 contador > i ? (                
               <li className='mt-5' key={i}>
-                <div className='editBtn'>
+                <div hidden={!isDev}  className='editBtn'>
                   <button className={isDarkMode? 'btn btn-primary' : 'btn btn-warning'} onClick={() => setSelectedCard(Card.id)} disabled={selectedCard === Card.id}> <BsPencilFill/> </button>
                 </div>                
                 <DicasCard
+                  isDev={isDev}
                   id={Card.id}
                   title={Card.titulo}
                   descricao={Card.descricao}

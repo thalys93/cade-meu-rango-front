@@ -24,48 +24,51 @@ export function TipUtils() {
     const [selectedCard, setSelectedCard] = useState(null);
     const [confirma , setConfirma] = useState(false);
     const [aviso, setAviso] = useState(false);
-    
-    // Carregamento
-    const [carregou, setCarregou] = useState(false);
+    const [modoDeEdicao, setModoDeEdicao] = useState(false);
 
-    // Falha
-    const [falha, setfalha] = useState(false);
+    const [dadosEditados, setDadosEditados] = useState({
+      titulo: cardTips.titulo,
+      descricao: cardTips.descricao,
+    });
 
-    // Contador
+    const editarDicas = () => {setModoDeEdicao(true);};
+        
+    const [carregou, setCarregou] = useState(false);    
+    const [falha, setfalha] = useState(false);    
     const [contador, setContador] = useState(0);
 
 
-    const atualizarDica = async (updatedCard) => {
+    // Atualizar
+    const atualizarDica = async (dadosEditados) => {
+        if (confirma) {
         try {
-            await putTips(updatedCard);
+            await putTips(dadosEditados);
             const data = await getTips();
-            setCardTips(data);
-            setConfirma(true);
-            setAviso(false);
+            // setCardTips(data);                        
+            setTimeOut(() => {window.location.reload();}
+            , 100);            
         } catch (error) {
             setfalha(true);
             console.log('falha ao atualizar a dica')
         }
-                
+        }
+    }   
 
-    }    
 
-    const deletarDica = async (id) => {
+    // Apagar
+    const deletarDica = async (id) => {        
+        if (confirma) {
         try {
-            await deleteTips(id);
-            const data = await getTips();
-            setCardTips(data);
-            setConfirma(true);
-            setAviso(false);
-        } 
-        catch (error) {
+            await deleteTips(id);            
+            // fetchData();
+            setTimeOut(() => {
+                window.location.reload();
+            }, 100);
+        } catch (error) {
             setfalha(true);
-            console.log('falha ao deletar a dica')
-        }        
-    }
-
-
-
+            console.log('falha ao deletar a dica')}        
+        }
+    };
 
     // Obter Dados Da API
     useEffect(() => {
@@ -116,8 +119,13 @@ export function TipUtils() {
         selectedCard,
         confirma,
         setConfirma,
+        modoDeEdicao,
+        setModoDeEdicao,
+        dadosEditados,
+        setDadosEditados,
+        editarDicas,            
         aviso,
-        setAviso,        
+        setAviso,             
         setSelectedCard,
         atualizarDica,
         deletarDica,    

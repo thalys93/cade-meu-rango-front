@@ -1,7 +1,7 @@
 // Axios
-import axios from "axios";
+import axios from "axios"
 
-// Variáveis de Ambiente
+
 
 // Receitas
 const receitaAPI = 'http://26.153.141.161:8080/receitas/';
@@ -69,7 +69,7 @@ export const deleteRecipes = async (id) => {
 // Exportações Dicas
 
 // Variável de Ambiente
-const tipsAPI = "http://26.153.141.161:8080/dicas";
+const tipsAPI = "http://26.153.141.161:8080/dicas/";
 
 // Dicas (GET)
 export const getTips = async () => {
@@ -122,7 +122,6 @@ export const deleteTips = async (id) => {
     try {
         const response = await axios.delete(tipsAPI + id);
         return response.data;
-        // ,console.log(response.data);
     } catch (error) { 
         console.error('Falha ao Se Comunicar com o Servidor', error);
         throw error;
