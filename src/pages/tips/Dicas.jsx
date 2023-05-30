@@ -38,9 +38,6 @@ function Dicas() {
   if(!carregou) {
     return  (
       <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'}>
-        <Helmet>
-          <title> Carregando Dicas.. </title>
-        </Helmet>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Aguarde, Carregando as Dicas que preparamos para você hoje! </h3>
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
           <ol className='list-group container break-line-list-Blank'>
@@ -58,9 +55,6 @@ function Dicas() {
     } else if (falha) {    
       return(                                    
         <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'}>
-        <Helmet>
-          <title> Erro Interno </title>
-        </Helmet>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> Atenção Erro Interno!! </h3>
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
           <ol className='list-group container break-line-list-Blank'>
@@ -78,9 +72,6 @@ function Dicas() {
       } else if (timeOut) {
         return (
                 <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'}>
-        <Helmet>
-          <title> Carregando Dicas.. </title>
-        </Helmet>
         <h3 className={isDarkMode ? 'DarkSubtitle text-center' : 'subtitle text-center'} id='Title'> A Api Demorou Demais Para Carregar, <br/> <span className={isDarkMode? 'DarkTxt text-secondary text-center' : 'txt text-secondary text-center'}>Tente Novamente mais Tarde!</span> </h3>
         <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
           <ol className='list-group container break-line-list-Blank'>
@@ -97,10 +88,7 @@ function Dicas() {
         )
       } else {
   return (    
-      <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'}>
-        <Helmet>
-          <title>Cadê Meu Rango - Dicas</title>
-        </Helmet>
+      <section className={isDarkMode ? 'DarkSection p-3 mb-5 container-fluid' : 'bg-body p-3 mb-5 container-fluid'}>      
           <h3 className={isDarkMode? 'DarkSubtitle text-center' : 'subtitle txt text-center'} id='Title'> Veja as Dicas que Preparamos Para você Hoje</h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group list-group-horizontal gap-4 container break-line-list'>

@@ -14,7 +14,7 @@ function LivrosCard(props) {
   const { isDarkMode } = React.useContext(DarkModeContext);
 
   const {
-    aviso,            
+    aviso,
     setAviso,
     setConfirma,
     deletarLivro,
