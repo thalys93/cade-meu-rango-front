@@ -101,7 +101,7 @@ function Dicas() {
         <Helmet>
           <title>Cadê Meu Rango - Dicas</title>
         </Helmet>
-          <h3 className={isDarkMode? 'DarkSubtitle text-center' : 'subtitle txt'} id='Title'> Veja as Dicas que Preparamos Para você Hoje</h3>
+          <h3 className={isDarkMode? 'DarkSubtitle text-center' : 'subtitle txt text-center'} id='Title'> Veja as Dicas que Preparamos Para você Hoje</h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group list-group-horizontal gap-4 container break-line-list'>
               {cardTips.map((Card, i) => ( 

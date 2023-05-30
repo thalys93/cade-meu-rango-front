@@ -6,7 +6,7 @@ import { deleteBooks, getBooks } from "./api/services/api";
 //Api
 
 
-export function LivroUtils() {  
+export function LivrosUtils() {  
   // Timeout
   const TIMEOUT_LIMIT = 500;
   const [timeOut, setTimeOut] = useState(true);
@@ -53,7 +53,8 @@ export function LivroUtils() {
     const fetchData = async () => {
       try {
         const data = await getBooks();
-        clearTimeout(timer);        
+        clearTimeout(timer);
+        setBookCard(data);      
         setCarregou(true);
       } catch (error) {
         setfalha(true);

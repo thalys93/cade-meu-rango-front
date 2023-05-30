@@ -1,13 +1,12 @@
 // Axios
 import axios from "axios"
 
-
-
-// Receitas
-const receitaAPI = 'http://26.153.141.161:8080/receitas/';
+// Variáveis de Ambiente
+const receitaAPI = "http://26.113.157.114:8080/receitas/";
+const tipsAPI = "http://26.113.157.114:8080/dicas/";
+const BooksAPI = "http://26.113.157.114:8080/livros";
 
 // Exportações Receitas
-
 // Receitas (GET)
 export const getRecipes = async () => {
     try {
@@ -18,7 +17,6 @@ export const getRecipes = async () => {
         console.error('Falha ao Se Comunicar com o Servidor', error);
     }
 }
-
 // Receitas (GET) por ID
 export const getRecipesById = async (id) => {
     try {
@@ -29,7 +27,6 @@ export const getRecipesById = async (id) => {
         throw error;
     }
 }
-
 // Receitas (POST)
 export const postRecipes = async (data) => {
     try {
@@ -41,7 +38,6 @@ export const postRecipes = async (data) => {
         throw error;
     }
 }
-
 // Receitas (PUT)
 export const putRecipes = async (data) => {
     try {
@@ -53,7 +49,6 @@ export const putRecipes = async (data) => {
         throw error;
     }
 }
-
 // Receitas (DELETE)
 export const deleteRecipes = async (id) => {
     try {
@@ -67,10 +62,6 @@ export const deleteRecipes = async (id) => {
 }
 
 // Exportações Dicas
-
-// Variável de Ambiente
-const tipsAPI = "http://26.153.141.161:8080/dicas/";
-
 // Dicas (GET)
 export const getTips = async () => {
     try {
@@ -81,7 +72,6 @@ export const getTips = async () => {
         console.error('Falha ao Se Comunicar com o Servidor', error);
     }
 }
-
 // Dicas (GET) por ID
 export const getTipsById = async (id) => {
     try {
@@ -92,7 +82,6 @@ export const getTipsById = async (id) => {
         throw error;
     }
 }
-
 // Dicas (POST)
 export const postTips = async (data) => {
     try {
@@ -104,7 +93,6 @@ export const postTips = async (data) => {
         throw error;
     }
 }
-
 // Dicas (PUT)
 export const putTips = async (data) => {
     try {
@@ -116,7 +104,6 @@ export const putTips = async (data) => {
         throw error;
     }
 }
-
 // Dicas (DELETE)
 export const deleteTips = async (id) => {
     try {
@@ -129,10 +116,6 @@ export const deleteTips = async (id) => {
 }
 
 // Exportações Livros
-
-// Variável de Ambiente
-const BooksAPI = "http://26.153.141.161:8080/livros";
-
 // Livros (GET)
 export const getBooks = async () => {
     try {
@@ -143,7 +126,6 @@ export const getBooks = async () => {
         console.error('Falha ao Se Comunicar com o Servidor', error);
     }
 }
-
 // Livros (GET) por ID
 export const getBooksById = async (id) => {
     try {
@@ -154,7 +136,6 @@ export const getBooksById = async (id) => {
         throw error;
     }
 }
-
 // Livros (POST)
 export const postBooks = async (data) => {
     try {
@@ -166,7 +147,6 @@ export const postBooks = async (data) => {
         throw error;
     }
 }
-
 // Livros (PUT)
 export const putBooks = async (data) => {
     try {
@@ -178,7 +158,6 @@ export const putBooks = async (data) => {
         throw error;
     }
 }
-
 // Livros (DELETE)
 export const deleteBooks = async (id) => {
     try {
