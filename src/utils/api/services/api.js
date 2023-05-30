@@ -2,9 +2,9 @@
 import axios from "axios"
 
 // Variáveis de Ambiente
-const receitaAPI = "http://26.113.157.114:8080/receitas/";
-const tipsAPI = "http://26.113.157.114:8080/dicas/";
-const BooksAPI = "http://26.113.157.114:8080/livros";
+const receitaAPI = "https://cademeurango-api.up.railway.app/receitas/";
+const tipsAPI = "https://cademeurango-api.up.railway.app/dicas/";
+const BooksAPI = "https://cademeurango-api.up.railway.app/livros";
 
 // Exportações Receitas
 // Receitas (GET)
