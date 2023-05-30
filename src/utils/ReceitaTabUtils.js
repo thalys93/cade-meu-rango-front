@@ -5,7 +5,7 @@ export function TabUtils() {
   // Estados
 
   // Estado de Timeout
-  const TIMEOUT_LIMIT = 500;
+  const TIMEOUT_LIMIT = 1500;
   const [timeOut, setTimeOut] = useState(true);
 
   // Estado do Card

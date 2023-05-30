@@ -8,7 +8,7 @@ import { deleteBooks, getBooks } from "./api/services/api";
 
 export function LivrosUtils() {  
   // Timeout
-  const TIMEOUT_LIMIT = 500;
+  const TIMEOUT_LIMIT = 1500;
   const [timeOut, setTimeOut] = useState(true);
 
   //Dados

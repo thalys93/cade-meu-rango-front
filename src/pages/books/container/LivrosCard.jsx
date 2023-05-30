@@ -74,7 +74,7 @@ function LivrosCard(props) {
         <Card.Text className='text-center TipCard'>
             <p className={isDarkMode? 'DarkTxt': 'txt'}> {props.descricao}</p>            
         </Card.Text>                
-            <button className={isDarkMode? 'btn btn-outline-primary' : 'btn btn-primary'}> <a href={props.linkPdf} target='_blank'>Acesse o Pdf Aqui</a></button>
+            <button className={isDarkMode? 'btn btn-outline-primary' : 'btn btn-primary'}> <a href={props.linkPdf} target='_blank' className={isDarkMode? 'text-primary' : 'text-light'}>Acesse o Pdf Aqui</a></button>
       </Card.Body>
     </Card>    
     </>        
