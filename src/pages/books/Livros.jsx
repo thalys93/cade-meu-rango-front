@@ -6,18 +6,17 @@ import { BsPencilFill } from 'react-icons/bs';
 //Utils
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import { DeveLoperContext } from '../../utils/context/DevContext';
-import { LivroUtils } from '../../utils/LivroUtils';
+import { LivrosUtils } from '../../utils/LivrosUtils';
 
 
 //Components
-import LivrosCard from './container/LivroCard'
 import LivrosCardPlaceholder from './placeholder/LivrosCardPlaceholder'
 import LivrosCardPlaceholderError from './placeholder/LivrosCardError'
+import LivrosCard from './container/LivrosCard'
 
 //CSS
-import './tips.css'
 
-function Dicas() {
+function Livros() {
   const { isDarkMode } = React.useContext(DarkModeContext);
   const { isDev } = React.useContext(DeveLoperContext);
 
@@ -28,8 +27,9 @@ function Dicas() {
     selectedCard,
     carregou,
     falha,
+    contador,
     setSelectedCard,
-    } = LivroUtils();
+    } = LivrosUtils();
 
 
   if(!carregou) {
@@ -98,7 +98,7 @@ function Dicas() {
         <Helmet>
           <title>Cadê Meu Rango - Livros</title>
         </Helmet>
-          <h3 className={isDarkMode? 'DarkSubtitle text-center' : 'subtitle txt'} id='Title'> Veja os Livros que Preparamos Para você Hoje</h3>
+          <h3 className={isDarkMode? 'DarkSubtitle text-center' : 'subtitle txt text-center'} id='Title'> Veja os Livros que Preparamos Para você Hoje</h3>
           <div className="overflow-y-auto overflow-x-hidden" id='listOverflow'>
             <ol className='list-group list-group-horizontal gap-4 container break-line-list'>
               {BookCard.map((Livro, i) => ( 
@@ -118,8 +118,7 @@ function Dicas() {
                   linkPdf={Livro.linkPdf}
                   autor={Livro.autor}                                                  
                   isDev={isDev}
-                  cardSelecionado={selectedCard === Livro.id}
-                  deletarDica={deletarDica === Livro.id}                  
+                  cardSelecionado={selectedCard === Livro.id}                                  
                 />
               </li>   
                 ) : null            
@@ -132,4 +131,4 @@ function Dicas() {
 
 }
 
-export default Dicas;
+export default Livros;

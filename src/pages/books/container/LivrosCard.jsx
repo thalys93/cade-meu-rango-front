@@ -1,16 +1,14 @@
 // Libs
 import React , {useParams} from 'react'
 import { Card, Image, Overlay, OverlayTrigger, Popover } from 'react-bootstrap'
-import { IoIosQuote } from 'react-icons/io'
 import { BsTrashFill } from 'react-icons/bs'
 import { BsPencilFill } from 'react-icons/bs';
 
 // Services
 import { DarkModeContext } from '../../../utils/context/DarkModeContext'
-import { LivrosUtils } from '../../../utils/LivroUtils';
+import { LivrosUtils } from '../../../utils/LivrosUtils';
 
 // CSS
-import '../tips.css'
 
 function LivrosCard(props) {
   const { isDarkMode } = React.useContext(DarkModeContext);
@@ -63,19 +61,20 @@ function LivrosCard(props) {
   return (
     <>      
     <Card key={props.id} className={isDarkMode? 'bg-dark animate__animated animate__fadeIn user-select-none' : 'bg-light user-select-none'} id="CardShadow" style={{ width: '17rem'}}>
-      <Card.Header>
+      <Card.Header className='text-center' >
         {EditBtns}
-        <Image src={props.image} height={130}/>
-        <span className='text-secondary txt'>{props.autor} </span>
+        <Image src={props.image} height={200}/>
+        <br/>        
+        <span className='text-secondary txt'>autor : {props.autor} </span>        
       </Card.Header>
-      <Card.Body>
+      <Card.Body className='text-center'>
         <Card.Title className={isDarkMode? 'DarkTxt' : 'txt'}>                        
           {props.titulo}
           </Card.Title>
         <Card.Text className='text-center TipCard'>
             <p className={isDarkMode? 'DarkTxt': 'txt'}> {props.descricao}</p>            
         </Card.Text>                
-            <button className={isDarkMode? 'btn btn-outline-primary' : 'btn btn-primary'} href={props.linkPdf}> Acesse o Pdf Aqui </button>
+            <button className={isDarkMode? 'btn btn-outline-primary' : 'btn btn-primary'}> <a href={props.linkPdf} target='_blank'>Acesse o Pdf Aqui</a></button>
       </Card.Body>
     </Card>    
     </>        
