@@ -18,21 +18,15 @@ function DicasCard(props) {
   const { isDarkMode } = React.useContext(DarkModeContext);
 
   const {
-    aviso,    
-    dadosEditados,
+    aviso,        
     modoDeEdicao,
-    setModoDeEdicao,
-    setDadosEditados,
-    editarDicas,        
+    setModoDeEdicao,               
     setAviso,
-    setConfirma,
-    atualizarDica,
+    setConfirma,    
     deletarDica
   } = TipUtils();
 
-
-  
-
+// Apagar
   const PopoverConfirmação = <Popover show={!aviso} className={isDarkMode ? 'bg-dark txt mb-2' : 'txt mb-2'} placement='none'>
     <Popover.Header className='text-center' as="h3">Tem Certeza?</Popover.Header>
     <Popover.Body>
@@ -55,7 +49,7 @@ function DicasCard(props) {
     </Popover.Body>
   </Popover>
     
-
+  // Modo de Edição Ativo
     if(modoDeEdicao) {
       return (
         <>
@@ -64,13 +58,11 @@ function DicasCard(props) {
             <div className='text-end butonDiv'>
               <button
                 className={props.isDarkMode? 'me-3 btn btn-outline-success' : 'me-3 btn btn-success'}
-                onClick={() => setDadosEditados(dadosEditados) || atualizarDica(dadosEditados)}
-                onClickCapture={() => setConfirma(true)}
+                disabled
                 hidden={!props.cardSelecionado || !props.isDev}
               >
                 <BsPencilFill/> Confirmar
               </button>
-
               <button
                 className={props.isDarkMode? 'me-3 btn btn-outline-danger' : 'me-3 btn btn-danger'}
                 onClick={() => setModoDeEdicao(false)}                
@@ -78,18 +70,14 @@ function DicasCard(props) {
               >
                 <BsTrashFill/> Cancelar
               </button>
-
             </div>
           </Card.Header>
           <Card.Body>
             <Card.Title className={isDarkMode? 'DarkTxt' : 'txt'}>
               Dica De Hoje: <small className='text-light-empashis'>{props.cardData}</small> <br/>
-
               <input
                 className='txt'
-                type='text'
-                value={dadosEditados.titulo}
-                onChange={(e) => setDadosEditados({...dadosEditados, titulo: e.target.value})}
+                type='text'                                
                 placeholder='Titulo Da Dica'
               />
             </Card.Title>
@@ -97,9 +85,7 @@ function DicasCard(props) {
               <IoIosQuote className={isDarkMode? 'Icon enfatize': 'Icon enfatize'}/>
               <textarea
                 className='txt'
-                type='text'
-                value={dadosEditados.descricao}
-                onChange={(e) => setDadosEditados({...dadosEditados, descricao: e.target.value})}
+                type='text'                             
                 placeholder='Descrição Da Dica'
               />
             </Card.Text>
@@ -123,7 +109,7 @@ function DicasCard(props) {
           <button 
           className={props.isDarkMode? 'me-3 btn btn-outline-success' : 'me-3 btn btn-success'}           
           hidden={!props.cardSelecionado || !props.isDev}
-          onClick={editarDicas}
+          disabled          
           > <BsPencilFill/> Editar </button>
         </div>
       </Card.Header>

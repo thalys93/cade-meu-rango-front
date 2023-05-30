@@ -17,45 +17,31 @@ export function TipUtils() {
       const TIMEOUT_LIMIT = 500;
       const [timeOut, setTimeOut] = useState(true);
 
-    // Cards
+    //   Dados
     const [cardTips, setCardTips] = useState([]);
+    // Data formatada
     const [cardTipDate, setCardTipDate] = useState([]);
+    // Dados Nulos
     const [blankCard] = useState([1, 2, 3, 4]);
+
+    // Dados Selecionados
     const [selectedCard, setSelectedCard] = useState(null);
+
+    // Estado de Confirmação
     const [confirma , setConfirma] = useState(false);
+
+    // Estado de Aviso
     const [aviso, setAviso] = useState(false);
-    const [modoDeEdicao, setModoDeEdicao] = useState(false);
 
-    const [dadosEditados, setDadosEditados] = useState({
-      titulo: cardTips.titulo,
-      descricao: cardTips.descricao,
-    });
-
-    const editarDicas = () => {setModoDeEdicao(true);};
+    // Estado de Edição
+    const [modoDeEdicao, setModoDeEdicao] = useState(false);    
         
+    // Estados de Carregamentos | Falhas | Contadores
     const [carregou, setCarregou] = useState(false);    
     const [falha, setfalha] = useState(false);    
     const [contador, setContador] = useState(0);
 
-
-    // Atualizar
-    const atualizarDica = async (dadosEditados) => {
-        if (confirma) {
-        try {
-            await putTips(dadosEditados);
-            const data = await getTips();
-            // setCardTips(data);                        
-            setTimeOut(() => {window.location.reload();}
-            , 100);            
-        } catch (error) {
-            setfalha(true);
-            console.log('falha ao atualizar a dica')
-        }
-        }
-    }   
-
-
-    // Apagar
+    // Apagar (funcional)
     const deletarDica = async (id) => {        
         if (confirma) {
         try {
@@ -111,27 +97,22 @@ export function TipUtils() {
     }, [carregou]);
         
     
-        
+        // Retorno dos Estados e Funções
     return{
         cardTips,
         cardTipDate,
         blankCard,
         selectedCard,
         confirma,
-        setConfirma,
-        modoDeEdicao,
-        setModoDeEdicao,
-        dadosEditados,
-        setDadosEditados,
         editarDicas,            
         aviso,
-        setAviso,             
-        setSelectedCard,
-        atualizarDica,
-        deletarDica,    
         carregou,
         falha,
         contador,        
-        timeOut
+        timeOut,
+        setConfirma,
+        setAviso,             
+        setSelectedCard,
+        deletarDica  
     }
 }

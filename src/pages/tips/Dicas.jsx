@@ -111,14 +111,13 @@ function Dicas() {
                   <button className={isDarkMode? 'btn btn-primary' : 'btn btn-warning'} onClick={() => setSelectedCard(Card.id)} disabled={selectedCard === Card.id}> <BsPencilFill/> </button>
                 </div>                
                 <DicasCard
-                  isDev={isDev}
                   id={Card.id}
                   title={Card.titulo}
                   descricao={Card.descricao}
                   cardData={cardTipDate[i]}
                   cardSelecionado={selectedCard === Card.id}
-                  deletarDica={deletarDica === Card.id}
-                  onUpdateCard={atualizarDica === Card.id}
+                  isDev={isDev}
+                  deletarDica={deletarDica === Card.id}                  
                 />
               </li>   
                 ) : null            
