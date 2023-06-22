@@ -14,7 +14,7 @@ import CardPlaceholder from './placeholder/CardPlaceholder';
 // CSS
 import './css/Receita.css'
 
-function ReceitaCard({id, title, imgLink}) {
+function ReceitaCard({id, title, imgLink, namespace}) {
    
   // Contexto do Modo Escuro
  const { isDarkMode } = React.useContext(DarkModeContext)
@@ -47,7 +47,7 @@ function ReceitaCard({id, title, imgLink}) {
               </Card.Title>
                                                           
               <Link 
-              to={'receita' + '/' + id + '/' + title} className={isDarkMode ? 'btn btn-outline-light container-fluid text-center' : 'btn btn-primary container-fluid text-center'}>
+              to={'receita' + '/' + id + '/' + namespace} className={isDarkMode ? 'btn btn-outline-light container-fluid text-center' : 'btn btn-primary container-fluid text-center'}>
                   Saiba Mais
               </Link>                                          
           </Card.Body>

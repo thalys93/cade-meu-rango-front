@@ -126,3 +126,9 @@
 .addIcon{
     font-size: 16pt;
 }
+
+.ConfirmBtn{
+    display: flex;
+    margin-top: 21rem;
+    margin-right: 2rem;
+}

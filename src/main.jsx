@@ -16,9 +16,9 @@ import 'animate.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(  
-    <DarkModeProvider>  {/* Camada do Modo Escuro */}
-      <DeveloperProvider> {/* Camada de Desenvolvedor (temporário) */}
-        <UserAutenticatedProvider> {/* Camada de Usuário */}
+    <DarkModeProvider>  
+      <DeveloperProvider> 
+        <UserAutenticatedProvider>
           <Routes />
         </UserAutenticatedProvider>
       </DeveloperProvider>

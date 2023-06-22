@@ -13,7 +13,7 @@ import Error from './interface/error/Error'
 
 // Receita
 import Receita from './pages/receita/container/Receita'
-import NovaReceita from './pages/receita/container/novaReceita'
+// import NovaReceita from './pages/receita/container/novaReceita'
 
 // Login
 import Login from './pages/Login/Login'
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
             },
             {
                     path: 'Receita/Adicionar_Receita',                    
-                    element: <NovaReceita/>,
+                    // element: <NovaReceita/>,
             }        
         ]
     },

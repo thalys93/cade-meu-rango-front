@@ -113,10 +113,11 @@ function ReceitaTab() {
                   contador > index ? (
                     <li key={index} className="animate__animated animate__fadeIn">
                       <ReceitaCard
-                      id={card.id}
+                      id={card._id}
                       key={card}
                       title={card.titulo}
-                      imgLink={card.imagem}/>
+                      namespace={card.namespace}
+                      imgLink={card.image}/>
                     </li>
                   ) : (                
                     null
