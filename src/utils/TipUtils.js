@@ -78,7 +78,7 @@ export function TipUtils() {
 
     // Obter Data Do Card e Formatar 
     useEffect(() => {
-        const dataFormatada = cardTips.map((tip) => moment(tip.data).format('DD/MM/YY'));
+        const dataFormatada = cardTips?.map((tip) => moment(tip.data).format('DD/MM/YY'));
             setCardTipDate(dataFormatada);                     
     }, [cardTips]);
 

@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { TabUtils } from '../../utils/ReceitaTabUtils';
 import { UserAutenticatedContext } from '../../utils/context/UserContext';
+import { errorUtils } from '../../utils/errorUtils';
 
 // Componente
 import ReceitaCard from './ReceitaCard'
@@ -29,6 +30,7 @@ function ReceitaTab() {
     
   // Hook de Estado e Carregamento
   const {cardReceitas, falha, carregou, timeOut, contador, progressBar, blankCard} = TabUtils();
+  const { recipesErrorID } = errorUtils();
 
   // Caso A API Não Carregue
   if(!carregou) {
@@ -72,7 +74,7 @@ function ReceitaTab() {
               </ol>
           </div>
           <div className='mt-4 user-select-none'>
-            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (500) </h2>
+            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API {recipesErrorID} </h2>
             <ProgressBar animated  now={progressBar} variant='danger'/>
           </div>
       </section>
@@ -94,7 +96,7 @@ function ReceitaTab() {
               </ol>
           </div>
           <div className='mt-5 user-select-none'>
-            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API (timeout) </h2>
+            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API {recipesErrorID} </h2>
             <ProgressBar animated  now={progressBar} variant='secondary'/>
           </div>
       </section>
