@@ -10,10 +10,11 @@ export function TabUtils() {
 
   // Estado do Card
   const [cardReceitas, setCardReceitas] = useState([]);
+  const [statusCode, setStatusCode] = useState('');
   const [blankCard] = useState([1, 2, 3, 4]);
 
   // Estado do Carregamento
-  const [carregou, setCarregou] = useState(false);
+  const [carregou, setCarregou] = useState(true);
 
   // Estado da Falha
   const [falha, setfalha] = useState(false);
@@ -29,11 +30,12 @@ export function TabUtils() {
     }, TIMEOUT_LIMIT);
 
     const fetchData = async () => {
-      try {
-        const data = await getRecipes();
+      try {        
+        const data = getRecipes();
         clearTimeout(timer);
         setCardReceitas(data);
         setCarregou(true);        
+        setStatusCode(data.status);
       } catch (error) {
         setfalha(true);
       }
@@ -65,6 +67,7 @@ export function TabUtils() {
         timeOut,
         contador,
         progressBar,
-        blankCard
+        blankCard,
+        statusCode
   }
 }

@@ -11,7 +11,6 @@ import { Helmet } from 'react-helmet';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { TabUtils } from '../../utils/ReceitaTabUtils';
 import { UserAutenticatedContext } from '../../utils/context/UserContext';
-import { errorUtils } from '../../utils/errorUtils';
 
 // Componente
 import ReceitaCard from './ReceitaCard'
@@ -29,8 +28,7 @@ function ReceitaTab() {
   const { isLogged } = React.useContext(UserAutenticatedContext)
     
   // Hook de Estado e Carregamento
-  const {cardReceitas, falha, carregou, timeOut, contador, progressBar, blankCard} = TabUtils();
-  const { recipesErrorID } = errorUtils();
+  const {cardReceitas, falha, carregou, timeOut, contador, progressBar, blankCard, statusCode} = TabUtils();  
 
   // Caso A API Não Carregue
   if(!carregou) {
@@ -74,7 +72,7 @@ function ReceitaTab() {
               </ol>
           </div>
           <div className='mt-4 user-select-none'>
-            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API {recipesErrorID} </h2>
+          <h2 className={isDarkMode ? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API : {statusCode} </h2>
             <ProgressBar animated  now={progressBar} variant='danger'/>
           </div>
       </section>
@@ -96,7 +94,7 @@ function ReceitaTab() {
               </ol>
           </div>
           <div className='mt-5 user-select-none'>
-            <h2 className={isDarkMode? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API {recipesErrorID} </h2>
+            <h2 className={isDarkMode ? 'list-group-item bg-danger text-center border-0 DarkTxt' : 'list-group-item bg-danger text-center border-0 DarkTxt'}> Falha na API : {statusCode} </h2>
             <ProgressBar animated  now={progressBar} variant='secondary'/>
           </div>
       </section>
@@ -133,6 +131,10 @@ function ReceitaTab() {
                     </button>
                     </Link>                     
                     <h2 hidden={isLogged} className={isDarkMode ? 'DarkTxt text-warning' : 'txt text-danger'}>  Receitas Não Encontradas <CgDanger className='mb-1'/> </h2>
+                  <div className='mt-4 user-select-none'>
+                    <h2 className={isDarkMode ? 'list-group-item bg-secondary text-center border-0 DarkTxt' : 'list-group-item bg-secondary text-center border-0 DarkTxt'}> Código : {statusCode} </h2>
+                    <ProgressBar animated now={progressBar} variant='secondary' />
+                  </div>
                   </div>
                 )}                                  
             </ol>

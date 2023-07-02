@@ -12,7 +12,7 @@ const BooksAPI = "/livros";
 export const getRecipes = async () => {
     try {
         const response = await axios.get(local + receitaAPI)
-        return response.data
+        return response        
         // ,console.log(response.data);
     } catch (error) {
         // console.error('Falha ao Se Comunicar com o Servidor', error);
