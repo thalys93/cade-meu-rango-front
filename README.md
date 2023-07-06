@@ -1,6 +1,6 @@
 # Atenção Branch de Produção
 Essa branch tem a finalidade de ser a **branch** que é usada para atualizar o **front end** do projeto lá no **firebase**
-o link para acessar a página rodando : https://cade-meu-rango-front.web.app/
+o link para acessar a página rodando : Hospedagem Pausada Temporariamente devido a transição de backEND
 
 
 # Cadê Meu Rango
