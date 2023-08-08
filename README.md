@@ -2,6 +2,9 @@
 Essa branch tem a finalidade de ser a **branch** que é usada para atualizar o **front end** do projeto lá no **firebase**
 o link para acessar a página rodando : **Hospedagem Pausada Temporariamente devido a transição de Backend**
 
+[![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
 
 # Cadê Meu Rango
 Cade meu rango é uma aplicação SPA **(single page aplication)** que permite aos usuários encontrar receitas e dicas culinárias de acordo com seus interesses e preferências. 
