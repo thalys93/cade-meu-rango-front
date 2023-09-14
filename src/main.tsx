@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Routes from './utils/routes.tsx'
+import Routes from './utils/routes'
 
 import './assets/css/global/styles.css'
 

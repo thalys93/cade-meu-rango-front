@@ -1,43 +1,19 @@
-import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom"
+import React from 'react'
+import { Outlet } from "react-router-dom"
+import { IndexUtils } from './utils/index';
 
-import HatLoadingComponent from "./pages/components/hatLoadingComponent.tsx";
+import HatLoadingComponent from "./pages/components/hatLoadingComponent";
 
 function Index() {
 
-  /* TODO: 
-    - Terminar a lógica da index
-    - Criar um Arquivo TS para dividir a Lógica
-    - Deixar a Função apenas para renderizar o componente
-  */
-
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(true);      
-    }, 1500)
-
-    return () => {
-      clearTimeout(timeout);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      navigate('/home');
-    }
-  }, [isLoading, navigate]);
+    const { isLoading } = IndexUtils();
 
   return (
     <>
     {isLoading? ( 
-      <article>
-        <div>          
-            <HatLoadingComponent />          
-        </div>
-      </article>
+      <main className='container'>                
+        <HatLoadingComponent />
+      </main>
     ) : (
       <>
         <Outlet/>

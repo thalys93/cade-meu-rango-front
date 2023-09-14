@@ -1,18 +1,19 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import Index from "../Index.tsx";
-import Home from '../pages/home/Home.tsx'
+import Index from "../Index";
+import Home from '../pages/home/Home'
 
-import Recipe from '../pages/recipe/Recipe.tsx'
-import NewRecipe from '../pages/recipe/RecipeNew.tsx'
-import EditRecipe from '../pages/recipe/RecipeEdit.tsx'
+import Recipe from '../pages/recipe/Recipe'
+import NewRecipe from '../pages/recipe/RecipeNew'
+import EditRecipe from '../pages/recipe/RecipeEdit'
 
-import Tip from '../pages/tip/Tip.tsx'
-import NewTip from '../pages/tip/NewTip.tsx'
-import EditTip from '../pages/tip/EditTip.tsx'
+import Tip from '../pages/tip/Tip'
+import NewTip from '../pages/tip/NewTip'
+import EditTip from '../pages/tip/EditTip'
 
-import Login from '../pages/auth/Login.tsx'
-import Register from '../pages/auth/Register.tsx'
+import Login from '../pages/auth/Login'
+import Register from '../pages/auth/Register'
+import React from "react";
 
 
 
