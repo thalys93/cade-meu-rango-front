@@ -1,27 +1,41 @@
-# React + TypeScript + Vite
+## Projeto Cadê Meu Rango
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Cadê Meu Rango
+Cade meu rango é uma aplicação SPA **(single page aplication)** que permite aos usuários encontrar receitas e dicas culinárias de acordo com seus interesses e preferências. 
+A aplicação conta com recursos como **autenticação**, **modo escuro**, **criação de receitas e dicas**, **categorização por ingredientes**, e também uma api que busca dados de receitas em um banco de dados mysql. 
+A aplicação foi desenvolvida usando **React no front end** e **node.js no back end.**
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Funcionalidades
+- Cadastro de Receitas
+- Categorização de Receitas
+- Criação de Dicas Culinárias
+- Categorização de Dicas Culinárias
+- Autenticação de Usuário
+- Modo Escuro
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias Utilizadas
+- Front-End : **React + Typescript** 🌐
+- Back-End : **Node.js + Express**☕
+- Banco De Dados : **Mongo DB** 🏦
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Como Utilizar 
+Para utilizar a aplicação, é necessário clonar este repositório pelo github desktop ou outra ferramenta adjacente <br />
+Após configurar o ambiente, basta executar o comando **npm install** para instalar as dependências necessárias (caso haja framework), 
+e em seguida, o comando **npm start** para iniciar a aplicação. A aplicação estará disponível na porta configurada.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contribuindo
+Contribuições são sempre bem-vindas! Caso queira contribuir com o projeto, basta seguir os seguintes passos:
+- Crie uma branch com sua feature (git checkout -b minha-feature)
+- Faça commit das suas alterações (git commit -m 'Adicionando nova feature')
+- Faça o push para a branch (git push origin minha-feature)
+- Abra um Pull Request
+
+(atenção, esse projeto pode ser automatizado com o **github desktop** não esqueça!!)
+
+## Licença
+Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE.md para mais detalhes.
