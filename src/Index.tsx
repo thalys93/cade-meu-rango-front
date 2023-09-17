@@ -11,7 +11,7 @@ function Index() {
   return (
     <>
     {isLoading? ( 
-      <main className='container'>                
+        <main className='loading-logo-align animate__animated animate__fadeIn'>                
         <HatLoadingComponent />
       </main>
     ) : (

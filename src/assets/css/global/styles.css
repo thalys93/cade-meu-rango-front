@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities;
+
+
+body {
+    background-image: linear-gradient(to right top, #ff7353, #fc6341, #f8512f, #f33d1b, #ee2200);
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.loading-logo-align{
+    position: absolute;
+    left: 40%;
+    margin-top: 2rem;
+}
+
+.logo-circle{    
+    box-shadow: 22px 22px 43px #a4301b;
+}

@@ -28,8 +28,8 @@ function HatLoadingComponent() {
 
 
   return (    
-    <section className='container pt-52'>
-    <article className='flex w-60 p-5 flex-col bg-orange_primary rounded-full '>
+    <section className='container pt-52 select-none'>
+    <article className='flex w-60 p-5 flex-col bg-orange_primary rounded-full logo-circle '>
         <div className='pl-3 animate-pulse'>
           <img src={hatSVG} alt="Chapeuzinho" width={120} height={120} />
         </div>        

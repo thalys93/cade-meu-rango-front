@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 export function IndexUtils() {
 
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            setIsLoading(true);
-        }, 1500)
+            setIsLoading(false);
+        }, 2500)
 
         return () => {
             clearTimeout(timeout);
