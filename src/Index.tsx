@@ -1,8 +1,8 @@
 import React from 'react'
-import { Outlet } from "react-router-dom"
 import { IndexUtils } from './utils/index';
 
 import HatLoadingComponent from "./pages/components/hatLoadingComponent";
+import BannerComponent from './pages/components/BannerComponent';
 
 function Index() {
 
@@ -11,13 +11,16 @@ function Index() {
   return (
     <>
     {isLoading? ( 
-        <main className='loading-logo-align animate__animated animate__fadeIn'>                
+        <section className='loading-logo-align animate__animated animate__fadeIn'>                
         <HatLoadingComponent />
-      </main>
+      </section>
     ) : (
-      <>
-        <Outlet/>
-      </>
+      <section className='p-3'>
+      <nav>
+        <BannerComponent/>
+      </nav>
+
+      </section>
     )}
     </>
   )

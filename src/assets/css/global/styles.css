@@ -1,20 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&family=Satisfy&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-body {
-    background-image: linear-gradient(to right top, #ff7353, #fc6341, #f8512f, #f33d1b, #ee2200);
+body {            
+    /* background-image: linear-gradient(to right top, #ff7353, #fc6341, #f8512f, #f33d1b, #ee2200); */
+    background-image: url('/public/assets/png/LightPattern.png');
+    background-size: contain;
+    object-fit: cover;
+    
     height: 100vh;
     box-sizing: border-box;
 }
 
+
+
 .loading-logo-align{
     position: absolute;
     left: 40%;
-    margin-top: 2rem;
+    margin-top: 3%;
 }
 
 .logo-circle{    
     box-shadow: 22px 22px 43px #a4301b;
+}
+
+.imgBG{
+    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/v1695040147/Cad%C3%AA%20Meu%20Rango/banner_utjdxx.png);
+    background-size: cover;
+    object-fit: cover;
+}
+
+
+.imgBGDARK{
+    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/v1695040152/Cad%C3%AA%20Meu%20Rango/bannerDark_fwh1gr.png);
+    background-size: cover;
+    object-fit: cover;
+}
+
+.titleBanner{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    padding: 2rem;
+    text-align: center;
+    user-select: none;
+}
+
+.titleBanner>h1,
+.titleBanner>h3 {
+    text-shadow: 0px 4px 4px #000000;
 }

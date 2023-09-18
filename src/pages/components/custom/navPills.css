@@ -1,0 +1,18 @@
+.custom-tabs{
+    gap: 1rem;
+}
+
+.nav-link{
+    color: #0d0d13;
+}
+
+
+.custom-tabs .nav-link.active {
+    background-color: #ff5732;
+    color: white;
+}
+
+.custom-tabs .nav-link:hover {
+        border-color: #ff5732;
+        color: #ff5732; 
+}

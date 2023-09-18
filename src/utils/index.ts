@@ -18,7 +18,7 @@ export function IndexUtils() {
 
 useEffect(() => {
     if (!isLoading) {
-        navigate('/home');
+        navigate('/');
     }
 }, [isLoading, navigate]);
 
