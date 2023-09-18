@@ -2,8 +2,9 @@
 import { Tabs, Tab } from 'react-bootstrap'
 import React from 'react'
 import Home from '../home/Home'
-import RecipeGalleryComponent from './RecipeGalleryComponent';
-import TipGalleryComponent from './TipGalleryComponent';
+import RecipesHome from './../recipe/RecipesHome';
+import TipsHome from '../tip/TipsHome';
+
 
 import './custom/navPills.css'
 
@@ -18,11 +19,11 @@ function NavegationComponent() {
         </Tab>
         
         <Tab eventKey="recipes" title="Receitas">
-          <RecipeGalleryComponent/>
+          <RecipesHome/>
         </Tab>
 
         <Tab eventKey="tips" title="Dicas">
-            <TipGalleryComponent/>
+            <TipsHome/>
         </Tab>
     </Tabs>
   )

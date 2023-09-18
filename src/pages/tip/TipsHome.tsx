@@ -11,12 +11,12 @@ import React from 'react'
   - add tips card details and author name
 */
 
-function TipGalleryComponent() {
+function TipsHome() {
   return (
     <section>
-      TipGalleryComponent
+      TipsHome
     </section>
   )
 }
 
-export default TipGalleryComponent
+export default TipsHome

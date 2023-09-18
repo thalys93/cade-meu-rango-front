@@ -12,12 +12,12 @@ import React from 'react'
 */
 
 
-function RecipeGalleryComponent() {
+function RecipesHome() {
   return (
     <section>
-      RecipeGalleryComponent
+      RecipesHome
     </section>
   )
 }
 
-export default RecipeGalleryComponent
+export default RecipesHome
