@@ -8,12 +8,23 @@ export function RecipeUtils() {
     const [loading, setLoading] = useState(true);
     const [accountant, setAccountant] = useState(0);
 
-    const [recipe, setRecipe] = useState([]);
+    const [recipe, setRecipe] = useState<Recipe[]>([]);
+
+
+    interface Recipe {
+        id: number;
+        title: string;
+        description: string;
+        imageLink: string;
+        ingredients: Array<string>;
+        instructions: Array<string>;
+        author: string;
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setRecipe(localAPI as any);
+                setRecipe(localAPI as Recipe[]);
                 setTimeout(()=>{
                     setLoading(true);
                 }, 1500);

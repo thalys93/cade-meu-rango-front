@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Bolo de Chocolate",
     "description": "Um delicioso bolo de chocolate caseiro.",
-    "imageLink": "https://exemplo.com/bolo-chocolate.jpg",
+    "imageLink": "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSWOjtRJTyt3iHScdM_UazRNQuzKtRH9Fsmn0aHKqGmqhd4mSy4J8CBfqv3BzerJY59",
     "ingredients": [
         "2 xícaras de farinha de trigo",
         "1 xícara de cacau em pó",
@@ -28,7 +28,7 @@
     "id": 2,
     "title": "Salada Caesar",
     "description": "Uma salada Caesar clássica com molho cremoso.",
-    "imageLink": "https://exemplo.com/salada-caesar.jpg",
+    "imageLink": "https://static.itdg.com.br/images/1200-630/f6acb58cd0215a6d2118c4a87ebab1fe/153730-original.jpg",
     "ingredients": [
         "Alface romana",
         "Croutons",
@@ -49,7 +49,7 @@
     "id": 3,
     "title": "Pizza Margherita",
     "description": "Uma pizza clássica italiana com tomate, mozzarella e manjericão.",
-    "imageLink": "https://exemplo.com/pizza-margherita.jpg",
+    "imageLink": "https://anamariabraga.globo.com/wp-content/uploads/2020/08/pizza-margherita.jpg",
     "ingredients": [
         "Massa de pizza",
         "Molho de tomate",
@@ -74,7 +74,7 @@
     "id": 4,
     "title": "Sopa de Abóbora",
     "description": "Uma sopa cremosa de abóbora com um toque de especiarias.",
-    "imageLink": "https://exemplo.com/sopa-abobora.jpg",
+    "imageLink": "https://www.sabornamesa.com.br/media/k2/items/cache/3182b2a6002d7c6eae45301adb4cf349_XL.jpg",
     "ingredients": [
         "Abóbora",
         "Cebola",
@@ -101,7 +101,7 @@
     "id": 5,
     "title": "Tacos de Carne",
     "description": "Tacos de carne saborosos com guacamole e salsa.",
-    "imageLink": "https://exemplo.com/tacos-carne.jpg",
+    "imageLink": "https://media.gazetadopovo.com.br/bomgourmet/2016/03/urc1syh2-fe1b3ef0.jpg",
     "ingredients": [
         "Carne moída",
         "Tortilhas de milho",
