@@ -7,8 +7,8 @@ function Home() {
   return (
     <section className='bg-light_primary font-body-rb rounded-b-xl'>      
         <article className='container-fluid'> 
-          <h3 className='text-3xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango </h3>          
-          <h5 className='text-xl font-light'> o seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
+          <h3 className='text-3xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango!! </h3>          
+          <h5 className='text-xl font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
             Nosso site é um paraíso culinário projetado para entusiastas da cozinha e amantes da gastronomia.
           </h5>      
         </article>
@@ -20,11 +20,16 @@ function Home() {
 
         <article className="container-fluid">
           <h3 className='text-3xl pb-2 pt-3 font-light underline underline-offset-8'> Sobre Nós: </h3>
+          <p className='font-body-rb text-xl font-light'>
+            <b className='text-orange_primary font-body-rb'> O Cadê Meu Rango </b> é Resultado do trabalho conjunto de um grupo de alunos dedicados e experientes, <br/>
+            Apaixonados por Tecnologia.
+          </p>
+            <br/>
           <p className='text-xl font-light'>
             Somos uma equipe de desenvolvedores apaixonados por tecnologia e aspirantes em gastronomia.
             Nosso objetivo é criar uma comunidade online para compartilhar receitas e dicas culinárias.
             Seja você um chef amador ou um cozinheiro experiente, nosso site é o lugar perfeito para você. <br/>
-            <b className='text-orange_secondary font-body-rb'>
+            <b className='text-orange_primary font-body-rb underline underline-offset-8'>
               Conheça a equipe que desenvolveu está plataforma:
             </b>
           </p>
@@ -41,9 +46,9 @@ function Home() {
                   roundedCircle
                 />
               </a>
-                <Figure.Caption className='text-center font-body-rb text-orange_primary font-bold'>
-                  <h5>Thalys</h5>
-                  <span> Full-Stack Dev</span>
+                <Figure.Caption className='text-center font-body-rb  font-bold'>
+                  <h5 className='text-orange_primary'>Thalys</h5>
+                  <span className='text-dark_primary'> Full-Stack Dev</span>
                 </Figure.Caption>
               </Figure>
             </li>
@@ -58,9 +63,9 @@ function Home() {
                   roundedCircle
                 />
               </a>
-              <Figure.Caption className='text-center font-body-rb text-orange_primary font-bold'>
-                <h5>Pedro</h5>
-                <span>Back-End Dev</span>
+              <Figure.Caption className='text-center font-body-rb  font-bold'>
+                <h5 className='text-orange_primary'>Pedro</h5>
+                <span className='text-dark_primary'>Back-End Dev</span>
               </Figure.Caption>
             </Figure>
           </li>
@@ -75,9 +80,9 @@ function Home() {
                   roundedCircle
                 />
               </a>
-              <Figure.Caption className='text-center font-body-rb text-orange_primary font-bold'>
-                <h5>Mathias</h5>
-                <span>Back-End Dev</span>
+              <Figure.Caption className='text-center font-body-rb font-bold'>
+                <h5 className='text-orange_primary'>Mathias</h5>
+                <span className='text-dark_primary'>Back-End Dev</span>
               </Figure.Caption>
             </Figure>
           </li>
@@ -92,9 +97,9 @@ function Home() {
                   roundedCircle
                 />
               </a>
-              <Figure.Caption className='text-center font-body-rb text-orange_primary font-bold'>
-                <h5>Nathan</h5>
-                <span>Front-End Dev</span>
+              <Figure.Caption className='text-center font-body-rb font-bold'>
+                <h5 className='text-orange_primary '>Nathan</h5>
+                <span className='text-dark_primary'>Front-End Dev</span>
               </Figure.Caption>
             </Figure>
           </li>

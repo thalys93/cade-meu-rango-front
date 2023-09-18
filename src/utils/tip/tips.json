@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Dica de Economia Doméstica",
+        "description": "Economize dinheiro fazendo compras a granel e evite produtos embalados em excesso.",
+        "publishDate": "2023-09-18"
+    },
+    {
+        "id": 2,
+        "title": "Dica de Saúde",
+        "description": "Beber bastante água ao longo do dia é essencial para manter-se hidratado e saudável.",
+        "publishDate": "2023-09-17"
+    },
+    {
+        "id": 3,
+        "title": "Dica de Organização",
+        "description": "Mantenha uma lista de tarefas diárias para aumentar sua produtividade e evitar esquecimentos.",
+        "publishDate": "2023-09-16"
+    },
+    {
+        "id": 4,
+        "title": "Dica de Viagem",
+        "description": "Quando viajar para um novo país, pesquise sobre a cultura local e aprenda algumas frases básicas no idioma local.",
+        "publishDate": "2023-09-15"
+    },
+    {
+        "id": 5,
+        "title": "Dica de Fitness",
+        "description": "Além do exercício, lembre-se de que uma boa noite de sono é crucial para o seu progresso na academia.",
+        "publishDate": "2023-09-14"
+    }
+]

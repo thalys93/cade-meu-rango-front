@@ -1,0 +1,123 @@
+[
+{
+    "id": 1,
+    "title": "Bolo de Chocolate",
+    "description": "Um delicioso bolo de chocolate caseiro.",
+    "imageLink": "https://exemplo.com/bolo-chocolate.jpg",
+    "ingredients": [
+        "2 xícaras de farinha de trigo",
+        "1 xícara de cacau em pó",
+        "1 xícara de açúcar",
+        "1 xícara de leite",
+        "1/2 xícara de óleo",
+        "2 ovos",
+        "1 colher de chá de fermento em pó",
+        "1 colher de chá de essência de baunilha"
+    ],
+    "instructions": [
+        "Pré-aqueça o forno a 180°C.",
+        "Em uma tigela, misture a farinha de trigo, o cacau em pó e o fermento em pó.",
+        "Em outra tigela, bata os ovos, adicione o açúcar, o leite, o óleo e a essência de baunilha, misturando bem.",
+        "Combine os ingredientes secos com os líquidos e mexa até obter uma massa homogênea.",
+        "Despeje a massa em uma forma untada e leve ao forno por 30-35 minutos.",
+        "Retire do forno, deixe esfriar e sirva."
+    ],
+    "author": "Maria Silva"
+},
+{
+    "id": 2,
+    "title": "Salada Caesar",
+    "description": "Uma salada Caesar clássica com molho cremoso.",
+    "imageLink": "https://exemplo.com/salada-caesar.jpg",
+    "ingredients": [
+        "Alface romana",
+        "Croutons",
+        "Parmesão ralado",
+        "Peito de frango grelhado",
+        "Molho Caesar"
+    ],
+    "instructions": [
+        "Lave e rasgue as folhas de alface em pedaços.",
+        "Corte o peito de frango grelhado em tiras.",
+        "Misture a alface, os croutons, o parmesão e o frango em uma tigela grande.",
+        "Regue com o molho Caesar e misture bem.",
+        "Sirva imediatamente."
+    ],
+    "author": "João Santos"
+},
+{
+    "id": 3,
+    "title": "Pizza Margherita",
+    "description": "Uma pizza clássica italiana com tomate, mozzarella e manjericão.",
+    "imageLink": "https://exemplo.com/pizza-margherita.jpg",
+    "ingredients": [
+        "Massa de pizza",
+        "Molho de tomate",
+        "Mozzarella",
+        "Folhas de manjericão",
+        "Azeite de oliva",
+        "Sal",
+        "Pimenta"
+    ],
+    "instructions": [
+        "Pré-aqueça o forno a 220°C.",
+        "Abra a massa de pizza em um círculo fino.",
+        "Espalhe o molho de tomate sobre a massa.",
+        "Cubra com fatias de mozzarella e folhas de manjericão.",
+        "Regue com azeite de oliva e tempere com sal e pimenta a gosto.",
+        "Asse no forno por 12-15 minutos, ou até que a massa esteja dourada e o queijo derretido.",
+        "Retire do forno, corte em fatias e sirva."
+    ],
+    "author": "Luigi Rossi"
+},
+{
+    "id": 4,
+    "title": "Sopa de Abóbora",
+    "description": "Uma sopa cremosa de abóbora com um toque de especiarias.",
+    "imageLink": "https://exemplo.com/sopa-abobora.jpg",
+    "ingredients": [
+        "Abóbora",
+        "Cebola",
+        "Alho",
+        "Caldo de galinha",
+        "Creme de leite",
+        "Noz-moscada",
+        "Pimenta-do-reino",
+        "Sal"
+    ],
+    "instructions": [
+        "Descasque e corte a abóbora em cubos.",
+        "Refogue a cebola e o alho em um pouco de óleo até ficarem macios.",
+        "Adicione os cubos de abóbora e o caldo de galinha à panela.",
+        "Cozinhe até que a abóbora esteja macia.",
+        "Use um liquidificador para triturar a sopa até ficar cremosa.",
+        "Volte a sopa à panela, adicione o creme de leite, a noz-moscada, a pimenta-do-reino e o sal a gosto.",
+        "Aqueça a sopa, mas não deixe ferver.",
+        "Sirva quente."
+    ],
+    "author": "Ana Oliveira"
+},
+{
+    "id": 5,
+    "title": "Tacos de Carne",
+    "description": "Tacos de carne saborosos com guacamole e salsa.",
+    "imageLink": "https://exemplo.com/tacos-carne.jpg",
+    "ingredients": [
+        "Carne moída",
+        "Tortilhas de milho",
+        "Cebola",
+        "Pimentão",
+        "Cominho",
+        "Chili em pó",
+        "Guacamole",
+        "Salsa"
+    ],
+    "instructions": [
+        "Em uma frigideira, refogue a carne moída com cebola, pimentão, cominho e chili em pó até que a carne esteja cozida.",
+        "Aqueça as tortilhas de milho em uma frigideira ou no forno.",
+        "Monte os tacos colocando a carne refogada nas tortilhas e cubra com guacamole e salsa.",
+        "Sirva imediatamente."
+    ],
+    "author": "Carlos Fernandes"
+}
+]
