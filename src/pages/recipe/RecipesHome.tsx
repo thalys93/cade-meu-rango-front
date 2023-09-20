@@ -35,15 +35,15 @@ function RecipesHome() {
       <article className='text-center pt-5'> 
         <Row>
           <Col>
-            <RecipesList title='Salgados'/>
+            <RecipesList title='Salgados' type="Salgados"/>
           </Col>
 
           <Col>
-            <RecipesList title='Doces'/>
+            <RecipesList title='Doces' type="Doces"/>
           </Col>
 
           <Col>
-            <RecipesList title="Outros"/>
+            <RecipesList title="Outros" type="Outros"/>
           </Col>
         </Row>
       </article>
@@ -51,18 +51,23 @@ function RecipesHome() {
   )
 
 
-  function RecipesList(props: { title?: string }) {
+  function RecipesList(props: { title?: string , type?: string}) {
     return (
     <ListGroup as="ul">
       <h2 className='mb-2 text-xl bg-orange_primary text-light_primary'>{props.title}</h2> 
-      {recipe.map((r, i) => (
+      { recipe.filter(r => r.type === props.type).map((r, i) => (
         <ListGroup.Item as="li" key={i} className='flex justify-between'>             
-            <Image src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"} className='ListIMG'/>                  
+          <div>
+            <Image src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"} className='ListIMG'/>
+          </div>
           <div className='flex-col mr-28 text-start'>
             <h1 className='ml-5'>- {r.title}</h1>
-            <p className='text-sm ml-5'>{r.description}</p>
+            <p className='text-sm ml-5 text-slate-700'>{r.description}</p>
           </div>
-            <button className='bg-orange_primary rounded text-light_primary p-2 ml-8'>Ver receita</button>
+
+          <div className='bg-orange_primary rounded text-light_primary p-2 mt-2 mb-2'>
+            <a href='' target='_blank'>Ver receita</a>
+          </div>
         </ListGroup.Item>
       ))}
     </ListGroup>)
@@ -90,4 +95,4 @@ function RecipesHome() {
 
 
 
-export default RecipesHome
+export default RecipesHome 

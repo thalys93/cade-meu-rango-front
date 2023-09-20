@@ -14,6 +14,7 @@ export function RecipeUtils() {
     interface Recipe {
         id: number;
         title: string;
+        type: string;
         description: string;
         imageLink: string;
         ingredients: Array<string>;
