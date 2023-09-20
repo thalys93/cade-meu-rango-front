@@ -3,6 +3,8 @@ import { IndexUtils } from './utils/index';
 
 import HatLoadingComponent from "./pages/components/hatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
+import NavegationComponent from './pages/components/NavegationComponent';
+import FooterComponent from './pages/components/FooterComponent';
 
 function Index() {
 
@@ -15,11 +17,14 @@ function Index() {
         <HatLoadingComponent />
       </section>
     ) : (
-      <section className='p-3'>
-      <nav>
-        <BannerComponent/>
-      </nav>
-
+      <section>
+        <article className='p-3'>
+        <nav>
+          <BannerComponent/>
+          <NavegationComponent/>
+        </nav>
+        </article>
+        <FooterComponent/>
       </section>
     )}
     </>

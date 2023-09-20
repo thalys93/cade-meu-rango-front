@@ -7,25 +7,25 @@ function Home() {
   return (
     <section className='bg-light_primary font-body-rb rounded-b-xl'>      
         <article className='container-fluid'> 
-          <h3 className='text-3xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango!! </h3>          
-          <h5 className='text-xl font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
+          <h3 className='text-xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango!! </h3>          
+          <h5 className='font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
             Nosso site é um paraíso culinário projetado para entusiastas da cozinha e amantes da gastronomia.
           </h5>      
         </article>
 
         <article className="container-fluid">
-          <h3 className='text-3xl pb-2 pt-3 font-light underline underline-offset-8'> Aqui você Pode: </h3>          
+          <h3 className='text-xl pb-2 pt-3 font-light'> Aqui você Pode: </h3>          
           {SiteInstructions()}
         </article>
 
         <article className="container-fluid">
-          <h3 className='text-3xl pb-2 pt-3 font-light underline underline-offset-8'> Sobre Nós: </h3>
-          <p className='font-body-rb text-xl font-light'>
+          <h3 className='text-xl pb-2 pt-3 font-light '> Sobre Nós: </h3>
+          <p className='font-body-rb  font-light'>
             <b className='text-orange_primary font-body-rb'> O Cadê Meu Rango </b> é Resultado do trabalho conjunto de um grupo de alunos dedicados e experientes, <br/>
             Apaixonados por Tecnologia.
           </p>
             <br/>
-          <p className='text-xl font-light'>
+          <p className='font-light'>
             Somos uma equipe de desenvolvedores apaixonados por tecnologia e aspirantes em gastronomia.
             Nosso objetivo é criar uma comunidade online para compartilhar receitas e dicas culinárias.
             Seja você um chef amador ou um cozinheiro experiente, nosso site é o lugar perfeito para você. <br/>
@@ -34,84 +34,34 @@ function Home() {
             </b>
           </p>
 
-          <ul className='p-4 flex gap-5 select-none'>
-            <li className='hover:scale-105 transition-all'>
-              <Figure>
-                <a href='https://github.com/thalys93' target='_blank'>
-                <Figure.Image
-                  width={100}
-                  height={100}
-                  alt="githubUser"
-                  src="https://avatars.githubusercontent.com/u/102838847?s=400&u=06a81f298e6379f9d246d1ba76fd88ad0294738d&v=4"
-                  roundedCircle
-                />
-              </a>
-                <Figure.Caption className='text-center font-body-rb  font-bold'>
-                  <h5 className='text-orange_primary'>Thalys</h5>
-                  <span className='text-dark_primary'> Full-Stack Dev</span>
-                </Figure.Caption>
-              </Figure>
-            </li>
-          <li className='hover:scale-105 transition-all'>
-            <Figure>
-              <a href='https://github.com/pedrohkunz' target='_blank'>
-                <Figure.Image
-                  width={100}
-                  height={100}
-                  alt="githubUser"
-                  src="https://avatars.githubusercontent.com/u/56512310?v=4"
-                  roundedCircle
-                />
-              </a>
-              <Figure.Caption className='text-center font-body-rb  font-bold'>
-                <h5 className='text-orange_primary'>Pedro</h5>
-                <span className='text-dark_primary'>Back-End Dev</span>
-              </Figure.Caption>
-            </Figure>
-          </li>
-          <li className='hover:scale-105 transition-all'>
-            <Figure>
-              <a href='https://github.com/Maathias01' target='_blank'>
-                <Figure.Image
-                  width={100}
-                  height={100}
-                  alt="githubUser"
-                  src="https://avatars.githubusercontent.com/u/105599144?v=4"
-                  roundedCircle
-                />
-              </a>
-              <Figure.Caption className='text-center font-body-rb font-bold'>
-                <h5 className='text-orange_primary'>Mathias</h5>
-                <span className='text-dark_primary'>Back-End Dev</span>
-              </Figure.Caption>
-            </Figure>
-          </li>
-          <li className='hover:scale-105 transition-all'>
-            <Figure>
-              <a href='https://github.com/nathazz' target='_blank'>
-                <Figure.Image
-                  width={100}
-                  height={100}
-                  alt="githubUser"
-                  src="https://avatars.githubusercontent.com/u/105741461?v=4"
-                  roundedCircle
-                />
-              </a>
-              <Figure.Caption className='text-center font-body-rb font-bold'>
-                <h5 className='text-orange_primary '>Nathan</h5>
-                <span className='text-dark_primary'>Front-End Dev</span>
-              </Figure.Caption>
-            </Figure>
-          </li>
-          </ul>
+          {DevelopersList()}
 
         </article>
     </section>
   )
 
+  function DevelopersList() {
+    return <ul className='p-4 flex gap-5 select-none'>
+      <li className='hover:scale-105 transition-all'>
+        <Figure>
+          <a href='https://github.com/thalys93' target='_blank'>
+            <Figure.Image
+              width={100}
+              height={100}
+              alt="githubUser"
+              src="https://avatars.githubusercontent.com/u/102838847?s=400&u=06a81f298e6379f9d246d1ba76fd88ad0294738d&v=4"
+              roundedCircle />
+          </a>
+          <Figure.Caption className='text-center font-body-rb '>
+            <h5 className='text-orange_primary font-bold'>Thalys</h5>
+            <span className='text-dark_primary '> Full-Stack Dev</span>
+          </Figure.Caption>
+        </Figure>
+      </li>
+    </ul>
+  }
+
   function SiteInstructions() {
-
-
     return (
     <Accordion flush alwaysOpen>
       <Accordion.Item eventKey="0">
