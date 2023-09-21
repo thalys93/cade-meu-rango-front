@@ -66,7 +66,7 @@ function RecipesHome() {
           </div>
           </div>
           <a
-            href={localaddress + r.id + '/' + r.title} target='_blank'
+            href={localaddress + r.id + '/' + r.title}
             className='bg-orange_primary rounded text-light_primary p-1 mt-2 m-2 text-center hover:scale-90 transition-all'>
           Ver Receita
           </a>
