@@ -65,10 +65,14 @@ body {
 }
 
 .ListIMG{
-    width: 70px;
-    height: 70px;
-    object-fit: cover;    
+    display: flex;
+}
 
+
+.ListIMG>img{
+    object-fit: cover;
+    width: 100px;
+    height: 70px;
     border-radius: 1rem 0px 1rem 0px;
 }
 

@@ -32,18 +32,18 @@ function RecipesHome() {
           {RecipesCarousel()}
         </div>
       </article>
-      <article className='text-center pt-5'> 
+      <article className='pt-5'> 
         <Row>
           <Col>
-            <RecipesList title='Salgados' type="Salgados"/>
+            {RecipesList({title: 'Salgados', type: 'Salgados'})}
           </Col>
 
           <Col>
-            <RecipesList title='Doces' type="Doces"/>
+            {RecipesList({title:'Doces', type:"Doces"})}
           </Col>
 
           <Col>
-            <RecipesList title="Outros" type="Outros"/>
+            {RecipesList ({title:"Outros", type:"Outros"})}
           </Col>
         </Row>
       </article>
@@ -53,20 +53,22 @@ function RecipesHome() {
 
   function RecipesList(props: { title?: string , type?: string}) {
     return (
-    <ListGroup as="ul">
-      <h2 className='mb-2 text-xl bg-orange_primary text-light_primary'>{props.title}</h2> 
-      { recipe.filter(r => r.type === props.type).map((r, i) => (
-        <ListGroup.Item as="li" key={i} className='flex justify-between'>             
-          <div>
-            <Image src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"} className='ListIMG'/>
+    <ListGroup as="ul" className='flex'>
+      <h1 className='mb-2 text-xl bg-orange_primary text-light_primary text-center'>{props.title}</h1> 
+      {recipe.filter(r => r.type === props.type).map((r, i) => (
+        <ListGroup.Item as="li" key={i} className='flex'>             
+          <div className='ListIMG container'>
+            <img src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"}/>
+              
+          <div className='flex flex-col text-start'>
+            <h1 className='ml-2'>- {r.title}</h1>
+            <p className='text-sm ml-2 text-slate-700'>{r.description}</p>
           </div>
-          <div className='flex-col mr-28 text-start'>
-            <h1 className='ml-5'>- {r.title}</h1>
-            <p className='text-sm ml-5 text-slate-700'>{r.description}</p>
           </div>
-          <a href={localaddress + r.id + '/' + r.title} target='_blank' 
-          className='bg-orange_primary rounded text-light_primary p-2 mt-2 mb-2'>          
-            Ver receita
+          <a
+            href={localaddress + r.id + '/' + r.title} target='_blank'
+            className='bg-orange_primary rounded text-light_primary p-1 mt-2 m-2 text-center hover:scale-90 transition-all'>
+          Ver Receita
           </a>
         </ListGroup.Item>
       ))}

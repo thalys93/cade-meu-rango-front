@@ -148,5 +148,161 @@
         "Asse em forno médio por 30 minutos."
     ],
     "author": "Maikon Douglas"
+},
+{
+    "id": 7,
+    "title": "Pudim de Leite Condensado",
+    "type": "Doces",
+    "description": "O pudim de leite condensado é uma sobremesa tradicional, cremosa e deliciosa.",
+    "imageLink": "https://images.tcdn.com.br/img/img_prod/1103308/pudim_de_leite_condensado_120g_55_1_c60df80fae7b50b85f154d918445b04c.jpg",
+    "ingredients": [
+        "Leite condensado",
+        "Leite",
+        "Ovos",
+        "Açúcar"
+    ],
+    "instructions": [
+        "Bata no liquidificador o leite condensado, o leite e os ovos.",
+        "Caramelize uma forma com açúcar e despeje a mistura.",
+        "Asse em banho-maria por 45 minutos."
+    ],
+    "author": "Ana Rodrigues"
+},
+{
+    "id": 8,
+    "title": "Coxinhas de Frango",
+    "type": "Salgados",
+    "description": "As coxinhas de frango são um petisco brasileiro, recheadas com frango desfiado e deliciosas.",
+    "imageLink": "https://www.hojetemfrango.com.br/wp-content/uploads/2018/12/coxinha-de-frango-especial-seara.jpg",
+    "ingredients": [
+        "Peito de frango",
+        "Cebola",
+        "Alho",
+        "Massa de batata",
+        "Farinha de rosca",
+        "Óleo",
+        "Sal",
+        "Pimenta"
+    ],
+    "instructions": [
+        "Cozinhe o frango e desfie.",
+        "Refogue a cebola e o alho, adicione o frango desfiado e tempere com sal e pimenta.",
+        "Modele as coxinhas com a massa de batata, recheie com o frango e passe na farinha de rosca.",
+        "Frite em óleo quente até dourar."
+    ],
+    "author": "Carlos Silva"
+},
+{
+    "id": 9,
+    "title": "Salada de Frutas",
+    "type": "Outros",
+    "description": "Uma salada de frutas frescas é uma opção saudável e refrescante para qualquer ocasião.",
+    "imageLink": "https://static.itdg.com.br/images/1200-630/ed559632ca179391eab91a3a5daa98e2/116622-original.jpg",
+    "ingredients": [
+        "Maçã",
+        "Banana",
+        "Morango",
+        "Kiwi",
+        "Manga",
+        "Mel"
+    ],
+    "instructions": [
+        "Corte as frutas em pedaços e misture em uma tigela.",
+        "Regue com mel a gosto e misture novamente."
+    ],
+    "author": "Mariana Santos"
+},
+{
+    "id": 10,
+    "title": "Quiche de Espinafre",
+    "type": "Salgados",
+    "description": "A quiche de espinafre é uma torta salgada recheada com espinafre e queijo, perfeita para um lanche saboroso.",
+    "imageLink": "https://anamariabraga.globo.com/wp-content/uploads/2020/07/quiche-de-espinafre.jpg",
+    "ingredients": [
+        "Massa para quiche",
+        "Espinafre",
+        "Queijo gruyère",
+        "Ovos",
+        "Creme de leite",
+        "Noz-moscada",
+        "Sal",
+        "Pimenta"
+    ],
+    "instructions": [
+        "Cozinhe o espinafre e esprema para retirar o excesso de água.",
+        "Forre uma forma com a massa para quiche.",
+        "Misture o espinafre, queijo gruyère, ovos, creme de leite, noz-moscada, sal e pimenta.",
+        "Despeje a mistura na forma e asse por 30 minutos."
+    ],
+    "author": "Isabel Lima"
+},
+{
+    "id": 11,
+    "title": "Bolo de Cenoura",
+    "type": "Doces",
+    "description": "O bolo de cenoura é um clássico da culinária brasileira, macio e coberto com uma deliciosa calda de chocolate.",
+    "imageLink": "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/470bfbb41f979e963d1ef671207af0eb.jpg",
+    "ingredients": [
+        "Cenouras",
+        "Óleo",
+        "Ovos",
+        "Açúcar",
+        "Farinha de trigo",
+        "Fermento em pó",
+        "Chocolate em pó"
+    ],
+    "instructions": [
+        "Bata as cenouras, óleo e ovos no liquidificador.",
+        "Em uma tigela, misture o açúcar, farinha de trigo e fermento em pó.",
+        "Acrescente a mistura de cenoura à tigela e mexa bem.",
+        "Asse em forma untada por 40 minutos.",
+        "Prepare a calda de chocolate e cubra o bolo."
+    ],
+    "author": "Paula Fernandes"
+},
+{
+    "id": 12,
+    "title": "Guacamole",
+    "type": "Outros",
+    "description": "O guacamole é um molho mexicano feito com abacate, tomate, cebola e limão, perfeito para acompanhar nachos.",
+    "imageLink": "https://www.receiteria.com.br/wp-content/uploads/guacamole-facil-00.jpg",
+    "ingredients": [
+        "Abacate",
+        "Tomate",
+        "Cebola",
+        "Coentro",
+        "Limão",
+        "Sal",
+        "Pimenta"
+    ],
+    "instructions": [
+        "Amasse o abacate e misture com tomate, cebola e coentro picados.",
+        "Tempere com suco de limão, sal e pimenta a gosto."
+    ],
+    "author": "Javier Gonzalez"
+},
+{
+    "id": 13,
+    "title": "Strogonoff de Carne",
+    "type": "Salgados",
+    "description": "O strogonoff de carne é um prato russo muito popular no Brasil, com carne em tiras e um molho cremoso.",
+    "imageLink": "https://cdn.deliway.com.br/blog/base/078/3b3/038/carne-para-estrogonofe.jpg",
+    "ingredients": [
+        "Carne bovina",
+        "Cebola",
+        "Alho",
+        "Mostarda",
+        "Ketchup",
+        "Creme de leite",
+        "Sal",
+        "Pimenta"
+    ],
+    "instructions": [
+        "Em uma frigideira, doure a cebola e o alho.",
+        "Adicione a carne em tiras e cozinhe até dourar.",
+        "Acrescente mostarda e ketchup e misture bem.",
+        "Adicione o creme de leite e cozinhe até ficar cremoso."
+    ],
+    "author": "Luciana Oliveira"
 }
 ]
