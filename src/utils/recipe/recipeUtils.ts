@@ -10,6 +10,8 @@ export function RecipeUtils() {
 
     const [recipe, setRecipe] = useState<Recipe[]>([]);
 
+    const localaddress = 'http://localhost:5173/recipe/';
+
 
     interface Recipe {
         id: number;
@@ -48,5 +50,5 @@ export function RecipeUtils() {
         }
     }, [loading]);
 
-    return { recipe, loading, accountant}
+    return { recipe, loading, accountant, localaddress }
 }

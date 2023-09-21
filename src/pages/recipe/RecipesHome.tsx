@@ -21,7 +21,7 @@ import { Image } from 'react-bootstrap';
 
 function RecipesHome() {
 
-  const { recipe } = RecipeUtils();
+  const { recipe, localaddress } = RecipeUtils();
 
 
   return (
@@ -64,10 +64,10 @@ function RecipesHome() {
             <h1 className='ml-5'>- {r.title}</h1>
             <p className='text-sm ml-5 text-slate-700'>{r.description}</p>
           </div>
-
-          <div className='bg-orange_primary rounded text-light_primary p-2 mt-2 mb-2'>
-            <a href='' target='_blank'>Ver receita</a>
-          </div>
+          <a href={localaddress + r.id + '/' + r.title} target='_blank' 
+          className='bg-orange_primary rounded text-light_primary p-2 mt-2 mb-2'>          
+            Ver receita
+          </a>
         </ListGroup.Item>
       ))}
     </ListGroup>)
