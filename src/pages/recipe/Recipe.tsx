@@ -2,7 +2,7 @@ import React from 'react'
 import BannerComponent from '../components/BannerComponent'
 import { RecipeUtils } from '../../utils/recipe/recipeUtils';
 import { useParams } from 'react-router-dom';
-import { Image } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 import BackComponent from '../components/BackComponent';
 import { RecipeModel } from './../../utils/recipe/recipeUtils';
 
@@ -24,38 +24,48 @@ function Recipe() {
       <div className='absolute p-2'>
       <BackComponent/>
       </div>
-      <article className='p-4'>
+      <article className='p-10'>
       {recipe.filter(r => r.title === name).map((r) => (
-          <div className='font-body-rb text-dark_primary animate__animated animate__fadeIn'>
-            <div className='flex flex-row gap-20 items-center'>
-              {RecipeDescription(r)}
-              {RecipeImage(r)}
-            </div>
+          <Container className='font-body-rb text-dark_primary animate__animated animate__fadeIn'>
+            <Row className='items-center justify-center'>
+              <Col>
+                {RecipeDescription(r)}
+              </Col>
+              <Col>
+                {RecipeImage(r)}
+              </Col>
+            </Row>
 
-            <div className='flex flex-row gap-20 items-center mt-5'>
-              {Ingredients(r)}
-              {instructions(r)}
-            </div>              
-          </div>      
+            <Row className='items-center justify-center mt-5'>
+              <Col>
+                {Ingredients(r)}
+              </Col>
+              <Col>
+                {instructions(r)}
+              </Col>
+            </Row>              
+          </Container>      
         ))}
       </article>
     </section>
     </>
   )
 
-  function RecipeImage(r: RecipeModel) {
-    return <Image src={r.imageLink} alt={r.title} width={350} height={350} className='shadow-md customBorder shadow-slate-300' />
+  function RecipeImage(r: RecipeModel) {  
+    return <div>
+      <Image src={r.imageLink} alt={r.title} width={350} height={350} className='shadow-md customBorder shadow-slate-300' />
+    </div>
   }
 
   function RecipeDescription(r: RecipeModel) {
-    return <div className='flex flex-col'>
+    return <div className='flex flex-col justify-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>{r.title}</h1>
       <p className='text-start pt-2 w-56'>{r.description}</p>
     </div>;
   }
 
   function Ingredients(r: RecipeModel) {
-    return <div className='flex flex-col'>
+    return <div className='flex flex-col flex-wrap justify-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Ingredientes</h1>
       <ol className='text-start pt-2'>
         {r.ingredients.map((ri, id) => (
@@ -66,7 +76,7 @@ function Recipe() {
   }
 
   function instructions(r: RecipeModel) {
-    return<div className='flex flex-col'>
+    return<div className='flex flex-col flex-wrap justify-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Modo de preparo</h1>
       <ol className='text-start pt-2'>
         {r.instructions.map((rp: string, id: number) => (

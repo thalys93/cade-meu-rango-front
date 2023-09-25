@@ -31,7 +31,7 @@ function TipsHome() {
 
 
   function TipList() {
-    return <ListGroup as="ul" variant='flush' className='flex flex-wrap container justify-center content-center' horizontal>
+    return <ListGroup as="ul" className='flex flex-wrap container justify-center content-center' horizontal>
       {
       tip.length > 0 ? (
       tip.map((t , i ) => (
