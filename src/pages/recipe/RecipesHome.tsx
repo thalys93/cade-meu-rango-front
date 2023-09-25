@@ -28,7 +28,7 @@ function RecipesHome() {
     <section className='bg-light_primary font-body-rb rounded-b-xl'>
 
         <div className='flex justify-center p-2'>
-          <h1 className='text-xl font-body-rb underline underline-offset-'> Confira as Nossas Principais Receitas </h1>
+          <h1 className='text-xl font-body-rb underline underline-offset-4 select-none'> Confira as Nossas Principais Receitas </h1>
         </div>
 
       <article className='flex justify-center'>
@@ -92,14 +92,20 @@ function RecipesHome() {
 
   function RecipesCarousel() {
     return(
-      <Carousel fade slide>
+      <Carousel fade slide className='shadow-md shadow-slate-400'>
         {        
         recipe.slice(0,4).map((r, i) => (          
         <Carousel.Item key={i}>          
-            <Image src={r.imageLink} className='GalleryIMG' thumbnail/>
+            <Image src={r.imageLink} className='GalleryIMG'/>
           <Carousel.Caption className='bg-orange_primary'>
             <h3 className='text-3xl font-title-sy select-none'>{r.title}</h3>
-            <p className="text-xl font-title-sy select-none">{r.description}</p>
+            <p className="text-xl font-title-sy select-none">
+              {r.description.length > 50 ? (
+                `${r.description.slice(0, 30)}...`
+                ) : (
+                  r.description
+              )}
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         ))

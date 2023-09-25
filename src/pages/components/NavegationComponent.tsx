@@ -13,8 +13,8 @@ function NavegationComponent() {
 
 
   return (
-    <Tabs defaultActiveKey="recipes" className='bg-light_primary custom-tabs p-2'>
-        <Tab eventKey="home" title="Home" className='tabLink'>
+    <Tabs defaultActiveKey="recipes" className='bg-light_primary custom-tabs p-2 justify-center'>
+        <Tab eventKey="about" title="Sobre">
             <Home/>
         </Tab>
         

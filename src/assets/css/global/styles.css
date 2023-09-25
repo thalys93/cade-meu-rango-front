@@ -58,6 +58,11 @@ body {
     width: 850px;
     height: 300px;
     object-fit: cover;
+    border-radius: 1rem 0rem 1rem 0rem;  
+}
+
+.customBorder{
+    border-radius: 1rem 0rem 1rem 0rem; 
 }
     
 .carouselAbsolute{
