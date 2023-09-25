@@ -25,17 +25,6 @@ export function RecipeUtils() {
     const localaddress = 'http://localhost:5173/recipe/';
 
 
-    interface RecipeModel {
-        id: number;
-        title: string;
-        type: string;
-        description: string;
-        imageLink: string;
-        ingredients: Array<string>;
-        instructions: Array<string>;
-        author: string;
-    }
-
     useEffect(() => {
         const fetchData = async () => {
             try {
