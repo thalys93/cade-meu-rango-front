@@ -36,7 +36,7 @@ function RecipesHome() {
           {RecipesCarousel()}
         </div>
       </article>
-      <article className='pt-5'> 
+      <article className='pt-5 flex'> 
         <Row>
           <Col>
             {RecipesList({title: 'Salgados', type: 'Salgados'})}

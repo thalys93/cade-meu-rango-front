@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Col, ListGroupItem, Row } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { ListGroup } from 'react-bootstrap'
 import { TipUtils } from '../../utils/tip/tipUtils'
 
@@ -20,7 +20,7 @@ function TipsHome() {
 
   return (
     <section className='bg-light_primary font-body-rb rounded-b-xl'>
-      <div className='flex justify-center p-2'>
+      <div className='flex flex-wrap justify-center p-2'>
         <h1 className='text-xl font-body-rb underline underline-offset-4 select-none'> Confira nossas Principais Dicas </h1>
       </div>
       <article className='flex flex-row justify-center animate__animated animate__fadeIn'>         
@@ -31,16 +31,16 @@ function TipsHome() {
 
 
   function TipList() {
-    return <ListGroup as="ul">
+    return <ListGroup as="ul" variant='flush' className='flex flex-wrap container justify-center content-center' horizontal>
       {
       tip.length > 0 ? (
       tip.map((t , i ) => (
         accountant > i ? (
-      <ListGroup.Item as="li" key={i} className='flex'>
-      <Card className='container bg-light_primary hover:scale-105 transition-all rounded-b-xl'>
+      <ListGroup.Item as="li" key={i}>
+      <Card className='w-96 h-40 max-h40 hover:scale-105 transition-all rounded-b-xl'>
         <Card.Body>
-          <Card.Title className='underline underline-offset-4'>{t.title}</Card.Title>
-          <Card.Text>{t.description} <br/> {t.publishDate}</Card.Text>
+          <Card.Title className='underline text-orange_primary font-bold underline-offset-4'>{t.title}</Card.Title>
+          <Card.Text>{t.description} <br/> <span className='text-orange_primary font-bold'>{t.publishDate}</span></Card.Text>
         </Card.Body>        
       </Card>
       </ListGroup.Item>
