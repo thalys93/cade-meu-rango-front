@@ -4,10 +4,6 @@ import { useEffect } from 'react';
 
 const hatSVG = '/assets/svg/chapeuzinho.svg'
 
-// TODO: 
-// 1. Criar componente de loading e adicionar um spinner do material UI
-
-
 function HatLoadingComponent() {
 
   const [loadingStrings] = useState<string[]>([
@@ -33,7 +29,7 @@ function HatLoadingComponent() {
         <div className='pl-3 animate-pulse'>
           <img src={hatSVG} alt="Chapeuzinho" width={120} height={120} />
         </div>        
-      <span className='text-1xl text-center font-title-sy text-light_primary select-none animate-pulse '>{loadingStrings[currentIndex]}</span>                    
+      <span className='text-1xl text-center font-body-rb text-light_primary select-none animate-pulse '>{loadingStrings[currentIndex]}</span>                    
     </article>
     </section>
   )

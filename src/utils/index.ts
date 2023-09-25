@@ -7,20 +7,22 @@ export function IndexUtils() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
+        const localStorageLoading = localStorage.getItem("isLoading");
+
+        if (localStorageLoading === "false") {
             setIsLoading(false);
-        }, 2500)
+            navigate('/');
+        } else {
+            const timeout = setTimeout(() => {            
+            localStorage.setItem("isLoading", "false")
+            setIsLoading(false);            
+        }, 2500);
 
         return () => {
             clearTimeout(timeout);
         }
-    }, []);
-
-useEffect(() => {
-    if (!isLoading) {
-        navigate('/');
     }
-}, [isLoading, navigate]);
+}, [navigate]);
 
 
 return { isLoading };

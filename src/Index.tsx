@@ -1,7 +1,7 @@
 import React from 'react'
 import { IndexUtils } from './utils/index';
 
-import HatLoadingComponent from "./pages/components/hatLoadingComponent";
+import HatLoadingComponent from "./pages/components/HatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
 import NavegationComponent from './pages/components/NavegationComponent';
 import FooterComponent from './pages/components/FooterComponent';

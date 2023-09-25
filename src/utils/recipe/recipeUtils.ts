@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useState, useEffect } from "react";
 //import { apiCall } from '../api/apiUtils'
 import localAPI from './recipes.json'
@@ -41,8 +42,8 @@ export function RecipeUtils() {
     useEffect(() => {
         if(loading) {
             const interval = setInterval(() => {
-                setAccountant(accountant => accountant + 1);
-            }, 120);
+                setAccountant((accountant) => accountant + 1);
+            }, 210);
 
             return() => {
                 clearInterval(interval);

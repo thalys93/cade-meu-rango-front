@@ -21,14 +21,18 @@ import { Image } from 'react-bootstrap';
 
 function RecipesHome() {
 
-  const { recipe, localaddress } = RecipeUtils();
+  const { recipe, localaddress, accountant } = RecipeUtils();
 
 
   return (
     <section className='bg-light_primary font-body-rb rounded-b-xl'>
 
+        <div className='flex justify-center p-2'>
+          <h1 className='text-xl font-body-rb underline underline-offset-'> Confira as Nossas Principais Receitas </h1>
+        </div>
+
       <article className='flex justify-center'>
-        <div className='carouselAbsolute'> 
+        <div className='carouselAbsolute animate__animated animate__fadeIn'> 
           {RecipesCarousel()}
         </div>
       </article>
@@ -55,14 +59,23 @@ function RecipesHome() {
     return (
     <ListGroup as="ul" className='flex'>
       <h1 className='mb-2 text-xl bg-orange_primary text-light_primary text-center'>{props.title}</h1> 
-      {recipe.filter(r => r.type === props.type).map((r, i) => (
-        <ListGroup.Item as="li" key={i} className='flex'>             
+      { 
+      recipe.length > 0 ? (
+      recipe.filter(r => r.type === props.type).map((r, i) => (
+        accountant > i ? (
+        <ListGroup.Item as="li" key={i} className='flex animate__animated animate__fadeIn'>
           <div className='ListIMG container'>
             <img src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"}/>
               
           <div className='flex flex-col text-start'>
             <h1 className='ml-2'>- {r.title}</h1>
-            <p className='text-sm ml-2 text-slate-700'>{r.description}</p>
+            <p className='text-sm ml-2 text-slate-700'>
+              {r.description.length > 50 ? (
+                `${r.description.slice(0, 50)}...`
+              ) : (
+                r.description
+              )}
+            </p>
           </div>
           </div>
           <a
@@ -71,15 +84,17 @@ function RecipesHome() {
           Ver Receita
           </a>
         </ListGroup.Item>
-      ))}
+        ) : null
+      ))
+      ) : null}              
     </ListGroup>)
   }
 
   function RecipesCarousel() {
     return(
       <Carousel fade slide>
-        {
-        recipe.map((r, i) => (
+        {        
+        recipe.slice(0,4).map((r, i) => (          
         <Carousel.Item key={i}>          
             <Image src={r.imageLink} className='GalleryIMG' thumbnail/>
           <Carousel.Caption className='bg-orange_primary'>
