@@ -150,25 +150,6 @@
     "author": "Maikon Douglas"
 },
 {
-    "id": 7,
-    "title": "Pudim de Leite Condensado",
-    "type": "Doces",
-    "description": "O pudim de leite condensado é uma sobremesa tradicional, cremosa e deliciosa.",
-    "imageLink": "https://images.tcdn.com.br/img/img_prod/1103308/pudim_de_leite_condensado_120g_55_1_c60df80fae7b50b85f154d918445b04c.jpg",
-    "ingredients": [
-        "Leite condensado",
-        "Leite",
-        "Ovos",
-        "Açúcar"
-    ],
-    "instructions": [
-        "Bata no liquidificador o leite condensado, o leite e os ovos.",
-        "Caramelize uma forma com açúcar e despeje a mistura.",
-        "Asse em banho-maria por 45 minutos."
-    ],
-    "author": "Ana Rodrigues"
-},
-{
     "id": 8,
     "title": "Coxinhas de Frango",
     "type": "Salgados",
@@ -304,5 +285,27 @@
         "Adicione o creme de leite e cozinhe até ficar cremoso."
     ],
     "author": "Luciana Oliveira"
+},
+{
+    "id": 14,
+    "title": "Brigadeiro",
+    "type": "Doces",
+    "description": "O brigadeiro é um doce brasileiro tradicional, feito com chocolate e leite condensado.",
+    "imageLink": "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSRAJRjiDEYHinMgUSOClGrRBVtQ0PIJkWfFB-jMav8QEWF9GSjz3nCJNNVGcbbZmtH",
+    "ingredients": [
+        "1 lata de leite condensado",
+        "2 colheres de sopa de chocolate em pó",
+        "1 colher de sopa de manteiga",
+        "Chocolate granulado (para decorar)"
+    ],
+    "instructions": [
+        "Em uma panela, misture o leite condensado, o chocolate em pó e a manteiga.",
+        "Leve ao fogo baixo, mexendo sempre, até desgrudar do fundo da panela e formar uma massa consistente.",
+        "Retire do fogo e deixe esfriar.",
+        "Com as mãos untadas com manteiga, faça pequenas bolinhas e passe no chocolate granulado para decorar.",
+        "Sirva em forminhas de papel."
+    ],
+    "author": "Ana Silva"
 }
+
 ]

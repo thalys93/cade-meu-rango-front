@@ -8,7 +8,9 @@ import { RecipeModel } from './../../utils/recipe/recipeUtils';
 
 
 /* TODO:
-  - Terminar de corrigir a responsividade da página 
+  - Terminar de corrigir a responsividade da página (check)
+  - Adicionar um botão de voltar para a página anterior (check)  
+  - Adicionar um tamanho especifico para a imagem da receita (usar a da coxinha como base)
 */
 
 function Recipe() {
@@ -24,10 +26,11 @@ function Recipe() {
       <div className='absolute p-2'>
       <BackComponent/>
       </div>
-      <article className='p-10'>
+      <article className='p-2 pb-5'>
       {recipe.filter(r => r.title === name).map((r) => (
-          <Container className='font-body-rb text-dark_primary animate__animated animate__fadeIn'>
-            <Row className='items-center justify-center'>
+        <div className='font-body-rb text-dark_primary animate__animated animate__fadeIn mt-5'>
+          <Container className='flex justify-center'>
+            <Row className='items-center'>
               <Col>
                 {RecipeDescription(r)}
               </Col>
@@ -35,17 +38,21 @@ function Recipe() {
                 {RecipeImage(r)}
               </Col>
             </Row>
-
-            <Row className='items-center justify-center mt-5'>
+            </Container>
+            
+            
+            <Container className='flex justify-center mt-4'>
+            <Row className='items-center'>
               <Col>
                 {Ingredients(r)}
               </Col>
               <Col>
                 {instructions(r)}
               </Col>
-            </Row>              
-          </Container>      
-        ))}
+            </Row>                          
+          </Container>   
+        </div>
+      ))}
       </article>
     </section>
     </>
@@ -65,7 +72,7 @@ function Recipe() {
   }
 
   function Ingredients(r: RecipeModel) {
-    return <div className='flex flex-col flex-wrap justify-center'>
+    return <div className='flex flex-col flex-wrap justify-center content-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Ingredientes</h1>
       <ol className='text-start pt-2'>
         {r.ingredients.map((ri, id) => (
@@ -76,7 +83,7 @@ function Recipe() {
   }
 
   function instructions(r: RecipeModel) {
-    return<div className='flex flex-col flex-wrap justify-center'>
+    return<div className='flex flex-col flex-wrap justify-center content-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Modo de preparo</h1>
       <ol className='text-start pt-2'>
         {r.instructions.map((rp: string, id: number) => (

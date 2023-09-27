@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 
+
+*{
+    transition-duration: 1s;
+}
+
+
 body {            
     /* background-image: linear-gradient(to right top, #ff7353, #fc6341, #f8512f, #f33d1b, #ee2200); */
     background-image: url('/public/assets/png/LightPattern.png');
@@ -12,9 +18,8 @@ body {
     object-fit: cover;
     
     height: 100vh;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
-
 
 
 .loading-logo-align{
