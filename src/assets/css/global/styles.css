@@ -69,6 +69,11 @@ body {
 .customBorder{
     border-radius: 1rem 0rem 1rem 0rem; 
 }
+
+.customIMG-size{    
+    width: 360px !important;
+    object-fit: cover;
+}
     
 .carouselAbsolute{
     width: 850px;

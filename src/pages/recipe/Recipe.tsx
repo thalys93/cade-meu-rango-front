@@ -60,7 +60,7 @@ function Recipe() {
 
   function RecipeImage(r: RecipeModel) {  
     return <div>
-      <Image src={r.imageLink} alt={r.title} width={350} height={350} className='shadow-md customBorder shadow-slate-300' />
+      <Image src={r.imageLink} alt={r.title} className='shadow-md customBorder customIMG-size shadow-slate-300' />
     </div>
   }
 
