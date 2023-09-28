@@ -40,10 +40,10 @@ function OffCanvasComponent() {
                 <ListGroupItem as="a" href='auth/login' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <BiUserCircle className='mt-1 mr-2'/> Login
                 </ListGroupItem>
-                <ListGroupItem as="a" href='config' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                <ListGroupItem as="a" disabled href='config' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <FaWrench className='mt-1 mr-2'/> Configurações
                 </ListGroupItem>
-                <ListGroupItem as="a" className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                <ListGroupItem as="a" disabled className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <BsDoorOpen className='mt-1 mr-2'/>Sair
                 </ListGroupItem>
             </ListGroup>        

@@ -1,18 +1,13 @@
 import React, { useContext } from 'react'
-import { Card } from 'react-bootstrap'
+import { Badge, Card } from 'react-bootstrap'
 import { ListGroup } from 'react-bootstrap'
 import { TipUtils } from '../../utils/tip/tipUtils'
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
+import '../components/custom/avatarBadge.css'
 
 /* TODO: 
-  - add galeries in tips home page 
-  - add list of tips 3 per row
-  - add pagination
-  - add search
-  - add filter
-  - add sort
-  - add tips card
   - add tips card details and author name
+  - add tips card author image
 */
 
 function TipsHome() {
@@ -44,7 +39,10 @@ function TipsHome() {
       <Card className={isDarkMode? 'w-96 h-40 max-h40 hover:scale-105 transition-all rounded-b-xl bg-slate-800' : 'w-96 h-40 max-h40 hover:scale-105 transition-all rounded-b-xl'}>
         <Card.Body>
           <Card.Title className='underline text-orange_primary font-bold underline-offset-4'>{t.title}</Card.Title>
-          <Card.Text className={isDarkMode? 'text-light' : 'text-slate-900'}>{t.description} <br/> <span className='text-orange_primary font-bold'>{t.publishDate}</span></Card.Text>
+          <Card.Text className={isDarkMode? 'text-light' : 'text-slate-900'}>{t.description}</Card.Text>
+          <Badge className='text-orange_primary bg-transparent font-bold flex flex-row content-center'>    
+            {t.publishDate}
+          </Badge>
         </Card.Body>        
       </Card>
       </ListGroup.Item>
