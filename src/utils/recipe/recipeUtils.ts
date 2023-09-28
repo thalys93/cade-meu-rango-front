@@ -22,8 +22,6 @@ export function RecipeUtils() {
 
     const [recipe, setRecipe] = useState<RecipeModel[]>([]);
 
-    const localaddress = 'http://localhost:5173/recipe/';
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,5 +49,5 @@ export function RecipeUtils() {
         }
     }, [loading]);
 
-    return { recipe, loading, accountant, localaddress }
+    return { recipe, loading, accountant }
 }

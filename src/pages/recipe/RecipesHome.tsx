@@ -22,7 +22,7 @@ import { DarkModeContext } from '../../utils/context/DarkModeContext'
 
 function RecipesHome() {
 
-  const { recipe, localaddress, accountant } = RecipeUtils();
+  const { recipe, accountant } = RecipeUtils();
 
   const {isDarkMode} = useContext(DarkModeContext)
 
@@ -82,7 +82,7 @@ function RecipesHome() {
           </div>
           </div>
           <a
-            href={localaddress + r.id + '/' + r.title}
+            href={'recipe/' + r.id + '/' + r.title}
             className='bg-orange_primary rounded text-light_primary p-1 mt-2 m-2 text-center text-light hover:scale-90 transition-all'>
           Ver Receita
           </a>

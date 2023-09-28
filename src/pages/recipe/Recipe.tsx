@@ -6,7 +6,6 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 import { RecipeModel } from './../../utils/recipe/recipeUtils';
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import BackComponent from '../components/BackComponent';
-import DarkModeComponent from './../components/DarkModeComponent';
 
 
 /* TODO:
