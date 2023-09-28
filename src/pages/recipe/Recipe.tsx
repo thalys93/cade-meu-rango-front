@@ -7,13 +7,6 @@ import { RecipeModel } from './../../utils/recipe/recipeUtils';
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import BackComponent from '../components/BackComponent';
 
-
-/* TODO:
-  - Terminar de corrigir a responsividade da página (check)
-  - Adicionar um botão de voltar para a página anterior (check)  
-  - Adicionar um tamanho especifico para a imagem da receita (usar a da coxinha como base)
-*/
-
 function Recipe() {
 
   const {recipe} = RecipeUtils();  
@@ -77,8 +70,7 @@ function Recipe() {
       <ol className='text-start pt-2'>
         {r.ingredients.map((ri, id) => (
           <li key={id}>
-            <span className='text-orange_primary font-bold'>{id}</span> - 
-            <span className={isDarkMode? 'text-slate-300' : 'text-slate-900'}>{ri}</span>
+            <span className='text-orange_primary font-bold'>{id}</span> -  <span className={isDarkMode? 'text-slate-300' : 'text-slate-900'}>{ri}</span>
           </li>
         ))}
       </ol>

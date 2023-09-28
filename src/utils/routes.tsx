@@ -13,6 +13,7 @@ import EditTip from '../pages/tip/EditTip'
 
 import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
+import Config from '../pages/config/Config'
 import React from "react";
 
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
                 element: <Register/>
             }
         ]
+    },
+    {
+        path: '/config',
+        element: <Config/>
     }
 
 ])
