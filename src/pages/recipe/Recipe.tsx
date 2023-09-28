@@ -24,8 +24,7 @@ function Recipe() {
   
 
   return (
-    <>
-    <DarkModeComponent/>
+    <>    
     <BannerComponent/>
     <section className={isDarkMode? 'bg-slate-700 m-3 rounded' : 'bg-white m-3 rounded'}>   
       <div className='absolute p-2'>

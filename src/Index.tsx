@@ -5,7 +5,6 @@ import HatLoadingComponent from "./pages/components/HatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
 import NavegationComponent from './pages/components/NavegationComponent';
 import FooterComponent from './pages/components/FooterComponent';
-import DarkModeComponent from './pages/components/DarkModeComponent';
 
 function Index() {
 
@@ -20,8 +19,7 @@ function Index() {
     ) : (
       <section>
         <article className='p-3'>
-        <nav>
-          <DarkModeComponent/>
+        <nav>          
           <BannerComponent/>
           <NavegationComponent/>
         </nav>
