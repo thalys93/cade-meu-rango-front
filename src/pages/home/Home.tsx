@@ -12,10 +12,14 @@ function Home() {
   return (
     <section className={isDarkMode? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>      
         <article className='container-fluid'> 
-          <h3 className='text-xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango!! </h3>          
-          <h5 className='font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
+          <h3 className='text-xl pb-2 pt-2 select-none'> Bem-vindos ao Cadê Meu Rango!! </h3>          
+          <p className='font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
             Nosso site é um paraíso culinário projetado para entusiastas da cozinha e amantes da gastronomia.
-          </h5>      
+          </p> 
+            <br/>
+          <p className='font-light'>
+          Estamos constantemente aprimorando a plataforma e adicionando novas funcionalidades e melhorias para tornar a sua experiência ainda mais incrível! Fique ligado para descobrir todas as novidades que preparamos para você.
+          </p>
         </article>
 
         <article className="container-fluid">
@@ -24,18 +28,16 @@ function Home() {
         </article>
 
         <article className="container-fluid">
-          <h3 className='text-xl pb-2 pt-3 font-light '> Sobre Nós: </h3>
-          <p className='font-body-rb  font-light'>
+          <h3 className='text-xl pb-2 pt-3 font-light '> Sobre mim: </h3>
+          {/* <p className='font-body-rb  font-light'>
             <b className='text-orange_primary font-body-rb'> O Cadê Meu Rango </b> é Resultado do trabalho conjunto de um grupo de alunos dedicados e experientes, <br/>
             Apaixonados por Tecnologia.
-          </p>
-            <br/>
+          </p> */}
+            {/* <br/> */}
           <p className='font-light'>
-            Somos uma equipe de desenvolvedores apaixonados por tecnologia e aspirantes em gastronomia.
-            Nosso objetivo é criar uma comunidade online para compartilhar receitas e dicas culinárias.
-            Seja você um chef amador ou um cozinheiro experiente, nosso site é o lugar perfeito para você. <br/>
+            Sou um desenvolvedor apaixonado por tecnologia e um aspirante em gastronomia. Meu objetivo é criar uma comunidade online para compartilhar receitas e dicas culinárias. Seja você um chef amador ou um cozinheiro experiente, meu site é o lugar perfeito para você. <br/>
             <b className='text-orange_primary font-body-rb underline underline-offset-8'>
-              Conheça a equipe que desenvolveu está plataforma:
+              Meu github:
             </b>
           </p>
 

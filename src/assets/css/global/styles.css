@@ -20,6 +20,19 @@ body {
     box-sizing: border-box;    
 }
 
+body::-webkit-scrollbar{
+    width: 0.7rem;
+}
+
+body::-webkit-scrollbar-track{
+    background-color: #2b2d31;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #ff2600;
+    border-radius: 1rem;
+}
+
 .Darkbody{
     background-image: url("/assets/png/bgPatternDark.png");
     background-color: #2b2d31;
@@ -78,8 +91,9 @@ body {
     border-radius: 1rem 0rem 1rem 0rem; 
 }
 
-.customIMG-size{    
-    width: 360px !important;
+.customIMG-size{      
+    height: 10rem;
+    width: 40.5rem;
     object-fit: cover;
 }
     

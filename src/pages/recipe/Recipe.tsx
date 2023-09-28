@@ -37,25 +37,13 @@ function Recipe() {
           <Container className='flex justify-center'>
             <Row className='items-center'>
               <Col>
-                {RecipeDescription(r)}
+                {RecipeDescription(r)}                       
               </Col>
               <Col>
-                {RecipeImage(r)}
+                {RecipeImage(r)}                
               </Col>
             </Row>
-            </Container>
-            
-            
-            <Container className='flex justify-center mt-4'>
-            <Row className='items-center'>
-              <Col>
-                {Ingredients(r)}
-              </Col>
-              <Col>
-                {instructions(r)}
-              </Col>
-            </Row>                          
-          </Container>   
+            </Container>                     
         </div>
       ))}
       </article>
@@ -64,20 +52,29 @@ function Recipe() {
   )
 
   function RecipeImage(r: RecipeModel) {  
-    return <div>
-      <Image src={r.imageLink} alt={r.title} className={isDarkMode? 'shadow-md customBorder customIMG-size shadow-slate-900' : 'shadow-md customBorder customIMG-size shadow-slate-300'} />
+    return <div className='flex flex-col justify-center content-center'>
+    <Image src={r.imageLink} alt={r.title} 
+    className={isDarkMode? 'shadow-md customBorder customIMG-size shadow-slate-900' : 'shadow-md customBorder shadow-slate-300 customIMG-size'}
+    fluid/>
+    {instructions(r)}
     </div>
+
   }
 
   function RecipeDescription(r: RecipeModel) {
-    return <div className='flex flex-col justify-center'>
+    return(
+    <div className='flex flex-col justify-center'>
       <h1 className='text-2xl text-start underline underline-offset-8'>{r.title}</h1>
       <p className={isDarkMode? 'text-start pt-2 w-56 text-slate-200' : 'text-start pt-2 w-56'}>{r.description}</p>
-    </div>;
+      <div>
+        {Ingredients(r)}
+      </div>
+    </div>
+    )
   }
 
   function Ingredients(r: RecipeModel) {
-    return <div className='flex flex-col flex-wrap justify-center content-center'>
+    return <div className='flex flex-col content-center mt-4'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Ingredientes</h1>
       <ol className='text-start pt-2'>
         {r.ingredients.map((ri, id) => (
@@ -91,7 +88,7 @@ function Recipe() {
   }
 
   function instructions(r: RecipeModel) {
-    return<div className='flex flex-col flex-wrap justify-center content-center'>
+    return<div className='flex flex-col flex-wrap content-center mt-4'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Modo de preparo</h1>
       <ol className='text-start pt-2'>
         {r.instructions.map((rp: string, id: number) => (

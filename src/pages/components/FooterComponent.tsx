@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from 'react-icons/ai';
+import { DarkModeContext } from '../../utils/context/DarkModeContext';
 
 function FooterComponent() {
+    const {isDarkMode} = useContext(DarkModeContext)
 
   return (
-    <section className='w-full text-center bg-slate-800 p-2'>
+    <section className={isDarkMode? 'w-full text-center bg-slate-800 p-2' : 'w-full text-center bg-orange_secondary p-2'}>
         <article className='flex justify-between'>
             <div className='flex justify-start pt-3 self-start'>
                 <h2 className='font-body-rb text-slate-100 select-none'>© 2023 Cadê Meu Rango. Todos os direitos reservados.</h2>
