@@ -7,17 +7,25 @@
 
 
 *{
-    transition-duration: 1s;
+    transition-duration: 0.2s;
 }
 
 
-body {            
-    /* background-image: linear-gradient(to right top, #ff7353, #fc6341, #f8512f, #f33d1b, #ee2200); */
-    background-image: url('/public/assets/png/LightPattern.png');
+body {                
+    background-image: url("/assets/png/bgPattern.png");
+    background-color: orangered;
     background-size: contain;
     object-fit: cover;
-    
-    height: 100vh;
+        
+    box-sizing: border-box;    
+}
+
+.Darkbody{
+    background-image: url("/assets/png/bgPatternDark.png");
+    background-color: #2b2d31;
+    background-size: contain;
+    object-fit: cover;
+        
     box-sizing: border-box;    
 }
 
@@ -33,14 +41,14 @@ body {
 }
 
 .imgBG{
-    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/v1695040147/Cad%C3%AA%20Meu%20Rango/banner_utjdxx.png);
+    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/c_thumb,w_2844,h_718,g_auto/v1695040147/Cad%C3%AA%20Meu%20Rango/banner_utjdxx.png);
     background-size: cover;
     object-fit: cover;
 }
 
 
 .imgBGDARK{
-    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/v1695040152/Cad%C3%AA%20Meu%20Rango/bannerDark_fwh1gr.png);
+    background-image: url(https://res.cloudinary.com/dh39ahmpj/image/upload/c_thumb,w_2844,h_718,g_auto/v1695040152/Cad%C3%AA%20Meu%20Rango/bannerDark_fwh1gr.png);
     background-size: cover;
     object-fit: cover;
 }

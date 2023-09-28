@@ -1,25 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GiMoon } from 'react-icons/gi'
 import { BsSun } from 'react-icons/bs'
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 function DarkModeComponent() {
 
-    const [isDarkMode, setIsDarkMode] = React.useState(false)
+  const { isDarkMode, toggleDarkMode} = useContext(DarkModeContext)
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const renderTooltip = (props: any) => (
+        <Tooltip {...props}>
+          Mudar para o modo {isDarkMode? 'claro' : 'escuro'}?
+        </Tooltip>
+      );
 
-    const handleDarkMode = () => {
-        setIsDarkMode(!isDarkMode)
-        const html = document.querySelector('html')
-        if (html) {
-            html.classList.toggle('dark')
-        }else{
-            console.log('erro')
-        }      
-    }
 
   return (
-    <button className='absolute p-2 right-8 mt-2 bg-orange_primary rounded-full' onClick={handleDarkMode}>
-        {isDarkMode ? <GiMoon className='text-2xl transition-all text-white'/> : <BsSun className='text-2xl transition-all text-white' />}
+    <OverlayTrigger overlay={renderTooltip} placement='bottom'>
+    <button className='absolute p-2 right-8 mt-2 bg-orange_primary rounded-full' onClick={toggleDarkMode}>
+        {!isDarkMode ? <GiMoon className='text-2xl transition-all text-white'/> : <BsSun className='text-2xl transition-all text-white' />}
     </button>
+    </OverlayTrigger>
   )
 }
 

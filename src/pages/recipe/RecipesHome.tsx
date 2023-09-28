@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 
 import { Col, Row } from 'react-bootstrap'
 import { ListGroup } from 'react-bootstrap'
 import { RecipeUtils } from '../../utils/recipe/recipeUtils'
 import { Image } from 'react-bootstrap';
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
 
 /* TODO: 
   - add list of recipes 3 per row (improves layout)
@@ -23,9 +24,12 @@ function RecipesHome() {
 
   const { recipe, localaddress, accountant } = RecipeUtils();
 
+  const {isDarkMode} = useContext(DarkModeContext)
+
+
 
   return (
-    <section className='bg-light_primary font-body-rb rounded-b-xl'>
+    <section className={isDarkMode? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>
 
         <div className='flex justify-center p-2'>
           <h1 className='text-xl font-body-rb underline underline-offset-4 select-none'> Confira as Nossas Principais Receitas </h1>
@@ -57,19 +61,18 @@ function RecipesHome() {
 
   function RecipesList(props: { title?: string , type?: string}) {
     return (
-    <ListGroup as="ul" className='flex'>
-      <h1 className='mb-2 text-xl bg-orange_primary text-light_primary text-center'>{props.title}</h1> 
+    <ListGroup as="ul" className='flex p-2'>
+      <h1 className='mb-2 text-xl bg-orange_primary text-white text-center'>{props.title}</h1> 
       { 
       recipe.length > 0 ? (
       recipe.filter(r => r.type === props.type).map((r, i) => (
         accountant > i ? (
-        <ListGroup.Item as="li" key={i} className='flex animate__animated animate__fadeIn'>
+        <ListGroup.Item as="li" key={i} className={isDarkMode? 'flex animate__animated animate__fadein bg-slate-800 border-none text-light' : 'flex animate__animated animate__fadeIn'}>
           <div className='ListIMG container'>
-            <img src={r.imageLink ? r.imageLink : "https://via.placeholder.com/1080x1080"}/>
-              
+            <img src={r.imageLink}/>              
           <div className='flex flex-col text-start'>
             <h1 className='ml-2'>- {r.title}</h1>
-            <p className='text-sm ml-2 text-slate-700'>
+            <p className={isDarkMode? 'text-sm ml-2 text-slate-400' : 'text-sm ml-2 text-slate-700'}>
               {r.description.length > 50 ? (
                 `${r.description.slice(0, 50)}...`
               ) : (
@@ -80,7 +83,7 @@ function RecipesHome() {
           </div>
           <a
             href={localaddress + r.id + '/' + r.title}
-            className='bg-orange_primary rounded text-light_primary p-1 mt-2 m-2 text-center hover:scale-90 transition-all'>
+            className='bg-orange_primary rounded text-light_primary p-1 mt-2 m-2 text-center text-light hover:scale-90 transition-all'>
           Ver Receita
           </a>
         </ListGroup.Item>
@@ -92,7 +95,7 @@ function RecipesHome() {
 
   function RecipesCarousel() {
     return(
-      <Carousel fade slide className='shadow-md shadow-slate-400'>
+      <Carousel fade slide className={isDarkMode? 'shadow-md shadow-slate-900' : 'shadow-md shadow-slate-400'}>
         {        
         recipe.slice(0,4).map((r, i) => (          
         <Carousel.Item key={i}>          

@@ -1,23 +1,44 @@
 .custom-tabs{
     gap: 1rem;
+    border-color: #00000000;
 }
 
-.nav-link{
-    color: #0d0d13;
+.custom-tabsDark{
+    gap: 1rem;
 }
 
-.nav-linkDark{
-    color: #ffffff;
+.custom-tabsDark .nav-link{
+    color: #ff4f28;
 }
 
+.custom-tabsDark .nav-link.active {
+    background-color: #ff4f28;
+    color: white;
+    border-color: transparent;
+}
+
+.custom-tabsDark .nav-link:hover {
+        border-color: #ff4f28;
+        transition: all;
+        transition-duration: 0.2s;
+        scale: 1.1;
+}
+
+
+
+.custom-tabs .nav-link{
+    color: #ff4f28;
+}
 
 .custom-tabs .nav-link.active {
     background-color: #ff5732;
     color: white;
-    border-color: #00000000;
+    border-color: transparent;
 }
 
 .custom-tabs .nav-link:hover {
-        border-color: #000000;
-        color: #ff5732; 
+    border-color: #ff4f28;    
+    transition: all;
+    transition-duration: 0.2s;
+    scale: 1.1;
 }

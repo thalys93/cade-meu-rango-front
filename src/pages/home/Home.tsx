@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Accordion, Figure } from 'react-bootstrap'
+import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import '../components/custom/accordion.css'
 
 function Home() {
 
+  const {isDarkMode} = useContext(DarkModeContext)
+
+
 
   return (
-    <section className='bg-light_primary dark:bg-slate-900 dark:text-white font-body-rb rounded-b-xl'>      
+    <section className={isDarkMode? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>      
         <article className='container-fluid'> 
           <h3 className='text-xl pb-2 pt-2'> Bem-vindos ao Cadê Meu Rango!! </h3>          
           <h5 className='font-light'> O Seu destino online para compartilhar, categorizar e cadastrar suas receitas favoritas! <br />
@@ -55,7 +59,7 @@ function Home() {
           </a>
           <Figure.Caption className='text-center font-body-rb '>
             <h5 className='text-orange_primary font-bold'>Thalys</h5>
-            <span className='text-dark_primary dark:text-light_primary'> Full-Stack Dev</span>
+            <span className={isDarkMode? 'text-white' : 'text-slate-900 '}> Full-Stack Dev</span>
           </Figure.Caption>
         </Figure>
       </li>
@@ -63,42 +67,42 @@ function Home() {
   }
 
   function SiteInstructions() {
-    return (
+    return (      
     <Accordion flush alwaysOpen>
-      <Accordion.Item eventKey="0" className='dark:bg-slate-700'>
-        <Accordion.Header> <span className='dark:text-light_primary'>1. Cadastrar Receitas:</span></Accordion.Header>
+      <Accordion.Item eventKey="0" className={isDarkMode? 'bg-slate-800' : ' bg-transparent'}>
+        <Accordion.Header> <span className={isDarkMode? 'text-white' : ''}>1. Cadastrar Receitas:</span></Accordion.Header>
         <Accordion.Body>
-          <p className='font-light dark:text-light_primary'>
+          <p className={isDarkMode? 'font-light text-white' : 'font-light'}>
             Com nosso sistema intuitivo de cadastro de receitas, você pode facilmente compartilhar suas
-            <b className='text-orange_secondary'> criações</b> culinárias com a comunidade.
+            <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}> criações</b> culinárias com a comunidade.
             Adicione os ingredientes necessários, o passo a passo detalhado e
-            <b className='text-orange_secondary'> fotos apetitosas</b> para tornar sua receita irresistível.</p>
+            <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}> fotos apetitosas</b> para tornar sua receita irresistível.</p>
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2" className='dark:bg-slate-700'>
-        <Accordion.Header><span className='dark:text-light_primary'>2. Categorização:</span></Accordion.Header>
+      <Accordion.Item eventKey="2" className={isDarkMode? 'bg-slate-800' : ' bg-transparent'}>
+        <Accordion.Header><span className={isDarkMode? 'text-white' : ''}>2. Categorização:</span></Accordion.Header>
         <Accordion.Body>
-            <p className='font-light dark:text-light_primary'>
-            <b className='text-orange_secondary'> Organize suas receitas em diversas</b> <b className='text-orange_secondary'>categorias</b> para facilitar a navegação.
-            Seja <b className='text-orange_secondary'>culinária internacional,
+            <p className={isDarkMode? 'font-light text-white' : 'font-light'}>
+            <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}> Organize suas receitas em diversas</b> <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}>categorias</b> para facilitar a navegação.
+            Seja <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}>culinária internacional,
               pratos vegetarianos, sobremesas ou receitas saudáveis</b>,
             temos categorias
-            <b className='text-orange_secondary'>abrangentes</b> para atender a todos os gostos e preferências.
+            <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}>abrangentes</b> para atender a todos os gostos e preferências.
           </p>
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey='3' className='dark:bg-slate-700'>
-        <Accordion.Header><span className='dark:text-light_primary'>3. Dicas de Receitas</span> </Accordion.Header>
+      <Accordion.Item eventKey='3' className={isDarkMode? 'bg-slate-800' : ' bg-transparent'}>
+        <Accordion.Header><span className={isDarkMode? 'text-white' : ''}>3. Dicas de Receitas</span> </Accordion.Header>
         <Accordion.Body>
-            <p className='font-light dark:text-light_primary'>
-            Agora, você pode <b className='text-orange_secondary'>criar e compartilhar suas dicas culinárias exclusivas com a comunidade gastronômica.</b>
+            <p className={isDarkMode? 'font-light text-white' : 'font-light'}>
+            Agora, você pode <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}>criar e compartilhar suas dicas culinárias exclusivas com a comunidade gastronômica.</b>
             Compartilhe seus truques, segredos e técnicas especiais para aprimorar qualquer prato.
             Inspire outros amantes da comida,
-            aprenda com os <b className='text-orange_secondary'>melhores chefs amadores</b> e construa uma coleção de dicas que transformarão suas experiências na cozinha.
+            aprenda com os <b className={isDarkMode? 'text-orange_primary' : 'text-orange_secondary'}>melhores chefs amadores</b> e construa uma coleção de dicas que transformarão suas experiências na cozinha.
           </p>
         </Accordion.Body>
       </Accordion.Item>
-    </Accordion>
+    </Accordion>    
     )
   }
 }

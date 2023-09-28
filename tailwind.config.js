@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./index.html","./src/**/*.{ts,tsx}"],
   darkMode: 'class',
@@ -11,10 +12,8 @@ export default {
       spacing: {},
       borderRadius: {},
       colors: {
-        'orange_primary': '#FD6543',
-        'orange_secondary': '#b32607',
-        'dark_primary': '#3242526',
-        'light_primary': '#F9F9F9'
+        orange_primary: '#FD6543',
+        orange_secondary: '#b32607',        
       },
       
     },

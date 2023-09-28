@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { DarkModeContext } from '../../utils/context/DarkModeContext';
 
 const hatSVG = '/assets/svg/chapeuzinho.svg'
 
@@ -13,6 +14,9 @@ function HatLoadingComponent() {
   ]);
   
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const {isDarkMode} = useContext(DarkModeContext)
+
 
   useEffect(() => {
     const intervalID = setInterval(() => {
@@ -29,7 +33,7 @@ function HatLoadingComponent() {
         <div className='pl-3 animate-pulse'>
           <img src={hatSVG} alt="Chapeuzinho" width={120} height={120} />
         </div>        
-      <span className='text-1xl text-center font-body-rb text-light_primary select-none animate-pulse '>{loadingStrings[currentIndex]}</span>                    
+      <span className={isDarkMode? 'text-1xl text-center font-body-rb text-light_primary select-none animate-pulse text-slate-50' : 'text-1xl text-center font-body-rb text-light_primary select-none animate-pulse text-slate-900'}>{loadingStrings[currentIndex]}</span>
     </article>
     </section>
   )
