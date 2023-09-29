@@ -6,6 +6,7 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 import { RecipeModel } from './../../utils/recipe/recipeUtils';
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import BackComponent from '../components/BackComponent';
+import '../components/custom/recipe.css'
 
 function Recipe() {
 
@@ -25,7 +26,7 @@ function Recipe() {
       <article className='p-2 pb-5'>
       {recipe.filter(r => r.title === name).map((r) => (
         <div className={isDarkMode? 'font-body-rb text-white animate__animated animate__fadeIn mt-5' : 'font-body-rb text-slate-900 animate__animated animate__fadeIn mt-5'}>
-          <Container className='flex justify-center'>
+          <Container className='flex justify-center' id='RecipeContainer'>
             <Row className='items-center'>
               <Col>
                 {RecipeDescription(r)}                       
