@@ -37,7 +37,7 @@ function OffCanvasComponent() {
         </Offcanvas.Header>
         <Offcanvas.Body>
             <ListGroup as="ol" variant='flush' className='gap-2 text-center rounded-md'>
-                <ListGroupItem as="a" disabled href='auth/login' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                <ListGroupItem as="a" href='auth/login' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <BiUserCircle className='mt-1 mr-2'/> Login
                 </ListGroupItem>
                 <ListGroupItem as="a" disabled href='config' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
