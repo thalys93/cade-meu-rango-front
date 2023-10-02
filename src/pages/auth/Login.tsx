@@ -9,7 +9,7 @@ function Login() {
     const {isDarkMode} = useContext(DarkModeContext)
 
   return (
-    <section className='m-3 pt-28 font-body-rb '>
+    <section className='m-3 pt-3 font-body-rb '>
       <div className='absolute right-1/3 mr-5'>
         <DarkModeComponent/>
       </div>
