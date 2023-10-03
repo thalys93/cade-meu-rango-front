@@ -1,5 +1,7 @@
-import { useState } from "react";
-import testUsers from '../testUser.json'
+// import testUsers from '../testUser.json';
+
+import * as formik from 'formik';
+import * as yup from 'yup';
 
 export interface CreatedUserModel {
     id: number;
@@ -13,34 +15,14 @@ export interface CreatedUserModel {
 
 export function LoginUtils() {
 
-    const [user, setUser] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [error, setError] = useState<{user? : string, password? : string, message? : string}>({});
+    const { Formik } = formik;
+    const initialValues = {user: '', password: ''};
 
-    const loginValidation = (e) => {
-        e.preventDefault();
-        const newErros: {user? : string, password? : string} = {};
+    const loginValidation = yup.object().shape({
+      user: yup.string().required('Campo obrigatório').min(3,"Precisa ter no minimo 3 caracteres"),
+      password: yup.string().required('Campo obrigatório').min(6,"Precisa ter no minimo 6 caracteres").uppercase("precisa ter um caracter minusculo")
+    });
 
-        if(!user){
-            newErros.user = 'Usuário Não Pode Ficar Vazio'
-        }
+    return{Formik, initialValues, loginValidation}
 
-        if(!password){
-            newErros.password = 'Senha Não Pode Ficar Vazio'
-        }
-        
-        setError(newErros);
-
-        if(user && password){
-            const findUser = testUsers.find((i) => i.name === user && i.password === password);
-            if(findUser){
-                console.log('usuário encontrado!');                
-            } else {
-                console.error('usuário não encontrado!');
-            }
-        }
-    }
-
-
-    return{user, setUser, password, setPassword, error, loginValidation}
 }

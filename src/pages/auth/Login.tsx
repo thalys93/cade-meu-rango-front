@@ -1,14 +1,15 @@
-import React, { useContext } from 'react'
-import { DarkModeContext } from '../../utils/context/DarkModeContext'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import React, { useContext } from 'react';
+import { Button, Col, Container, Row , Form } from 'react-bootstrap';
+import { LoginUtils } from '../../utils/auth/login/loginUtils';
+import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import DarkModeComponent from './../components/DarkModeComponent';
 import BackComponent from './../components/BackComponent';
-import { LoginUtils } from '../../utils/auth/login/loginUtils';
 
 function Login() {
 
     const {isDarkMode} = useContext(DarkModeContext)
-    const {user, setUser , password , setPassword, loginValidation, error} = LoginUtils()
+
+    const {Formik, initialValues, loginValidation} = LoginUtils()
 
   return (
     <section className='m-3 pt-3 font-body-rb '>
@@ -27,27 +28,41 @@ function Login() {
         <div className='flex justify-center'>
         <Row className={isDarkMode? 'justify-center p-3 text-light' : 'justify-center p-3'}>
           <Col>
-            <Form>
+          <Formik validationSchema={loginValidation} onSubmit={console.log} initialValues={initialValues}>
+          {({handleSubmit ,handleChange, values, touched, errors}) => (
+            <Form noValidate onSubmit={handleSubmit}>
               <Form.Group controlId="formUserLogin">
                 <Form.Label className='select-none' >Usuário</Form.Label>
-                <Form.Control type="text" className={error.user? 'bg-red-400' : 'bg-white'} placeholder="Digite seu usuário" value={user} onChange={(e) => {setUser(e.target.value)}}/>                  
-                <Form.Text className={isDarkMode? "text-stone-300 select-none" : "text-stone-400 select-none"}>
-                  {error.user != '' && <span className={error? 'text-red-500' : ''}>{error.user}</span>}  
-                </Form.Text>
+                <Form.Control                 
+                type="text" 
+                name="user"              
+                placeholder="Digite seu usuário" 
+                value={values.user}
+                onChange={handleChange} 
+                isValid={touched.user && !errors.user}
+                isInvalid={!!errors.user}/>
+                <Form.Control.Feedback type="invalid">{errors.user}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formUserPassword">
                 <Form.Label className='select-none'>Senha</Form.Label>
-                <Form.Control type="password" className={error.password? 'bg-red-400' : 'bg-white'} placeholder="Digite sua senha" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                <Form.Text className={isDarkMode? "text-stone-300 select-none" : "text-stone-400 select-none"}>
-                  {error.password != '' && <span className={error? 'text-red-500' : ''}>{error.password}</span>}
-                </Form.Text>
+                <Form.Control                 
+                type="password"  
+                name="password"
+                placeholder="Digite sua senha" 
+                value={values.password}                       
+                onChange={handleChange}
+                isValid={touched.password && !errors.password}
+                isInvalid={!!errors.password}/>
+                <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
               </Form.Group> 
               <div className='flex justify-center mt-3'>
-              <Button className='bg-orange_primary border-none w-28 hover:bg-orange-600 disabled:bg-orange-950' type="submit" onClick={loginValidation}>
+              <Button className='bg-orange_primary border-none w-28 hover:bg-orange-600 disabled:bg-orange-950' type="submit">
                 Entrar
               </Button>           
               </div>
             </Form>
+            )}
+            </Formik>
             <div className='mt-3'>
               <a href='/auth/register' className='hover:text-stone-400'>Ainda não tem uma conta? <b className='text-orange_primary hover:text-orange-400'>Cadastre-se</b> </a>       
             </div>
