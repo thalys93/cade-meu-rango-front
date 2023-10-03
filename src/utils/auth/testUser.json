@@ -1,3 +1,4 @@
+[
 {
     "id": 1,
     "name": "Admin",
@@ -6,3 +7,4 @@
     "role": "admin",
     "isAdmin": true
 }
+]
