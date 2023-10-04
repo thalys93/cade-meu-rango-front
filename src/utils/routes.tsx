@@ -13,8 +13,12 @@ import EditTip from '../pages/tip/EditTip'
 
 import Login from '../pages/auth/Login'
 import Register from '../pages/auth/Register'
+import UserTerms from "../pages/auth/UserTerms";
+
 import Config from '../pages/config/Config'
+
 import React from "react";
+import PrivacyTerms from "../pages/auth/PrivacyTerms";
 
 
 
@@ -76,6 +80,14 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register/>
+            },
+            {
+                path: 'termos',
+                element: <UserTerms/>
+            },
+            {
+                path: 'privacy-policy',
+                element: <PrivacyTerms/>
             }
         ]
     },

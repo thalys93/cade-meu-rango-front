@@ -93,8 +93,12 @@ function Register() {
               isInvalid={!!errors.terms}
               feedback={errors.terms}
               feedbackType='invalid'
-              label="Aceito os Termos de Uso e a Política de Privacidade"
-               />              
+              label={
+              <span>
+                Aceito os <a href='termos' className='underline underline-offset-4 text-orange_primary select-none cursor-pointer'>Termos de Uso</a> e a Política de Privacidade
+              </span>
+              }
+              />              
             </Form.Group>
             <div className='flex justify-center mt-3'>
             <Button className='bg-orange_primary border-none w-28 hover:bg-orange-600 disabled:bg-orange-950' type="submit">
