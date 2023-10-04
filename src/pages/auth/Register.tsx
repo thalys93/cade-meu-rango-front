@@ -8,7 +8,7 @@ import { RegisterUtils } from '../../utils/auth/register/registerUtils';
 function Register() {
   const {isDarkMode} = useContext(DarkModeContext)
 
-  const {Formik, initialValues, FormValidation, onSubmit} = RegisterUtils()
+  const {Formik, initialValues, FormValidation, onSubmit} = RegisterUtils()  
 
   return (
     <section className='m-3 font-body-rb '>

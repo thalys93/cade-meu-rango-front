@@ -2,20 +2,31 @@ import * as formik from 'formik';
 import * as yup from 'yup';
 import { postUser } from '../../api/apiUtils';
 
-export interface newUserModel {
-    id: string;
+export interface newUserModel {    
     name: string;
     email: string;
-    password: string;    
+    password: string;
+    confirmPassword: string;
     role: string;
     isAdmin: boolean;
     isAuthor: boolean;
+    terms: boolean;
 }
 
 export function RegisterUtils() {
 
     const { Formik } = formik;
-    const initialValues = {name: '', email: '', password: '', confirmPassword: '', terms: false};
+
+    const initialValues: newUserModel = {        
+        name: '', 
+        email: '', 
+        password: '', 
+        confirmPassword: '',
+        role: 'Usuário',
+        isAdmin: false,
+        isAuthor: false,
+        terms: false                
+    };
 
     const FormValidation = yup.object().shape({
         name: yup.string().required('Campo obrigatório').min(3,"Precisa ter no minimo 3 caracteres"),
@@ -35,9 +46,9 @@ export function RegisterUtils() {
     });    
 
     const onSubmit = async (userData: newUserModel ) => {                                   
-        userData.role = "Usuário";
-        userData.isAdmin = false;
-        userData.isAuthor = false;
+        userData.role = initialValues.role;
+        userData.isAdmin = initialValues.isAdmin;
+        userData.isAuthor = initialValues.isAuthor;
 
         try {
             const response = await postUser(userData);
