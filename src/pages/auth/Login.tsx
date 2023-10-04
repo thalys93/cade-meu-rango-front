@@ -35,13 +35,13 @@ function Login() {
                 <Form.Label className='select-none' >Usuário</Form.Label>
                 <Form.Control                 
                 type="text" 
-                name="user"              
+                name="name"              
                 placeholder="Digite seu usuário" 
-                value={values.user}
+                value={values.name}
                 onChange={handleChange} 
-                isValid={touched.user && !errors.user}
-                isInvalid={!!errors.user}/>
-                <Form.Control.Feedback type="invalid">{errors.user}</Form.Control.Feedback>
+                isValid={touched.name && !errors.name}
+                isInvalid={!!errors.name}/>
+                <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formUserPassword">
                 <Form.Label className='select-none'>Senha</Form.Label>

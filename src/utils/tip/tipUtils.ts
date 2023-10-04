@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState } from "react";
-//import { apiCall } from '../api/apiUtils'
+// import { apiCall } from '../api/apiUtils'
 import localAPI from './tips.json'
 
 export interface TipModel {

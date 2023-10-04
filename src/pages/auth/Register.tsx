@@ -8,7 +8,7 @@ import { RegisterUtils } from '../../utils/auth/register/registerUtils';
 function Register() {
   const {isDarkMode} = useContext(DarkModeContext)
 
-  const {Formik, initialValues, FormValidation} = RegisterUtils()
+  const {Formik, initialValues, FormValidation, onSubmit} = RegisterUtils()
 
   return (
     <section className='m-3 font-body-rb '>
@@ -27,18 +27,18 @@ function Register() {
       <div className='flex justify-center'>
       <Row className={isDarkMode? 'justify-center p-3 text-light' : 'justify-center p-3'}>
         <Col>
-        <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={console.log}>
+        <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={onSubmit}>
           {({handleSubmit, handleChange, values, touched, errors}) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Group controlId="formNameCad">
               <Form.Label className='select-none'>Nome</Form.Label>
               <Form.Control type="text" 
               placeholder="Digite seu Nome" 
-              name='user' 
+              name='name' 
               onChange={handleChange}
-              isValid={touched.user && !errors.user}
-              isInvalid={!!errors.user}/>
-              <Form.Control.Feedback type='invalid'>{errors.user}</Form.Control.Feedback>
+              isValid={touched.name && !errors.name}
+              isInvalid={!!errors.name}/>
+              <Form.Control.Feedback type='invalid'>{errors.name}</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId='formEmailCad' className='pt-2'>
               <Form.Label className='select-none'>E-mail</Form.Label>

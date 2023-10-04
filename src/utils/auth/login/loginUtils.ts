@@ -16,10 +16,10 @@ export interface CreatedUserModel {
 export function LoginUtils() {
 
     const { Formik } = formik;
-    const initialValues = {user: '', password: ''};
+    const initialValues = {name: '', password: ''};
 
     const loginValidation = yup.object().shape({
-      user: yup.string().required('Campo obrigatório').min(3,"Precisa ter no minimo 3 caracteres"),
+      name: yup.string().required('Campo obrigatório').min(3,"Precisa ter no minimo 3 caracteres"),
       password: yup.string().required('Campo obrigatório').min(6,"Precisa ter no minimo 6 caracteres").uppercase("precisa ter um caracter minusculo")
     });
 
