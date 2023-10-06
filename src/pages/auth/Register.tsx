@@ -4,14 +4,19 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import DarkModeComponent from './../components/DarkModeComponent';
 import BackComponent from './../components/BackComponent';
 import { RegisterUtils } from '../../utils/auth/register/registerUtils';
+import PopupComponent from '../components/PopupComponent';
+import '../components/custom/popup.css'
 
 function Register() {
   const {isDarkMode} = useContext(DarkModeContext)
 
-  const {Formik, initialValues, FormValidation, onSubmit} = RegisterUtils()  
+  const {Formik, initialValues, FormValidation, onSubmit, error, resStatus , success, successMSG} = RegisterUtils()  
 
   return (
     <section className='m-3 font-body-rb '>
+      <div className='popupCenter'>
+        {PopupComponent({title: successMSG , statusCode: resStatus, error: error})}
+      </div>
     <div className='absolute right-1/3 mr-5'>
       <DarkModeComponent/>
     </div>

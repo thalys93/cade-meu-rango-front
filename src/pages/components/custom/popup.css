@@ -1,0 +1,8 @@
+.popupCenter{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 34%;    
+    z-index: 1;    
+}

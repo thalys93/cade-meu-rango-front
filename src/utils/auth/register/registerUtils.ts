@@ -1,6 +1,8 @@
 import * as formik from 'formik';
 import * as yup from 'yup';
 import { postUser } from '../../api/apiUtils';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export interface newUserModel {    
     name: string;
@@ -16,6 +18,13 @@ export interface newUserModel {
 export function RegisterUtils() {
 
     const { Formik } = formik;
+    const navigate = useNavigate();
+
+    const [success, setSucess] = useState(false);
+    const [successMSG, setSucessMSG] = useState('');
+    const [resStatus , setResStatus] = useState(0);
+    const [error, setError] = useState(false);    
+    
 
     const initialValues: newUserModel = {        
         name: '', 
@@ -48,17 +57,32 @@ export function RegisterUtils() {
     const onSubmit = async (userData: newUserModel ) => {                                   
         userData.role = initialValues.role;
         userData.isAdmin = initialValues.isAdmin;
-        userData.isAuthor = initialValues.isAuthor;
+        userData.isAuthor = initialValues.isAuthor; 
+        const response = await postUser(userData);       
 
-        try {
-            const response = await postUser(userData);
-            console.log("Usuário criado com sucesso: " , response.data );
-            console.log("Status : ", response.status)
-            return response;
+        try {            
+            if(response.status === 201){setSucess(true), setSucessMSG("Usuário Criado com Sucesso!") , setResStatus(response.status), setError(false);}
         } catch (error) {
             console.error("falha ao criar o usuário: " ,  error);
+            setSucess(false);
+            setError(true);
+            setSucessMSG("Falha ao criar o usuário!! : " + response.status);
+            setResStatus(response.status);
+        }
+
+        if(success) {
+            setTimeout(() => {
+                navigate('auth/login');
+            }, 2500);
         }
     }
 
-    return{Formik, initialValues, FormValidation, onSubmit}
+    return{Formik, 
+        initialValues, 
+        FormValidation, onSubmit, 
+        error, 
+        success, 
+        successMSG,
+        resStatus
+        }
 }
