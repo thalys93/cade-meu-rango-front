@@ -7,25 +7,14 @@ function PopupComponent(props: {title?: string , statusCode?: number, error?: bo
 
   return (
     <>
-    {props.statusCode === 200 && props.error === false && (
-    <Toast>
+    <Toast className={isDarkMode? 'bg-slate-700' : 'bg-white'}>
         <Toast.Header>
-            Aviso
+            {props.title } | {props.statusCode}
         </Toast.Header>
         <Toast.Body>
-            <ProgressBar animated now={45} />
-        </Toast.Body>
-    </Toast>
-    )}:{(
-    <Toast>
-        <Toast.Header>
-            Aviso
-        </Toast.Header>
-        <Toast.Body>
-            <ProgressBar animated now={45} />
+            <ProgressBar animated now={45}  variant={props.statusCode === 201 ? 'success' : 'warning'}/>
         </Toast.Body>
     </Toast>    
-    )}    
      </>
   )
 }

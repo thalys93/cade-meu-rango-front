@@ -23,7 +23,8 @@ export function RegisterUtils() {
     const [success, setSucess] = useState(false);
     const [successMSG, setSucessMSG] = useState('');
     const [resStatus , setResStatus] = useState(0);
-    const [error, setError] = useState(false);    
+    const [resOk, setResOk] = useState<boolean | undefined>(undefined);
+    const [error, setError] = useState(false);
     
 
     const initialValues: newUserModel = {        
@@ -70,10 +71,13 @@ export function RegisterUtils() {
             setResStatus(response.status);
         }
 
-        if(success) {
+        if(response.status === 201){
+                setResOk(true);
             setTimeout(() => {
-                navigate('auth/login');
-            }, 2500);
+                navigate('/auth/login');
+            }, 3000);
+        } else {
+            setResOk(false);
         }
     }
 
@@ -83,6 +87,7 @@ export function RegisterUtils() {
         error, 
         success, 
         successMSG,
-        resStatus
+        resStatus,
+        resOk
         }
 }
