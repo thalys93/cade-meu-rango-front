@@ -28,10 +28,10 @@ function Recipe() {
         <div className={isDarkMode? 'font-body-rb text-white animate__animated animate__fadeIn mt-5' : 'font-body-rb text-slate-900 animate__animated animate__fadeIn mt-5'}>
           <Container className='flex justify-center' id='RecipeContainer'>
             <Row className='items-center'>
-              <Col>
+              <Col sm>
                 {RecipeDescription(r)}                       
               </Col>
-              <Col>
+              <Col sm>
                 {RecipeImage(r)}                
               </Col>
             </Row>
