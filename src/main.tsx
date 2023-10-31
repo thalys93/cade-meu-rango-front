@@ -6,9 +6,9 @@ import './assets/css/global/styles.css'
 import { DarkModeProvider } from './utils/context/DarkModeContext'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <React.StrictMode>    
     <DarkModeProvider>
       <Routes />
-    </DarkModeProvider>
+    </DarkModeProvider>    
   </React.StrictMode>,
 )

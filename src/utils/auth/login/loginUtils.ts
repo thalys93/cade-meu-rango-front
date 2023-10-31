@@ -23,6 +23,8 @@ export function LoginUtils() {
       password: yup.string().required('Campo obrigatório').min(6,"Precisa ter no minimo 6 caracteres").uppercase("precisa ter um caracter minusculo")
     });
 
+    
+
     return{Formik, initialValues, loginValidation}
 
 }
