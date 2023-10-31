@@ -3,8 +3,10 @@ import { ListGroup, ListGroupItem, Offcanvas, OverlayTrigger, Tooltip } from 're
 import {RxHamburgerMenu} from 'react-icons/rx'
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import { BiUserCircle } from 'react-icons/bi';
+import { LuPanelRightClose } from 'react-icons/lu';
 import { FaWrench } from 'react-icons/fa';
 import { BsDoorOpen } from 'react-icons/bs';
+import { LoginUtils } from '../../utils/auth/login/loginUtils';
 
 function OffCanvasComponent() {
 
@@ -21,6 +23,8 @@ function OffCanvasComponent() {
           Abrir Menu
         </Tooltip>
       );
+
+    const { doLogout } = LoginUtils();
 
 
   return (
@@ -40,11 +44,14 @@ function OffCanvasComponent() {
                 <ListGroupItem as="a" href='auth/login' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <BiUserCircle className='mt-1 mr-2'/> Login
                 </ListGroupItem>
+                <ListGroupItem as="a" onClick={doLogout} className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                    <BsDoorOpen className='mt-1 mr-2'/>Encerrar Sessão
+                </ListGroupItem>
                 <ListGroupItem as="a" disabled href='config' className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                     <FaWrench className='mt-1 mr-2'/> Configurações
                 </ListGroupItem>
                 <ListGroupItem as="a" onClick={handleClose} className={isDarkMode? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                    <BsDoorOpen className='mt-1 mr-2'/>Fechar
+                    <LuPanelRightClose className='mt-1 mr-2'/> Fechar
                 </ListGroupItem>
             </ListGroup>        
         </Offcanvas.Body>

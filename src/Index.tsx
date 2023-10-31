@@ -8,25 +8,25 @@ import FooterComponent from './pages/components/FooterComponent';
 
 function Index() {
 
-    const { isLoading } = IndexUtils();
+  const { isLoading } = IndexUtils();  
 
   return (
     <>
-    {isLoading? ( 
-        <section className='loading-logo-align animate__animated animate__fadeIn'>                
-        <HatLoadingComponent />
-      </section>
-    ) : (
-      <section>
-        <article className='p-3'>
-        <nav>          
-          <BannerComponent/>
-          <NavegationComponent/>
-        </nav>
-        </article>
-        <FooterComponent/>
-      </section>
-    )}
+      {isLoading ? (
+        <section className='loading-logo-align animate__animated animate__fadeIn'>
+          <HatLoadingComponent />
+        </section>
+      ) : (
+        <section>
+          <article className='p-3'>
+            <nav>
+              <BannerComponent />
+              <NavegationComponent />
+            </nav>
+          </article>
+          <FooterComponent />
+        </section>
+      )}
     </>
   )
 }

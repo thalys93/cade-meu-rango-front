@@ -90,7 +90,7 @@ function UserTerms() {
               <Accordion.Body>
                 <ListGroup>
                   <ListGroup.Item>
-                    4.1. Respeitamos a sua privacidade. Leia nossa <a href='privacy-policy' className='underline text-orange_primary'>Política de Privacidade</a> para entender como coletamos, usamos e protegemos suas informações pessoais.
+                    4.1. Respeitamos a sua privacidade. Leia nossa <a href='privacy-policy' className='underline text-orange_primary' target='_blank'>Política de Privacidade</a> para entender como coletamos, usamos e protegemos suas informações pessoais.
                   </ListGroup.Item>
                 </ListGroup>
               </Accordion.Body>

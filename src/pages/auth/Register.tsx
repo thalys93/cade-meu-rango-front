@@ -145,7 +145,7 @@ function Register() {
                 <Form.Control type="text"
                   placeholder={values.name}
                   name='name'
-                  className='animate-pulse'
+                  className='animate-pulse'                  
                   />                
               </Form.Group>
               <Form.Group controlId='formEmailCad' className='pt-2'>
@@ -190,7 +190,7 @@ function Register() {
                   defaultChecked
                   feedbackType='invalid'
                   label={<span>
-                    Aceito os <a href='termos' className='underline underline-offset-4 text-orange_primary select-none cursor-pointer'>Termos de Uso</a> e a Política de Privacidade
+                    Aceito os <a href='termos' className='underline underline-offset-4 text-orange_primary select-none cursor-pointer' target='_blank'>Termos de Uso</a> e a Política de Privacidade
                   </span>} />
               </Form.Group>
               <div className='flex justify-center mt-3'>
