@@ -3,10 +3,10 @@ import * as yup from 'yup';
 import { Fauth } from './../Firebase';
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence, signOut } from 'firebase/auth';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
-export interface CreatedUserModel {    
+export interface CreatedUserModel {
   email: string;
   password: string;
 }
@@ -14,15 +14,14 @@ export interface CreatedUserModel {
 export function LoginUtils() {
 
   const { Formik } = formik;
-  const initialValues: CreatedUserModel = { email: '', password: '' };
-  const navigate = useNavigate();
-
+  const initialValues: CreatedUserModel = { email: '', password: '' };  
 
   const [success, setSucess] = useState(false);
   const [successMSG, setSucessMSG] = useState('');
   const [resStatus, setResStatus] = useState(0);
   const [resOk, setResOk] = useState<boolean | undefined>(undefined);
   const [error, setError] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   const loginValidation = yup.object().shape({
     email: yup.string().required('Campo obrigatório').email("Email Inválido"),
@@ -34,47 +33,53 @@ export function LoginUtils() {
       const { email, password } = userData;
       const userCredential = await signInWithEmailAndPassword(Fauth, email, password);
       setPersistence(Fauth, browserSessionPersistence);
+      // Estados
       setSucess(true);
       setSucessMSG('Login bem-sucedido!');
       setResStatus(200);
       setResOk(true);
+      setIsAuth(true); // Estado se Está autenticado ou não
       setError(false);
-
-      setTimeout(() => {
-        navigate('/');
-    }, 2500);
-
-
       const authenticatedUser = userCredential.user;
       console.log("Usuário Logado : ", authenticatedUser);
+
     } catch (error) {
       console.error('Falha ao Logar: ' + error);
+      // Estados
       setSucess(false);
       setSucessMSG('Falha ao Logar: ' + error.message);
       setResStatus(400);
       setResOk(false);
+      setIsAuth(false);
       setError(true);
     }
   }
 
+
+  //Validação de Login
+//   setTimeout(() => {
+//     navigate('/');
+// }, 2500);
+
   const doLogout = async () => {
-    try { 
+    try {
       await signOut(Fauth);
+      // Estados
       setSucess(true);
       setSucessMSG('Logout bem-sucedido!');
       setResStatus(200);
       setResOk(true);
+      setIsAuth(false);
       setError(false);
-      setTimeout(() => {
-        navigate('/');
-      }, 2500);
     } catch (error) {
       console.error('Falha ao Deslogar: ' + error);
+      // Estados
       setSucess(false);
       setSucessMSG('Falha ao Deslogar: ' + error.message);
       setResStatus(400);
       setResOk(false);
-      setError(true);  
+      setIsAuth(true);
+      setError(true);
     }
   }
 
@@ -90,7 +95,9 @@ export function LoginUtils() {
     successMSG,
     resStatus,
     resOk,
-    error    
+    error,
+    isAuth,
+    setIsAuth
   }
 
-  }
+}

@@ -6,9 +6,7 @@ const DarkModeProvider = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = React.useState(false);
 
     useEffect(() => {
-        const storedMode = localStorage.getItem('darkmode');
-        
-
+        const storedMode = localStorage.getItem('darkmode');        
         if (storedMode) {
             setIsDarkMode(JSON.parse(storedMode));            
         }

@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IndexUtils } from './utils/index';
 
 import HatLoadingComponent from "./pages/components/HatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
 import NavegationComponent from './pages/components/NavegationComponent';
 import FooterComponent from './pages/components/FooterComponent';
+import AuthBanner from './pages/components/AuthBanner';
+import { AuthModeContext } from './utils/context/AuthModeContext';
 
 function Index() {
 
-  const { isLoading } = IndexUtils();  
+  const { isLoading } = IndexUtils();
+
+  const { isAuth } = useContext(AuthModeContext) || {};
 
   return (
     <>
@@ -21,6 +25,7 @@ function Index() {
           <article className='p-3'>
             <nav>
               <BannerComponent />
+              {isAuth && <AuthBanner />}
               <NavegationComponent />
             </nav>
           </article>
