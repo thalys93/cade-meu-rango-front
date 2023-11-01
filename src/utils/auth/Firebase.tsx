@@ -7,20 +7,21 @@ import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-    apiKey: 'AIzaSyB6OfVrVbR3QuxB1MJp-tj5j5oHDpLpxXw',
-    authDomain: 'cade-meu-rango-front.firebaseapp.com',
-    projectId: 'cade-meu-rango-front',
-    storageBucket: 'cade-meu-rango-front.appspot.com',
-    messagingSenderId: '403087065939',
-    appId: '1:403087065939:web:def8c6d5aeb6b7f1e457a6',
-    measurementId: 'G-M87FQ0FNFV'
+    apiKey: import.meta.env.VITE_FIREAPI,
+    authDomain: import.meta.env.VITE_FIREDOMAIN ,
+    projectId: import.meta.env.VITE_FIREID,
+    storageBucket: import.meta.env.VITE_FIREBUCKET,
+    messagingSenderId: import.meta.env.VITE_FIRESENDER,
+    appId: import.meta.env.VITE_FIREAPPID,
+    measurementId: import.meta.env.VITE_FIREMEASUREMENT
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// console.log(app) //opção para debugar
 
 // Initialize Firebase Authentication and get a reference to the service
 export const Fauth = getAuth(app);
