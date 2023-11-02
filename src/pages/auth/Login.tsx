@@ -10,7 +10,7 @@ function Login() {
 
   const { isDarkMode } = useContext(DarkModeContext)
 
-  const { Formik,    
+  const { Formik,
     initialValues,
     loginValidation,
     doLogin,
@@ -124,7 +124,7 @@ function Login() {
                   placeholder={values.password}
                   className='animate-pulse'
                   disabled
-                  />
+                />
                 <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
               </Form.Group>
               <div className='flex justify-center mt-3'>

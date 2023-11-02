@@ -5,8 +5,8 @@ import HatLoadingComponent from "./pages/components/HatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
 import NavegationComponent from './pages/components/NavegationComponent';
 import FooterComponent from './pages/components/FooterComponent';
-import AuthBanner from './pages/components/AuthBanner';
 import { AuthContext } from './utils/context/AuthModeContext';
+import ProfileBadge from './pages/components/ProfileBadge';
 
 function Index() {
 
@@ -24,7 +24,7 @@ function Index() {
           <article className='p-3'>
             <nav>
               <BannerComponent />
-              {authContext && authContext.user && <AuthBanner />}
+              {authContext && authContext.user && <ProfileBadge />}
               <NavegationComponent />
             </nav>
           </article>

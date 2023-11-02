@@ -19,6 +19,7 @@ import Config from '../pages/config/Config'
 
 import React from "react";
 import PrivacyTerms from "../pages/auth/PrivacyTerms";
+import UserPage from "../pages/auth/UserPage";
 
 
 
@@ -88,6 +89,15 @@ const router = createBrowserRouter([
             {
                 path: 'privacy-policy',
                 element: <PrivacyTerms/>
+            }
+        ]
+    },
+    {
+        path: 'protected/',
+        children:[
+            {
+                path: 'user/:id',
+                element: <UserPage/>
             }
         ]
     },
