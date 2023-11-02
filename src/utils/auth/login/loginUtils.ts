@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { Fauth } from './../Firebase';
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence, signOut } from 'firebase/auth';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export interface CreatedUserModel {
@@ -14,14 +14,14 @@ export interface CreatedUserModel {
 export function LoginUtils() {
 
   const { Formik } = formik;
-  const initialValues: CreatedUserModel = { email: '', password: '' };  
+  const initialValues: CreatedUserModel = { email: '', password: '' };
+  const navigate = useNavigate();
 
   const [success, setSucess] = useState(false);
   const [successMSG, setSucessMSG] = useState('');
   const [resStatus, setResStatus] = useState(0);
   const [resOk, setResOk] = useState<boolean | undefined>(undefined);
-  const [error, setError] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
+  const [error, setError] = useState(false);  
 
   const loginValidation = yup.object().shape({
     email: yup.string().required('Campo obrigatório').email("Email Inválido"),
@@ -37,29 +37,26 @@ export function LoginUtils() {
       setSucess(true);
       setSucessMSG('Login bem-sucedido!');
       setResStatus(200);
-      setResOk(true);
-      setIsAuth(true); // Estado se Está autenticado ou não
+      setResOk(true);      
       setError(false);
       const authenticatedUser = userCredential.user;
       console.log("Usuário Logado : ", authenticatedUser);
-
+      setTimeout(() => {
+        navigate('/');
+      }, 2500);
     } catch (error) {
       console.error('Falha ao Logar: ' + error);
       // Estados
       setSucess(false);
       setSucessMSG('Falha ao Logar: ' + error.message);
       setResStatus(400);
-      setResOk(false);
-      setIsAuth(false);
+      setResOk(false);      
       setError(true);
     }
   }
 
 
-  //Validação de Login
-//   setTimeout(() => {
-//     navigate('/');
-// }, 2500);
+
 
   const doLogout = async () => {
     try {
@@ -68,8 +65,7 @@ export function LoginUtils() {
       setSucess(true);
       setSucessMSG('Logout bem-sucedido!');
       setResStatus(200);
-      setResOk(true);
-      setIsAuth(false);
+      setResOk(true);      
       setError(false);
     } catch (error) {
       console.error('Falha ao Deslogar: ' + error);
@@ -77,8 +73,7 @@ export function LoginUtils() {
       setSucess(false);
       setSucessMSG('Falha ao Deslogar: ' + error.message);
       setResStatus(400);
-      setResOk(false);
-      setIsAuth(true);
+      setResOk(false);      
       setError(true);
     }
   }
@@ -95,9 +90,7 @@ export function LoginUtils() {
     successMSG,
     resStatus,
     resOk,
-    error,
-    isAuth,
-    setIsAuth
+    error,    
   }
 
 }

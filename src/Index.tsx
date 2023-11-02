@@ -5,15 +5,14 @@ import HatLoadingComponent from "./pages/components/HatLoadingComponent";
 import BannerComponent from './pages/components/BannerComponent';
 import NavegationComponent from './pages/components/NavegationComponent';
 import FooterComponent from './pages/components/FooterComponent';
-// import AuthBanner from './pages/components/AuthBanner';
-// import { AuthModeContext } from './utils/context/AuthModeContext';
+import AuthBanner from './pages/components/AuthBanner';
+import { AuthContext } from './utils/context/AuthModeContext';
 
 function Index() {
 
   const { isLoading } = IndexUtils();
-
-  // const { isAuth } = useContext(AuthModeContext) || {};
-
+  const authContext = useContext(AuthContext);
+  
   return (
     <>
       {isLoading ? (
@@ -25,7 +24,7 @@ function Index() {
           <article className='p-3'>
             <nav>
               <BannerComponent />
-              {/* {isAuth && <AuthBanner />} */}
+              {authContext && authContext.user && <AuthBanner />}
               <NavegationComponent />
             </nav>
           </article>
