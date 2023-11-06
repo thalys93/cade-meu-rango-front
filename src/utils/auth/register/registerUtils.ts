@@ -10,7 +10,7 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 
 export interface newUserModel {
-    id: string;
+    UUID: string;
     name: string;
     email: string;
     password: string;
@@ -34,7 +34,7 @@ export function RegisterUtils() {
 
 
     const initialValues: newUserModel = {
-        id: '',
+        UUID: '',
         name: '',
         email: '',
         password: '',
@@ -71,7 +71,7 @@ export function RegisterUtils() {
             const { user } = await createUserWithEmailAndPassword(Fauth, userData.email, userData.password);
 
             const RemaingUserData = {
-                id: user?.uid || '',
+                UUID: user?.uid || '',
                 name: userData.name,
                 email: userData.email,
                 role: userData.role,
@@ -83,14 +83,24 @@ export function RegisterUtils() {
             await addDoc(collection(FireStoreDatabase, 'users') , RemaingUserData)
 
             // Remove Espaços do UserName
-            const userName = userData.name.replace(/\s+/g, '')
-            const userUID = user?.uid || '';
+            const userName = userData.name.replace(/\s+/g, '')            
 
             // Cria o Objeto com apenas o UserName(para o banco de dados)
-            const userDataForAPI = {userName} as never;
+            const userDataForAPI = {
+                UUID: RemaingUserData.UUID,
+                userName: userName,
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                role: '',
+                isAdmin: false,
+                isAuthor: false,
+                terms: false
+            };            
 
             // Faz o Post para a API
-            await postUser(userDataForAPI && userUID);
+            await postUser(userDataForAPI);
             
             setSucess(true);
             setSucessMSG("Usuário criado com sucesso!!");
