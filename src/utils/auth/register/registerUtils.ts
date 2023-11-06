@@ -83,7 +83,10 @@ export function RegisterUtils() {
             await addDoc(collection(FireStoreDatabase, 'users') , RemaingUserData)
 
             // Remove Espaços do UserName
-            const userName = userData.name.replace(/\s+/g, '')            
+            const userName = userData.name
+            .replace(/\s+/g, '') // Remove todos os espaços
+            .replace(/([a-z])([A-Z])/g, '$1$2') // Remove o espaço entre minúsculas e maiúsculas
+            .trim();
 
             // Cria o Objeto com apenas o UserName(para o banco de dados)
             const userDataForAPI = {

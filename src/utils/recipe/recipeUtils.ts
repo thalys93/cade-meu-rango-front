@@ -2,34 +2,68 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState, useEffect } from "react";
-//import { apiCall } from '../api/apiUtils'
-import localAPI from './recipes.json'
+import { getRecipes, getUsersByID } from "../api/apiUtils";
+
+// import localAPI from './recipes.json'
 
 export interface RecipeModel {
-    id: number;
+    UUID: string;
     title: string;
     type: string;
     description: string;
     imageLink: string;
     ingredients: Array<string>;
     instructions: Array<string>;
-    author: string;
+    authorUUID: string;
+}
+
+interface RecipeAPIModel {
+    UUID: string;
+    title: string;
+    type: string;
+    description: string;
+    imageLink: string;
+    ingredients: Array<string>;
+    instructions: Array<string>;
+    author: {
+        name: string
+    }
 }
 
 export function RecipeUtils() {
     const [loading, setLoading] = useState(true);
     const [accountant, setAccountant] = useState(0);
 
-    const [recipe, setRecipe] = useState<RecipeModel[]>([]);
-
+    const [recipe, setRecipe] = useState<RecipeAPIModel[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setRecipe(localAPI as RecipeModel[]);
-                setTimeout(()=>{
-                    setLoading(true);
+                const recipes = await getRecipes();
+
+                const updatedRecipes = await Promise.all(recipes.map(async (recipe) => {
+                    const userData = await getUsersByID(recipe.authorUUID);
+
+                    const formattedUserData = userData.userName
+                    .replace(/([a-z])([A-Z])/g, '$1 $2')
+                    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+                    .trim();
+
+                    return {
+                        ...recipe,
+                        author: {
+                            name: formattedUserData,
+                        },
+                    };
+                }));
+
+                setRecipe(updatedRecipes);
+
+                setTimeout(() => {
+                    setLoading(false);
                 }, 1500);
+
+                console.log(updatedRecipes);
             } catch (e) {
                 console.log(e);
             }
@@ -38,12 +72,12 @@ export function RecipeUtils() {
     }, []);
 
     useEffect(() => {
-        if(loading) {
+        if (loading) {
             const interval = setInterval(() => {
                 setAccountant((accountant) => accountant + 1);
             }, 210);
 
-            return() => {
+            return () => {
                 clearInterval(interval);
             }
         }
