@@ -59,7 +59,7 @@ function Register() {
               <Form.Group controlId="formNameCad">
                 <Form.Label className='select-none'>Nome</Form.Label>
                 <Form.Control type="text"
-                  placeholder="Digite seu Nome"
+                  placeholder="João da Silva"
                   name='name'
                   onChange={handleChange}
                   isValid={touched.name && !errors.name}
@@ -70,7 +70,7 @@ function Register() {
                 <Form.Label className='select-none'>E-mail</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Digite seu E-Mail"
+                  placeholder="joao@email.com"
                   name='email'
                   onChange={handleChange}
                   isValid={touched.email && !errors.email}
@@ -87,7 +87,7 @@ function Register() {
                 <Form.Label className='select-none'>Senha</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Digite sua senha"
+                  placeholder="*********"
                   name='password'
                   onChange={handleChange}
                   isValid={touched.password && !errors.password}
@@ -103,7 +103,7 @@ function Register() {
                   value={values.confirmPassword}
                   isValid={touched.confirmPassword && !errors.confirmPassword}
                   isInvalid={!!errors.confirmPassword}
-                  placeholder="Digite sua senha" />
+                  placeholder="*********" />
                 <Form.Text className={isDarkMode ? "text-stone-300 select-none" : "text-stone-400 select-none"}>
                   Nunca Compartilhe sua senha com terceiros
                 </Form.Text>
@@ -119,7 +119,7 @@ function Register() {
                   feedback={errors.terms}
                   feedbackType='invalid'
                   label={<span>
-                    Aceito os <a href='termos' className='underline underline-offset-4 text-orange_primary select-none cursor-pointer'>Termos de Uso</a> e a Política de Privacidade
+                    Aceito os <a href='termos' className='underline underline-offset-4 text-orange_primary select-none cursor-pointer'>Termos de Uso</a> e a <a href="privacy-policy" className='underline underline-offset-4 text-orange_primary select-none cursor-pointer'>Política de Privacidade</a>
                   </span>} />
               </Form.Group>
               <div className='flex justify-center mt-3'>
