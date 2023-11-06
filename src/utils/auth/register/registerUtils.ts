@@ -109,7 +109,7 @@ export function RegisterUtils() {
             setError(false);
 
             setTimeout(() => {
-                navigate('/auth/login');
+                navigate('/');
             }, 3000);
 
         } catch (error) {
