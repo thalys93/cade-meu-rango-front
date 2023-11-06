@@ -84,12 +84,13 @@ export function RegisterUtils() {
 
             // Remove Espaços do UserName
             const userName = userData.name.replace(/\s+/g, '')
+            const userUID = user?.uid || '';
 
             // Cria o Objeto com apenas o UserName(para o banco de dados)
             const userDataForAPI = {userName} as never;
 
             // Faz o Post para a API
-            await postUser(userDataForAPI);
+            await postUser(userDataForAPI && userUID);
             
             setSucess(true);
             setSucessMSG("Usuário criado com sucesso!!");
