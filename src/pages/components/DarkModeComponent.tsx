@@ -18,7 +18,7 @@ function DarkModeComponent() {
 
   return (
     <OverlayTrigger overlay={renderTooltip} placement='bottom'>
-    <div className={isDarkMode? 'absolute p-2 right-2 top-2 mt-2 bg-orange_primary rounded-full' : 'absolute p-2 right-2 top-2 mt-2 bg-slate-500 rounded-full'} onClick={toggleDarkMode}>
+    <div className='absolute p-2 right-2 top-2 mt-2 bg-orange_primary rounded-full hover:scale-95' onClick={toggleDarkMode}>
         {!isDarkMode ? <GiMoon className='text-2xl transition-all text-white'/> : <BsSun className='text-2xl transition-all text-white' />}
     </div>
     </OverlayTrigger>
