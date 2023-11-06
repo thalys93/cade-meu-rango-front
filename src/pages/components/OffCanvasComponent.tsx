@@ -8,6 +8,7 @@ import { FaWrench } from 'react-icons/fa';
 import { BsDoorOpen, BsPersonAdd } from 'react-icons/bs';
 import { LoginUtils } from '../../utils/auth/login/loginUtils';
 import { AuthContext } from '../../utils/context/AuthModeContext';
+import PopupComponent from './PopupComponent';
 
 function OffCanvasComponent() {
 
@@ -25,7 +26,7 @@ function OffCanvasComponent() {
         </Tooltip>
     );
 
-    const { doLogout } = LoginUtils();
+    const { doLogout, success, successMSG, resStatus, error, loading } = LoginUtils();
     const authContext = useContext(AuthContext);
 
 
@@ -37,6 +38,10 @@ function OffCanvasComponent() {
                 </button>
             </OverlayTrigger>
 
+            <div hidden={!success === !error}>
+                {PopupComponent({ title: successMSG, statusCode: resStatus, error: error })}
+            </div>
+
             <Offcanvas show={show} onHide={handleClose} placement='end' className={isDarkMode ? 'bg-slate-700 text-white' : 'bg-white text-slate-900'}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title> Menu de Ações </Offcanvas.Title>
@@ -47,34 +52,40 @@ function OffCanvasComponent() {
                         {/* Guest Routes */}
                         {!authContext || !authContext.user && (
                             <>
-                            <ListGroupItem as="a" href='auth/login' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                                <BiUserCircle className='mt-1 mr-2' /> Login
-                            </ListGroupItem>
+                                <ListGroupItem as="a" href='auth/login' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                                    <BiUserCircle className='mt-1 mr-2' /> Login
+                                </ListGroupItem>
 
-                            <ListGroupItem as="a" href='auth/register' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                                <BsPersonAdd className='mt-1 mr-2'/> Registrar
-                            </ListGroupItem>
+                                <ListGroupItem as="a" href='auth/register' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                                    <BsPersonAdd className='mt-1 mr-2' /> Registrar
+                                </ListGroupItem>
                             </>
                         )}
                         {/* UserProtected Routes */}
                         {authContext && authContext.user && (
                             <>
-                            <ListGroupItem as="a" href={"/protected/user/" + authContext?.user?.uid} className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                                <BiUserCircle className='mt-1 mr-2' /> Meu Perfil
-                            </ListGroupItem>
+                                <ListGroupItem as="a" href={"/protected/user/" + authContext?.user?.uid} className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                                    <BiUserCircle className='mt-1 mr-2' /> Meu Perfil
+                                </ListGroupItem>
 
-                            <ListGroupItem as="a" onClick={doLogout} className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                                <BsDoorOpen className='mt-1 mr-2' />Encerrar Sessão
-                            </ListGroupItem>
-                        
-                            <ListGroupItem as="a" href='config' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
-                            <FaWrench className='mt-1 mr-2' /> Configurações
-                            </ListGroupItem>
+                                {loading? (
+                                <ListGroupItem as="a" disabled className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg animate-pulse' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white animate-pulse'}>
+                                    <BsDoorOpen className='mt-1 mr-2' />Encerrando Sessão
+                                </ListGroupItem>
+                                ) : (
+                                <ListGroupItem as="a" onClick={doLogout} className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                                    <BsDoorOpen className='mt-1 mr-2' />Encerrar Sessão
+                                </ListGroupItem>
+                                )}
+
+                                <ListGroupItem as="a" href='config' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                                    <FaWrench className='mt-1 mr-2' /> Configurações
+                                </ListGroupItem>
                             </>
                         )}
                         <ListGroupItem as="a" href='/support/help' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                             <BiSupport className='mt-1 mr-2' /> Suporte Técnico
-                        </ListGroupItem>                      
+                        </ListGroupItem>
                         <ListGroupItem as="a" onClick={handleClose} className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                             <LuPanelRightClose className='mt-1 mr-2' /> Fechar
                         </ListGroupItem>

@@ -16,13 +16,12 @@ function Login() {
     doLogin,
     success,
     successMSG,
-    resStatus,
-    resOk,
+    resStatus,    
     error } = LoginUtils()
 
   return (
     <section className='m-3 pt-3 font-body-rb '>
-      <div className='popupCenter' hidden={!success === !error}>
+      <div hidden={!success === !error}>
         {PopupComponent({ title: successMSG, statusCode: resStatus, error: error })}
       </div>
       <div className='absolute right-1/3 mr-5'>
@@ -38,11 +37,11 @@ function Login() {
             <h2 className={isDarkMode ? 'text-2xl font-title-sy text-light' : 'text-2xl font-title-sy'}> Tela de Acesso </h2>
           </div>
           <div className='flex justify-center'>
-            {resOk === undefined ? (
-              loginForm()
-            ) : (
+            {resStatus === 200 ? (
               loginFormLoading()
-            )}
+              ) : (
+              loginForm()
+              )}
           </div>
         </article>
       </Container>

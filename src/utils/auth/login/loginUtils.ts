@@ -21,7 +21,8 @@ export function LoginUtils() {
   const [successMSG, setSucessMSG] = useState('');
   const [resStatus, setResStatus] = useState(0);
   const [resOk, setResOk] = useState<boolean | undefined>(undefined);
-  const [error, setError] = useState(false);  
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const loginValidation = yup.object().shape({
     email: yup.string().required('Campo obrigatório').email("Email Inválido"),
@@ -31,49 +32,71 @@ export function LoginUtils() {
   const doLogin = async (userData: CreatedUserModel) => {
     try {
       const { email, password } = userData;
-      const userCredential = await signInWithEmailAndPassword(Fauth, email, password);
-      setPersistence(Fauth, browserSessionPersistence);
-      // Estados
-      setSucess(true);
-      setSucessMSG('Login bem-sucedido!');
-      setResStatus(200);
-      setResOk(true);      
-      setError(false);
-      const authenticatedUser = userCredential.user;
-      console.log("Usuário Logado : ", authenticatedUser);
+
+      setLoading(true);
+      await signInWithEmailAndPassword(Fauth, email, password);
+
       setTimeout(() => {
-        navigate('/');
-      }, 2500);
+        setSucessMSG('Validando Login..');
+        setResStatus(102);
+        setPersistence(Fauth, browserSessionPersistence);
+
+        setTimeout(() => {
+          setSucessMSG('Login realizado com sucesso! Redirecionando...');
+          setResStatus(200);
+          setSucess(true);
+          setLoading(false);
+          setResOk(true);
+          setError(false);
+          setTimeout(() => {
+            navigate('/');
+          }, 1500);
+        }, 1500);
+      }, 1500);
+
     } catch (error) {
-      console.error('Falha ao Logar: ' + error);
+      console.error('Falha ' + error);
       // Estados
       setSucess(false);
-      setSucessMSG('Falha ao Logar: ' + error.message);
+      setSucessMSG('Falha: ' + error.message);
       setResStatus(400);
-      setResOk(false);      
+      setResOk(false);
       setError(true);
     }
   }
 
-
-
-
   const doLogout = async () => {
     try {
-      await signOut(Fauth);
-      // Estados
-      setSucess(true);
-      setSucessMSG('Logout bem-sucedido!');
-      setResStatus(200);
-      setResOk(true);      
-      setError(false);
+      setLoading(true);
+
+      setTimeout(() => {
+        setSucessMSG('Realizando Logout');
+        setResStatus(102);
+      }, 1500)
+
+      setTimeout(() => {
+        setSucessMSG('Logout realizado com sucesso! Recarregando...');
+        setResStatus(200);
+
+        setTimeout(() => {
+          signOut(Fauth);
+        }, 500)
+        setLoading(false);
+        setSucess(true);
+        setResOk(true);
+        setError(false);
+      }, 2000);
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 3700)
+
     } catch (error) {
       console.error('Falha ao Deslogar: ' + error);
-      // Estados
       setSucess(false);
       setSucessMSG('Falha ao Deslogar: ' + error.message);
       setResStatus(400);
-      setResOk(false);      
+      setResOk(false);
       setError(true);
     }
   }
@@ -84,13 +107,14 @@ export function LoginUtils() {
     Formik,
     doLogin,
     doLogout,
+    loading,
     initialValues,
     loginValidation,
     success,
     successMSG,
     resStatus,
     resOk,
-    error,    
+    error,
   }
 
 }

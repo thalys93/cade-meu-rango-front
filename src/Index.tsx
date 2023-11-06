@@ -12,7 +12,9 @@ function Index() {
 
   const { isLoading } = IndexUtils();
   const authContext = useContext(AuthContext);
-  
+
+
+
   return (
     <>
       {isLoading ? (

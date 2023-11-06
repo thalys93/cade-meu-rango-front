@@ -22,7 +22,7 @@ function Register() {
 
   return (
     <section className='m-3 font-body-rb '>    
-      <div className='popupCenter' hidden={!success == !error}>
+      <div hidden={!success == !error}>
         {PopupComponent({title: successMSG , statusCode: resStatus, error: error})}
       </div>
     <div className='absolute right-1/3 mr-5'>
