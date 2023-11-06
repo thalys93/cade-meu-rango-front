@@ -67,7 +67,7 @@ function OffCanvasComponent() {
                                 <BsDoorOpen className='mt-1 mr-2' />Encerrar Sessão
                             </ListGroupItem>
                         
-                            <ListGroupItem as="a" disabled href='config' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
+                            <ListGroupItem as="a" href='config' className={isDarkMode ? 'hover:bg-orange_primary hover:text-slate-900 select-none cursor-pointer flex content-center align-middle text-lg' : 'select-none cursor-pointer flex content-center align-middle text-lg hover:bg-orange_primary hover:text-white'}>
                             <FaWrench className='mt-1 mr-2' /> Configurações
                             </ListGroupItem>
                             </>
