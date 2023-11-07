@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import DarkModeComponent from '../components/DarkModeComponent'
 import BackComponent from '../components/BackComponent'
-import { Col, Container, Image, Row } from 'react-bootstrap'
+import { Col, Container, Figure, Image, Row } from 'react-bootstrap'
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
 
 import { AuthContext } from '../../utils/context/AuthModeContext'
 import { FireStoreDatabase } from '../../utils/auth/Firebase'
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
+import { BsFillPencilFill } from 'react-icons/bs'
 
 
 function UserPage() {
@@ -65,8 +66,13 @@ function UserPage() {
     return <Row>
       <Col sm>
         <div className='flex flex-row justify-center content-center items-center gap-2'>
+          <div>
+            <Figure className='bg-orange_primary hover:bg-orange_secondary p-1 rounded-circle text-light position-absolute top-24'>
+              <BsFillPencilFill className='m-1'/>
+            </Figure>
           <Image src='https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'
             roundedCircle width='80' height='80' />
+          </div>
           <div className='flex flex-col'>
             <span className={isDarkMode ? 'text-xl text-white' : 'text-xl text-slate-700'}> {userData?.name} </span>
             <span className={isDarkMode ? 'text-stone-400' : ' text-slate-700'}> 17/02/2023 </span>
