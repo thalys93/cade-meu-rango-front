@@ -107,9 +107,7 @@ body::-webkit-scrollbar-thumb{
 
 
 .ListIMG>img{
-    object-fit: cover;
-    width: 100px;
-    height: 70px;
+    object-fit: cover;     
     border-radius: 1rem 0px 1rem 0px;
 }
 
