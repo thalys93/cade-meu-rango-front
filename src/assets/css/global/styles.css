@@ -111,6 +111,19 @@ body::-webkit-scrollbar-thumb{
     border-radius: 1rem 0px 1rem 0px;
 }
 
+.UserIMG{
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+}
+
+.UserIMGLite{
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: cover;
+}
+
+
 .iconW{
     width: 100px;
     height: 25px;

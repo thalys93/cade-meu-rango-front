@@ -7,6 +7,7 @@ import { RecipeUtils } from '../../utils/recipe/recipeUtils'
 import { Image } from 'react-bootstrap';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
+import { AuthUtils } from './../../utils/auth/authUtils';
 
 /* TODO: 
   - add list of recipes 3 per row (improves layout)
@@ -23,7 +24,8 @@ import { AiOutlineEye } from 'react-icons/ai'
 
 function RecipesHome() {
   const { recipe, accountant } = RecipeUtils();
-  const { isDarkMode } = useContext(DarkModeContext)
+  const { isDarkMode } = useContext(DarkModeContext)   
+  const {userData} = AuthUtils();
 
   return (
     <section className={isDarkMode ? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>
@@ -81,8 +83,8 @@ function RecipesHome() {
                       </p>
                       <hr className='m-2' />
                       <div className='flex gap-2'>
-                        <Image src='https://avatars.githubusercontent.com/u/102838847?s=400&u=eb9cfafe4f03007af3e70307d1779d683794c04b&v=4' roundedCircle
-                          width={20} height={20} className='hover:scale-105 ml-2' />
+                        <Image src={userData?.profileImage ? userData.profileImage : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle
+                          width={20} height={20} className='hover:scale-105 ml-2 UserIMGLite' />
                         <span className={isDarkMode ? 'text-sm text-slate-400' : 'text-sm text-slate-700'}>
                           {r.author.name}
                         </span>

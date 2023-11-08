@@ -15,7 +15,8 @@ export interface newUserModel {
     email: string;
     password: string;
     confirmPassword: string;
-    role: string;
+    role: string;    
+    userImageLink: string,
     isAdmin: boolean;
     isAuthor: boolean;
     terms: boolean;
@@ -40,6 +41,7 @@ export function RegisterUtils() {
         password: '',
         confirmPassword: '',
         role: 'Usuário',
+        userImageLink: '',    
         isAdmin: false,
         isAuthor: false,
         terms: false
@@ -75,6 +77,7 @@ export function RegisterUtils() {
                 name: userData.name,
                 email: userData.email,
                 role: userData.role,
+                userImageLink: '',
                 isAdmin: userData.isAdmin,
                 isAuthor: userData.isAuthor,
                 terms : userData.terms
@@ -96,11 +99,12 @@ export function RegisterUtils() {
                 email: '',
                 password: '',
                 confirmPassword: '',
-                role: '',
+                role: '',        
+                userImageLink: RemaingUserData.userImageLink,        
                 isAdmin: false,
                 isAuthor: false,
                 terms: false
-            };            
+            };
 
             // Faz o Post para a API
             await postUser(userDataForAPI);

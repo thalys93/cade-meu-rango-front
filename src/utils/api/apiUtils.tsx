@@ -1,5 +1,6 @@
 import axios from "axios";
 import { newUserModel } from "../auth/register/registerUtils";
+import { AuthUtils } from './../auth/authUtils';
 
 const localAddress = "http://localhost:3030/api/"
 const recipeRoute = "recipe"
@@ -8,6 +9,16 @@ const tipsRoute = "tip"
 
 
 // Usuarios
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
+interface User {
+    UUID: string;
+    userName: string;
+    userImageLink: string;
+}
+
+
 
 export const getUsers = async () => {
     try {
@@ -35,9 +46,13 @@ export const postUser = async (user: newUserModel) => {
     }
 }
 
-export const updateUser = async (user: newUserModel) => {
+export const updateUser = async (user: User) => {
+    const {userData} = AuthUtils();
+
+    const userID = userData.UUID;
+
     try {
-        const res = await axios.put(localAddress + userRoute, user)
+        const res = await axios.put(localAddress + userRoute + '/' + userID , user)
         return res.data;
     } catch (error) {
         return error

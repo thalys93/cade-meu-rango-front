@@ -1,6 +1,6 @@
 import * as formik from 'formik';
 import * as yup from 'yup';
-import { Fauth } from './../Firebase';
+import { Fauth } from '../Firebase';
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence, signOut } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
