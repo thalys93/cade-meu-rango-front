@@ -17,6 +17,7 @@ export const AuthProvider = (props) => {
         Fauth.onAuthStateChanged((authUser) => {
             setUser(authUser);
             setLoading(false);
+            // console.log(authUser);
         })
     }, []);
 

@@ -37,6 +37,7 @@ export function userUtils() {
 
                     const storageRef = ref(FireStorage, `users_photos/${uid}/profileImage`);
                     await uploadBytes(storageRef, profileImage);
+
                     const imageURL = await getDownloadURL(storageRef);
 
                     const userRef = doc(FireStoreDatabase, 'users', userDocRef.id);
@@ -51,8 +52,11 @@ export function userUtils() {
                         isAdmin: false,
                         isAuthor: false,
                         terms: false,                        
-                        userImageLink: imageURL
+                        userImageLink: imageURL,
+                        userName: ''
                     }
+                    
+                    const UserUid = authContext?.user?.uid;                    
 
                     await updateUser(updateUserIMG);
 
