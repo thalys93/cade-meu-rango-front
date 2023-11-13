@@ -29,3 +29,8 @@ export interface CreatedUserModel {
     email: string;
     password: string;
 }
+
+// Estado Usuario
+export interface UserState {
+    user: CreatedUserModel | null;
+}

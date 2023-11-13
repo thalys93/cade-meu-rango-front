@@ -15,14 +15,14 @@ function Login() {
     loginValidation,
     doLogin,
     success,
-    successMSG,
+    infoMSG,
     resStatus,    
     error } = LoginUtils()
 
   return (
     <section className='m-3 pt-3 font-body-rb '>
       <div hidden={!success === !error}>
-        {PopupComponent({ title: successMSG, statusCode: resStatus, error: error })}
+        {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
       </div>
       <div className='absolute right-1/3 mr-5'>
         <DarkModeComponent />

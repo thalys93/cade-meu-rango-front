@@ -8,17 +8,32 @@ import { AiOutlineEye } from 'react-icons/ai'
 import { BsFillPencilFill } from 'react-icons/bs'
 import { AuthUtils } from './../../utils/auth/authUtils';
 import { userUtils } from './../../utils/auth/user/userUtils';
+import PopupComponent from './../components/PopupComponent';
 
 
 
 function UserPage() {
 
   const { isDarkMode } = useContext(DarkModeContext)
-  const { userData } = AuthUtils();    
-  const {editMode, toggleEditMode, saveChanges, getInputProps, getRootProps, profileImage} = userUtils();
-  
+  const { userData } = AuthUtils();
+  const {
+    editMode,
+    profileImage,
+    infoMSG,
+    resStatus,
+    error,
+    show,
+    toggleEditMode,
+    saveChanges,
+    getInputProps,
+    getRootProps,
+  } = userUtils();
+
   return (
     <section className='mt-5 p-2'>
+      <div hidden={!show}>
+        {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
+      </div>
       <div className='absolute right-3 mr-5'>
         <DarkModeComponent />
       </div>
@@ -56,7 +71,7 @@ function UserPage() {
                 ) : (
                   <>
                     <Figure>
-                      <Figure.Image src={'https://media.istockphoto.com/id/931778082/vector/download-button-vector-icon.jpg?s=612x612&w=0&k=20&c=-SWrynGUHE9RX5j1IfqyDGREWnV4uUIGWodUiY3xdBs='} roundedCircle className='UserIMG'/>
+                      <Figure.Image src={'https://media.istockphoto.com/id/931778082/vector/download-button-vector-icon.jpg?s=612x612&w=0&k=20&c=-SWrynGUHE9RX5j1IfqyDGREWnV4uUIGWodUiY3xdBs='} roundedCircle className='UserIMG' />
                     </Figure>
                   </>
                 )}

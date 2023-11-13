@@ -1,41 +1,31 @@
-import { useEffect, useState } from "react";
-import { TipModel } from "../interfaces/Tips";
+import { useEffect } from "react";
 import { getTips } from "../api/apiUtils";
-// import localAPI from './tips.json'
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { setTip } from "../redux/tipSlice";
+import { setStates } from "../redux/appSlice";
 
 export function TipUtils() {
-    const [loading, setLoading] = useState(true);
-    const [accountant, setAccountant] = useState(0);
-
-    const [tip, setTip] = useState<TipModel[]>([]);
-
+    const dispatch = useDispatch();
+    const commonStates = useSelector((state: RootState) => state.commonState);
+    const tipStates = useSelector((state: RootState) => state.tipState);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await getTips();
-
-                setTip(response);
+                dispatch(setTip(response));
                 setTimeout(() => {
-                    setLoading(true);
+                    dispatch(setStates({ loading: true }))
                 }, 1500);
             } catch (e) {
                 console.log(e);
             }
         };
         fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (loading) {
-            const interval = setInterval(() => {
-                setAccountant(accountant => accountant + 1);
-            }, 120);
-
-            return () => {
-                clearInterval(interval);
-            }
-        }
-    }, [loading]);
-
-    return { tip, loading, accountant }
+    }, [dispatch]);
+    return {
+        tip: tipStates,
+        loading: commonStates        
+    }
 }

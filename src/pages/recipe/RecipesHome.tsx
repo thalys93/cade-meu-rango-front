@@ -8,10 +8,9 @@ import { Image } from 'react-bootstrap';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
 
+
 /* TODO: 
   - add list of recipes 3 per row (improves layout)
-  
-
   - add pagination
   - add search
   - add filter (improves back-end attributes)
@@ -22,7 +21,8 @@ import { AiOutlineEye } from 'react-icons/ai'
 
 
 function RecipesHome() {
-  const { recipe, accountant } = RecipeUtils();  
+  const { recipe } = RecipeUtils();  
+
   const { isDarkMode } = useContext(DarkModeContext)  
 
   return (
@@ -64,9 +64,8 @@ function RecipesHome() {
       <ListGroup as="ul">
         <h1 className='mb-2 text-xl bg-orange_primary text-white text-center'>{props.title}</h1>
         {
-          recipe.length > 0 ? (
-            recipe.filter(r => r.type === props.type).map((r, i) => (
-              accountant > i ? (
+          recipe.recipes.length > 0 ? (
+            recipe.recipes.filter(r => r.type === props.type).map((r, i) => (              
                 <ListGroup.Item as="li" key={i} className={isDarkMode ? 'flex animate__animated animate__fadein bg-slate-800 border-none text-light animate__animated animate__fadeIn' : 'flex animate__animated animate__fadeIn animate__animated animate__fadeIn'}>
 
                   <aside className='ListIMG'>
@@ -100,8 +99,7 @@ function RecipesHome() {
                     </Col>
                   </Row>
 
-                </ListGroup.Item>
-              ) : null
+                </ListGroup.Item>              
             ))
           ) : null}
       </ListGroup>)
@@ -111,7 +109,7 @@ function RecipesHome() {
     return (
       <Carousel fade slide className={isDarkMode ? 'shadow-md shadow-slate-900' : 'shadow-md shadow-slate-400'}>
         {
-          recipe.slice(0, 4).map((r, i) => (
+          recipe.recipes.slice(0, 4).map((r, i) => (
             <Carousel.Item key={i}>
               <Image src={r.imageLink} className='GalleryIMG' />
               <Carousel.Caption className='bg-orange_primary'>

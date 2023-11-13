@@ -26,7 +26,7 @@ function OffCanvasComponent() {
         </Tooltip>
     );
 
-    const { doLogout, success, successMSG, resStatus, error, loading } = LoginUtils();
+    const { doLogout, success, infoMSG, resStatus, error, loading } = LoginUtils();
     const authContext = useContext(AuthContext);
 
 
@@ -39,7 +39,7 @@ function OffCanvasComponent() {
             </OverlayTrigger>
 
             <div hidden={!success === !error}>
-                {PopupComponent({ title: successMSG, statusCode: resStatus, error: error })}
+                {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
             </div>
 
             <Offcanvas show={show} onHide={handleClose} placement='end' className={isDarkMode ? 'bg-slate-700 text-white' : 'bg-white text-slate-900'}>

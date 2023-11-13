@@ -12,7 +12,7 @@ import '../components/custom/avatarBadge.css'
 
 function TipsHome() {
 
-  const {tip , accountant} = TipUtils();
+  const {tip} = TipUtils();
   const {isDarkMode} = useContext(DarkModeContext)
 
   return (
@@ -32,21 +32,19 @@ function TipsHome() {
   function TipList() {
     return <ListGroup as="ul" className='flex flex-wrap justify-center content-center' horizontal>
       {
-      tip.length > 0 ? (
-      tip.map((t , i ) => (
-        accountant > i ? (
+      tip.tip.length > 0 ? (
+      tip.tip.map((t , i ) => (
       <ListGroup.Item as="li" key={i} className='bg-transparent border-transparent'>
       <Card className={isDarkMode? 'w-96 h-40 max-h40 hover:scale-105 transition-all rounded-b-xl bg-slate-800' : 'w-96 h-40 max-h40 hover:scale-105 transition-all rounded-b-xl'}>
         <Card.Body>
           <Card.Title className='underline text-orange_primary font-bold underline-offset-4'>{t.title}</Card.Title>
           <Card.Text className={isDarkMode? 'text-light' : 'text-slate-900'}>{t.description}</Card.Text>
           <Badge className='text-orange_primary bg-transparent font-bold flex flex-row content-center'>    
-            {t.publishDate}
+            {t.CreatedAt}
           </Badge>
         </Card.Body>        
       </Card>
-      </ListGroup.Item>
-      ) : null
+      </ListGroup.Item>      
       ))
       ) : null
       }    

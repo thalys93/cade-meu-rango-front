@@ -2,22 +2,21 @@ import * as formik from 'formik';
 import * as yup from 'yup';
 import { Fauth } from '../Firebase';
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence, signOut } from 'firebase/auth';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreatedUserModel } from './../../interfaces/Users';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setStates } from '../../redux/appSlice';
 
 export function LoginUtils() {
 
   const { Formik } = formik;
-  const initialValues: CreatedUserModel = { email: '', password: '' };
   const navigate = useNavigate();
 
-  const [success, setSucess] = useState(false);
-  const [successMSG, setSucessMSG] = useState('');
-  const [resStatus, setResStatus] = useState(0);
-  const [resOk, setResOk] = useState<boolean | undefined>(undefined);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const initialValues: CreatedUserModel = { email: '', password: '' };
+
+  const dispatch = useDispatch();
+  const commonStates = useSelector((state: RootState) => state.commonState);
 
   const loginValidation = yup.object().shape({
     email: yup.string().required('Campo obrigatório').email("Email Inválido"),
@@ -28,58 +27,68 @@ export function LoginUtils() {
     try {
       const { email, password } = userData;
 
-      setLoading(true);
+      dispatch(setStates({ show: true }));
+
       await signInWithEmailAndPassword(Fauth, email, password);
 
       setTimeout(() => {
-        setSucessMSG('Validando Login..');
-        setResStatus(102);
+        dispatch(setStates({ infoMSG: 'Validando Login..', resStatus: 102 }));
+
         setPersistence(Fauth, browserSessionPersistence);
 
         setTimeout(() => {
-          setSucessMSG('Login realizado com sucesso! Redirecionando...');
-          setResStatus(200);
-          setSucess(true);
-          setLoading(false);
-          setResOk(true);
-          setError(false);
+          dispatch(setStates({
+            infoMSG: 'Login realizado com sucesso! Redirecionando...',
+            resStatus: 200,
+            success: true,
+            show: true,
+            loading: false,
+            resOk: true,
+            error: false,
+          }));
           setTimeout(() => {
             navigate('/');
+            dispatch(setStates({ show: false }));
           }, 1500);
         }, 1500);
       }, 1500);
 
     } catch (error) {
       console.error('Falha ' + error);
-      // Estados
-      setSucess(false);
-      setSucessMSG('Falha: ' + error.message);
-      setResStatus(400);
-      setResOk(false);
-      setError(true);
+
+      dispatch(setStates({
+        success: false,
+        infoMSG: 'Falha: ' + error.message,
+        resStatus: 400,
+        resOk: false,
+        error: true,
+      }))
     }
   }
 
   const doLogout = async () => {
     try {
-      setLoading(true);
+      dispatch(setStates({ loading: true, }))
 
       setTimeout(() => {
-        setSucessMSG('Realizando Logout');
-        setResStatus(102);
+        dispatch(setStates({
+          infoMSG: 'Realizando Logout',
+          resStatus: 102,
+        }));
       }, 1500)
 
       setTimeout(() => {
-        setSucessMSG('Logout realizado com sucesso! Recarregando...');
-        setResStatus(200);
-
+        dispatch(setStates({
+          infoMSG: 'Logout realizado com sucesso! Recarregando...',
+          resStatus: 200,
+          success: true,
+          loading: false,
+          resOk: true,
+          error: false,
+        }))
         setTimeout(() => {
           signOut(Fauth);
         }, 500)
-        setLoading(false);
-        setSucess(true);
-        setResOk(true);
-        setError(false);
       }, 2000);
 
       setTimeout(() => {
@@ -88,11 +97,13 @@ export function LoginUtils() {
 
     } catch (error) {
       console.error('Falha ao Deslogar: ' + error);
-      setSucess(false);
-      setSucessMSG('Falha ao Deslogar: ' + error.message);
-      setResStatus(400);
-      setResOk(false);
-      setError(true);
+      dispatch(setStates({
+        success: false,
+        infoMSG: 'Falha ao Deslogar: ' + error.message,
+        resStatus: 400,
+        resOk: false,
+        error: true,
+      }));
     }
   }
 
@@ -102,14 +113,15 @@ export function LoginUtils() {
     Formik,
     doLogin,
     doLogout,
-    loading,
     initialValues,
     loginValidation,
-    success,
-    successMSG,
-    resStatus,
-    resOk,
-    error,
+    show: commonStates.show,
+    loading: commonStates.loading,
+    success: commonStates.success,
+    infoMSG: commonStates.infoMSG,
+    resStatus: commonStates.resStatus,
+    resOk: commonStates.resOk,
+    error: commonStates.error,
   }
 
 }

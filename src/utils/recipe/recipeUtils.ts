@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getRecipes, getUsersByID } from "../api/apiUtils";
 import { RecipeAPIModel } from "../interfaces/Recipes";
+import { useDispatch } from "react-redux";
+import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
+import { setRecipe } from "../redux/recipeSlice";
+import { setStates } from "../redux/appSlice";
 
 
 export function RecipeUtils() {
-    const [loading, setLoading] = useState(true);
-    const [accountant, setAccountant] = useState(0);
 
-    const [recipe, setRecipe] = useState<RecipeAPIModel[]>([]);    
+    const dispatch = useDispatch();
+    const commonStates = useSelector((state: RootState) => state.commonState);
+    const recipeStates = useSelector((state: RootState) => state.recipeState);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,45 +23,34 @@ export function RecipeUtils() {
 
                 const userDataPromises = authorUUIDs.map((authorUUID: string) => getUsersByID(authorUUID));
                 const userDataArray = await Promise.all(userDataPromises);
-                
-                const mappedRecipe = recipes.map((recipe: RecipeAPIModel, index: number) => {    
-                    const userData = userDataArray[index]                
+
+                const mappedRecipe = recipes.map((recipe: RecipeAPIModel, index: number) => {
+                    const userData = userDataArray[index]
                     return {
-                        ...recipe, 
+                        ...recipe,
                         author: {
                             name: userData.name,
-                            imgLink: userData.imageLink                        
+                            imgLink: userData.imageLink
                         }
                     }
-                    
+
                 })
 
-                setRecipe(mappedRecipe);
+                dispatch(setRecipe(mappedRecipe));
 
                 setTimeout(() => {
-                    setLoading(false);
+                    dispatch(setStates({ loading: false }))
                 }, 1500);
 
-                // console.log(mappedRecipe);
-                // console.log(userData);
             } catch (e) {
                 console.log(e);
             }
         };
         fetchData();
-    }, []);
+    }, [dispatch]);    
 
-    useEffect(() => {
-        if (loading) {
-            const interval = setInterval(() => {
-                setAccountant((accountant) => accountant + 1);
-            }, 210);
-
-            return () => {
-                clearInterval(interval);
-            }
-        }
-    }, [loading]);
-
-    return { recipe, loading, accountant }
+    return {
+        recipe: recipeStates,
+        loading: commonStates,        
+    }
 }

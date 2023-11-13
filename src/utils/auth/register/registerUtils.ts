@@ -2,23 +2,22 @@
 import * as formik from 'formik';
 import * as yup from 'yup';
 import { postUser } from '../../api/apiUtils';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Fauth } from '../Firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { newUserModel } from './../../interfaces/Users';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setStates } from '../../redux/appSlice';
 
 export function RegisterUtils() {
 
     const { Formik } = formik;
     const navigate = useNavigate();
 
-    const [success, setSucess] = useState(false);
-    const [successMSG, setSucessMSG] = useState('');
-    const [resStatus, setResStatus] = useState(0);
-    const [resOk, setResOk] = useState<boolean | undefined>(undefined);
-    const [error, setError] = useState(false);
-
+    const dispatch = useDispatch();
+    const commonStates = useSelector((state: RootState) => state.commonState);
 
     const initialValues: newUserModel = {
         UUID: '',
@@ -57,18 +56,20 @@ export function RegisterUtils() {
         userData.isAuthor = initialValues.isAuthor;
 
         try {
-            // Primeiro Bloco de Mensagem
-            setSucess(true);
-            setResStatus(102);
-            setSucessMSG("Criando usuário...");
+            dispatch(setStates({
+                success: true,
+                infoMSG: 'Criando usuário...',
+                resStatus: 102
+            }));
 
-            // Inicia Função de Criação de Usuário 
             const { user } = await createUserWithEmailAndPassword(Fauth, userData.email, userData.password);
 
             setTimeout(() => {
                 // Conclui Criação do Usuario
-                setResStatus(201);
-                setSucessMSG("Passando Dados para API!!");
+                dispatch(setStates({
+                    resStatus: 201,
+                    infoMSG: 'Passando Dados para API!',
+                }))
             }, 1500);
 
             const RemaingUserData = {
@@ -87,30 +88,38 @@ export function RegisterUtils() {
 
             // Envia dados remanescentes para a API
             if (response.status === 200) {
-                setSucessMSG("Usuário Criado com Sucesso!");
-                setResStatus(200);
-                setResOk(true);
-                setError(false);
+                dispatch(setStates({
+                    infoMSG: 'Usuário Criado com Sucesso!',
+                    resStatus: 200,
+                    success: true,
+                    resOk: true,
+                    error: false,
+
+                }))
 
                 setTimeout(() => {
                     navigate('/');
                 }, 3000);
 
             } else if (response.status === 500) {
-                setSucess(false);
-                setError(true);
-                setSucessMSG("Falha ao criar o usuário!! : " + response.message);
-                console.log(response);
-                setResStatus(response.status);
+                dispatch(setStates({
+                    infoMSG: 'Falha ao criar o usuário!! : ' + response.message,
+                    resStatus: 500,
+                    success: false,
+                    resOk: false,
+                    error: true,
+                }))
                 setTimeout(() => {
                     window.location.reload();
                 }, 3000);
             } else {
-                setSucess(false);
-                setError(true);
-                setSucessMSG("Falha ao criar o usuário!! : " + response.message);
-                console.log(response);
-                setResStatus(response.status);
+                dispatch(setStates({
+                    infoMSG: 'Falha ao criar o usuário!! : ' + response.message,
+                    resStatus: 500,
+                    success: false,
+                    resOk: false,
+                    error: true,
+                }))
                 setTimeout(() => {
                     window.location.reload();
                 }, 3000);
@@ -118,10 +127,12 @@ export function RegisterUtils() {
 
         } catch (error) {
             console.error("falha ao criar o usuário: ", error);
-            setSucess(false);
-            setError(true);
-            setSucessMSG("Falha ao criar o usuário!! : " + error.message);
-            setResStatus(error.status);
+            dispatch(setStates({
+                resStatus: 500,
+                success: false,
+                resOk: false,
+                error: true,
+            }))
         }
     }
 
@@ -129,10 +140,10 @@ export function RegisterUtils() {
         Formik,
         initialValues,
         FormValidation, onSubmit,
-        error,
-        success,
-        successMSG,
-        resStatus,
-        resOk
+        error: commonStates.error,
+        success: commonStates.success,
+        infoMSG: commonStates.infoMSG,
+        resStatus: commonStates.resStatus,
+        resOk: commonStates.resOk,
     }
 }

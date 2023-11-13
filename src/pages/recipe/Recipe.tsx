@@ -3,9 +3,9 @@ import BannerComponent from '../components/BannerComponent'
 import { RecipeUtils } from '../../utils/recipe/recipeUtils';
 import { useParams } from 'react-router-dom';
 import { Col, Container, Image, Row } from 'react-bootstrap';
-import { RecipeModel } from './../../utils/recipe/recipeUtils';
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import BackComponent from '../components/BackComponent';
+import { RecipeAPIModel } from '../../utils/interfaces/Recipes';
 
 function Recipe() {
 
@@ -23,7 +23,7 @@ function Recipe() {
           <BackComponent />
         </div>
         <article className='p-2 pb-5'>
-          {recipe.filter(r => r.title === name).map((r) => (
+          {recipe.recipes.filter(r => r.title === name).map((r) => (
             <div className={isDarkMode ? 'font-body-rb text-white animate__animated animate__fadeIn mt-5' : 'font-body-rb text-slate-900 animate__animated animate__fadeIn mt-5'}>
               <Container className='flex justify-center' fluid>
                 <Row className='items-center'>
@@ -42,7 +42,7 @@ function Recipe() {
     </>
   )
 
-  function RecipeImage(r: RecipeModel) {
+  function RecipeImage(r: RecipeAPIModel) {
     return <Container className='flex flex-col justify-center content-center p-sm-2'>
       <Image src={r.imageLink} alt={r.title}
         className={isDarkMode ? 'shadow-md customBorder customIMG-size shadow-slate-900' : 'shadow-md customBorder shadow-slate-300 customIMG-size'}
@@ -52,7 +52,7 @@ function Recipe() {
 
   }
 
-  function RecipeDescription(r: RecipeModel) {
+  function RecipeDescription(r: RecipeAPIModel) {
     return (
       <div className='flex flex-col justify-center m-3'>
         <h1 className='text-2xl text-start underline underline-offset-8'>{r.title}</h1>
@@ -64,7 +64,7 @@ function Recipe() {
     )
   }
 
-  function Ingredients(r: RecipeModel) {
+  function Ingredients(r: RecipeAPIModel) {
     return <div className='flex flex-col content-center mt-4'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Ingredientes</h1>
       <ol className='text-start pt-2'>
@@ -77,7 +77,7 @@ function Recipe() {
     </div>;
   }
 
-  function instructions(r: RecipeModel) {
+  function instructions(r: RecipeAPIModel) {
     return <div className='flex flex-col flex-wrap content-center m-4'>
       <h1 className='text-2xl text-start underline underline-offset-8'>Modo de preparo</h1>
       <ol className='text-start pt-2'>

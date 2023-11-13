@@ -4,6 +4,6 @@ export interface TipModel {
     title: string;
     description: string;
     authorUUID: string;
-    CreatedAt: Date;
-    UpdatedAt: Date;
+    CreatedAt: string;
+    UpdatedAt: string;
 }
