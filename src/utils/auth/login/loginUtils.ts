@@ -4,12 +4,7 @@ import { Fauth } from '../Firebase';
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence, signOut } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
-export interface CreatedUserModel {
-  email: string;
-  password: string;
-}
+import { CreatedUserModel } from './../../interfaces/Users';
 
 export function LoginUtils() {
 

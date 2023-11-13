@@ -1,16 +1,7 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { useEffect, useState } from "react";
-// import { apiCall } from '../api/apiUtils'
-import localAPI from './tips.json'
-
-export interface TipModel {
-    id: number;
-    title: string;
-    description: string;
-    publishDate: string;
-}
+import { TipModel } from "../interfaces/Tips";
+import { getTips } from "../api/apiUtils";
+// import localAPI from './tips.json'
 
 export function TipUtils() {
     const [loading, setLoading] = useState(true);
@@ -21,7 +12,9 @@ export function TipUtils() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setTip(localAPI as TipModel[]);
+                const response = await getTips();
+
+                setTip(response);
                 setTimeout(() => {
                     setLoading(true);
                 }, 1500);

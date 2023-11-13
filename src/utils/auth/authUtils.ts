@@ -5,10 +5,9 @@ import { getUsersByID } from "../api/apiUtils";
 
 export function AuthUtils() {
     const [userData, setUserData] = useState({} as ApiUserModel);
-
     const authContext = useContext(AuthContext);
 
-    // Recupera Dados do Usuario na API
+    // Recupera Dados do Usuario Autenticado na API
     useEffect(() => {
         const getUserData = async () => {
             try {
@@ -19,7 +18,7 @@ export function AuthUtils() {
                     if (response) {
                         setUserData(response);                      
                     } else {
-                        console.log('Nenhum Usuário Encontrado');
+                        console.error('Nenhum Usuário Encontrado');
                     }
                 }
             } catch (error) {
@@ -28,7 +27,6 @@ export function AuthUtils() {
         };
         getUserData();
     }, [authContext?.user?.uid]);    
-
 
     return {
         userData

@@ -1,5 +1,7 @@
 import axios from "axios";
-import { ApiUserModel } from "../auth/register/registerUtils";
+import { ApiUserModel } from '../interfaces/Users.ts'
+import { TipModel } from "../interfaces/Tips.ts";
+import { newRecipeModel } from "../interfaces/Recipes.ts";
 
 const localAddress = "http://localhost:3030/api/"
 const recipeRoute = "recipe"
@@ -71,7 +73,7 @@ export const getRecipesByID = async (uuid: string) => {
     }
 }
 
-export const postRecipe = async (recipe: unknown) => {
+export const postRecipe = async (recipe: newRecipeModel) => {
     try {
         const res = await axios.post(localAddress + recipeRoute, recipe)
         return res.data;
@@ -80,9 +82,9 @@ export const postRecipe = async (recipe: unknown) => {
     }
 }
 
-export const updateRecipe = async (recipe: unknown) => {
+export const updateRecipe = async (uuid: string, recipe: newRecipeModel) => {
     try {
-        const res = await axios.put(localAddress + recipeRoute, recipe)
+        const res = await axios.put(localAddress + recipeRoute + '/' + uuid, recipe)
         return res.data;
     } catch (error) {
         return error
@@ -119,7 +121,7 @@ export const getTipsByID = async (uuid: string) => {
     }
 }
 
-export const postTips = async (tips: unknown) => {
+export const postTips = async (tips: TipModel) => {
     try {
         const res = await axios.post(localAddress + tipsRoute, tips)
         return res.data;
@@ -128,9 +130,9 @@ export const postTips = async (tips: unknown) => {
     }
 }
 
-export const updateTips = async (tips: unknown) => {
+export const updateTips = async (uuid: string , tips: TipModel) => {
     try {
-        const res = await axios.put(localAddress + tipsRoute, tips)
+        const res = await axios.put(localAddress + tipsRoute + '/' + uuid, tips)
         return res.data;
     } catch (error) {
         return error

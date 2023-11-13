@@ -5,7 +5,7 @@ import { FireStorage } from "../Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useDropzone } from "react-dropzone";
 import { getUsersByID, updateUser } from "../../api/apiUtils";
-import { ApiUserModel } from "../register/registerUtils";
+import { ApiUserModel } from "../../interfaces/Users";
 
 
 export function userUtils() {
@@ -50,6 +50,7 @@ export function userUtils() {
 
                     // Atualiza o documento do usuário
                     await updateUser(uid, updateUserIMG as ApiUserModel);
+                    
                     setEditMode(false);
 
                 }

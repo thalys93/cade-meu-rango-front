@@ -1,37 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import * as formik from 'formik';
 import * as yup from 'yup';
 import { postUser } from '../../api/apiUtils';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Fauth, FireStoreDatabase } from '../Firebase';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-
-
-export interface newUserModel {
-    UUID: string;
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    role: string;
-    imageLink: string,
-    isAdmin: boolean;
-    isAuthor: boolean;
-    terms: boolean;
-}
-
-export interface ApiUserModel {
-    UUID: string;
-    email: string;
-    isAdmin: boolean;
-    isAuthor: boolean;
-    name: string;
-    role: string;
-    terms: boolean;
-    imageLink: string;
-}
+import { Fauth } from '../Firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { newUserModel } from './../../interfaces/Users';
 
 export function RegisterUtils() {
 
