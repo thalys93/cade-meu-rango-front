@@ -1,13 +1,13 @@
 /// <reference types="vite/client" />
 interface ImportMetaEnv {
-    readonly VITE_FIREAPI: string,
-    readonly VITE_FIREDOMAIN: string,
-    readonly VITE_FIREDATABASE: string,
-    readonly VITE_FIREID: string,
-    readonly VITE_FIREBUCKET: string,
-    readonly VITE_FIRESENDER: string,
-    readonly VITE_FIREAPPID: string,
-    readonly VITE_FIREMEASUREMENT: string,
+    VITE_FIREAPI: string,
+    VITE_FIREDOMAIN: string,
+    VITE_FIREDATABASE: string,
+    VITE_FIREID: string,
+    VITE_FIREBUCKET: string,
+    VITE_FIRESENDER: string,
+    VITE_FIREAPPID: string,
+    VITE_FIREMEASUREMENT: string,
 
   }
   

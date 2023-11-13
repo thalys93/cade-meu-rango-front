@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthModeContext";
-import { ApiUserModel } from "./register/registerUtils"; 
 import { getUsersByID } from "../api/apiUtils";
+import { ApiUserModel } from "../interfaces/Users";
 
 export function AuthUtils() {
     const [userData, setUserData] = useState({} as ApiUserModel);
