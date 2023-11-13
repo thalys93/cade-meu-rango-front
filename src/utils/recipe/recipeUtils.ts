@@ -1,10 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { useState, useEffect } from "react";
 import { getRecipes, getUsersByID } from "../api/apiUtils";
-
-// import localAPI from './recipes.json'
 
 export interface RecipeModel {
     UUID: string;
@@ -26,7 +21,8 @@ interface RecipeAPIModel {
     ingredients: Array<string>;
     instructions: Array<string>;
     author: {
-        name: string
+        name: string,
+        imgLink: string
     }
 }
 
@@ -34,36 +30,37 @@ export function RecipeUtils() {
     const [loading, setLoading] = useState(true);
     const [accountant, setAccountant] = useState(0);
 
-    const [recipe, setRecipe] = useState<RecipeAPIModel[]>([]);
+    const [recipe, setRecipe] = useState<RecipeAPIModel[]>([]);    
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const recipes = await getRecipes();
+                const authorUUIDs = recipes.map((recipe: { authorUUID: string; }) => recipe.authorUUID);
 
-                const updatedRecipes = await Promise.all(recipes.map(async (recipe) => {
-                    const userData = await getUsersByID(recipe.authorUUID);
-
-                    const formattedUserData = userData.userName
-                    .replace(/([a-z])([A-Z])/g, '$1 $2')
-                    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
-                    .trim();
-
+                const userDataPromises = authorUUIDs.map((authorUUID: string) => getUsersByID(authorUUID));
+                const userDataArray = await Promise.all(userDataPromises);
+                
+                const mappedRecipe = recipes.map((recipe: RecipeAPIModel, index: number) => {    
+                    const userData = userDataArray[index]                
                     return {
-                        ...recipe,
+                        ...recipe, 
                         author: {
-                            name: formattedUserData,
-                        },
-                    };
-                }));
+                            name: userData.name,
+                            imgLink: userData.imageLink                        
+                        }
+                    }
+                    
+                })
 
-                setRecipe(updatedRecipes);
+                setRecipe(mappedRecipe);
 
                 setTimeout(() => {
                     setLoading(false);
                 }, 1500);
 
-                console.log(updatedRecipes);
+                // console.log(mappedRecipe);
+                // console.log(userData);
             } catch (e) {
                 console.log(e);
             }

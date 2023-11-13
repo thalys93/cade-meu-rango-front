@@ -15,11 +15,22 @@ export interface newUserModel {
     email: string;
     password: string;
     confirmPassword: string;
-    role: string;    
-    userImageLink: string,
+    role: string;
+    imageLink: string,
     isAdmin: boolean;
     isAuthor: boolean;
     terms: boolean;
+}
+
+export interface ApiUserModel {
+    UUID: string;
+    email: string;
+    isAdmin: boolean;
+    isAuthor: boolean;
+    name: string;
+    role: string;
+    terms: boolean;
+    imageLink: string;
 }
 
 export function RegisterUtils() {
@@ -41,7 +52,7 @@ export function RegisterUtils() {
         password: '',
         confirmPassword: '',
         role: 'Usuário',
-        userImageLink: '',    
+        imageLink: '',
         isAdmin: false,
         isAuthor: false,
         terms: false
@@ -65,59 +76,70 @@ export function RegisterUtils() {
     });
 
     const onSubmit = async (userData: newUserModel) => {
+
         userData.role = initialValues.role;
         userData.isAdmin = initialValues.isAdmin;
         userData.isAuthor = initialValues.isAuthor;
 
         try {
+            // Primeiro Bloco de Mensagem
+            setSucess(true);
+            setResStatus(102);
+            setSucessMSG("Criando usuário...");
+
+            // Inicia Função de Criação de Usuário 
             const { user } = await createUserWithEmailAndPassword(Fauth, userData.email, userData.password);
 
+            setTimeout(() => {
+                // Conclui Criação do Usuario
+                setResStatus(201);
+                setSucessMSG("Passando Dados para API!!");
+            }, 1500);
+
             const RemaingUserData = {
-                UUID: user?.uid || '',
+                UUID: user?.uid,
                 name: userData.name,
                 email: userData.email,
                 role: userData.role,
-                userImageLink: '',
+                imageLink: '',
                 isAdmin: userData.isAdmin,
                 isAuthor: userData.isAuthor,
-                terms : userData.terms
+                terms: userData.terms
             }
+            // Faz o Post para a API            
+            const response = await postUser(RemaingUserData);
+            console.log(response.message);
 
-            await addDoc(collection(FireStoreDatabase, 'users') , RemaingUserData)
+            // Envia dados remanescentes para a API
+            if (response.status === 200) {
+                setSucessMSG("Usuário Criado com Sucesso!");
+                setResStatus(200);
+                setResOk(true);
+                setError(false);
 
-            // Remove Espaços do UserName
-            const userName = userData.name
-            .replace(/\s+/g, '') // Remove todos os espaços
-            .replace(/([a-z])([A-Z])/g, '$1$2') // Remove o espaço entre minúsculas e maiúsculas
-            .trim();
+                setTimeout(() => {
+                    navigate('/');
+                }, 3000);
 
-            // Cria o Objeto com apenas o UserName(para o banco de dados)
-            const userDataForAPI = {
-                UUID: RemaingUserData.UUID,
-                userName: userName,
-                name: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-                role: '',        
-                userImageLink: RemaingUserData.userImageLink,        
-                isAdmin: false,
-                isAuthor: false,
-                terms: false
-            };
-
-            // Faz o Post para a API
-            await postUser(userDataForAPI);
-            
-            setSucess(true);
-            setSucessMSG("Usuário criado com sucesso!!");
-            setResStatus(201);
-            setResOk(true);
-            setError(false);
-
-            setTimeout(() => {
-                navigate('/');
-            }, 3000);
+            } else if (response.status === 500) {
+                setSucess(false);
+                setError(true);
+                setSucessMSG("Falha ao criar o usuário!! : " + response.message);
+                console.log(response);
+                setResStatus(response.status);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            } else {
+                setSucess(false);
+                setError(true);
+                setSucessMSG("Falha ao criar o usuário!! : " + response.message);
+                console.log(response);
+                setResStatus(response.status);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
 
         } catch (error) {
             console.error("falha ao criar o usuário: ", error);

@@ -50,11 +50,13 @@ function UserPage() {
               <div {...getRootProps()} className='dropzone'>
                 <input {...getInputProps()} />
                 {profileImage ? (
-                  <Image src={URL.createObjectURL(profileImage)} roundedCircle className='UserIMG' width='80' height='80' />
+                  <Container>
+                    <Image src={URL.createObjectURL(profileImage)} className='UserIMG' roundedCircle />
+                  </Container>
                 ) : (
                   <>
                     <Figure>
-                      <Figure.Image src={'https://media.istockphoto.com/id/931778082/vector/download-button-vector-icon.jpg?s=612x612&w=0&k=20&c=-SWrynGUHE9RX5j1IfqyDGREWnV4uUIGWodUiY3xdBs='} roundedCircle className='UserIMG' width='80' height='80' />
+                      <Figure.Image src={'https://media.istockphoto.com/id/931778082/vector/download-button-vector-icon.jpg?s=612x612&w=0&k=20&c=-SWrynGUHE9RX5j1IfqyDGREWnV4uUIGWodUiY3xdBs='} roundedCircle className='UserIMG'/>
                     </Figure>
                   </>
                 )}
@@ -65,7 +67,7 @@ function UserPage() {
               <Figure className='bg-orange_primary hover:bg-orange_secondary p-1 rounded-circle text-light position-absolute top-24' onClick={toggleEditMode}>
                 <BsFillPencilFill className='m-1' />
               </Figure>
-              <Image src={userData?.profileImage ? userData.profileImage : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle className='UserIMG' width='80' height='80' />
+              <Image src={userData?.imageLink ? userData.imageLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle className='UserIMG' width='80' height='80' />
             </div>
           )}
           <div className='flex flex-col'>

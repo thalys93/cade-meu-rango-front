@@ -7,7 +7,6 @@ import { RecipeUtils } from '../../utils/recipe/recipeUtils'
 import { Image } from 'react-bootstrap';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
-import { AuthUtils } from './../../utils/auth/authUtils';
 
 /* TODO: 
   - add list of recipes 3 per row (improves layout)
@@ -23,9 +22,8 @@ import { AuthUtils } from './../../utils/auth/authUtils';
 
 
 function RecipesHome() {
-  const { recipe, accountant } = RecipeUtils();
-  const { isDarkMode } = useContext(DarkModeContext)   
-  const {userData} = AuthUtils();
+  const { recipe, accountant } = RecipeUtils();  
+  const { isDarkMode } = useContext(DarkModeContext)  
 
   return (
     <section className={isDarkMode ? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>
@@ -72,7 +70,7 @@ function RecipesHome() {
                 <ListGroup.Item as="li" key={i} className={isDarkMode ? 'flex animate__animated animate__fadein bg-slate-800 border-none text-light animate__animated animate__fadeIn' : 'flex animate__animated animate__fadeIn animate__animated animate__fadeIn'}>
 
                   <aside className='ListIMG'>
-                    <Image src={r.imageLink} width={100} height={90} />
+                    <Image src={r.imageLink} className='RecipeIMG' />
                   </aside>
 
                   <Row>
@@ -83,8 +81,8 @@ function RecipesHome() {
                       </p>
                       <hr className='m-2' />
                       <div className='flex gap-2'>
-                        <Image src={userData?.profileImage ? userData.profileImage : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle
-                          width={20} height={20} className='hover:scale-105 ml-2 UserIMGLite' />
+                        <Image src={r.author?.imgLink ? r.author.imgLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle
+                          className='hover:scale-105 ml-2 UserIMGLite' />
                         <span className={isDarkMode ? 'text-sm text-slate-400' : 'text-sm text-slate-700'}>
                           {r.author.name}
                         </span>

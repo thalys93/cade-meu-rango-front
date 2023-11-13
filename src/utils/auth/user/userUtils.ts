@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthModeContext";
-import { FireStorage, FireStoreDatabase } from "../Firebase";
-import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { FireStorage } from "../Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useDropzone } from "react-dropzone";
-import { updateUser } from "../../api/apiUtils";
+import { getUsersByID, updateUser } from "../../api/apiUtils";
+import { ApiUserModel } from "../register/registerUtils";
+
 
 export function userUtils() {
 
@@ -13,6 +14,8 @@ export function userUtils() {
 
     const [editMode, setEditMode] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
+    const [APIuserData, setUserData] = useState({} as ApiUserModel);
+
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -28,47 +31,29 @@ export function userUtils() {
                     return;
                 }
 
-                const userRef = query(collection(FireStoreDatabase, 'users'), where('UUID', '==', uid));
-                const userSnapshot = await getDocs(userRef);
+                const userData = await getUsersByID(uid);
+                const storageRef = ref(FireStorage, `users/${uid}/profileImage`);
+                setUserData(APIuserData);
 
-                if (!userSnapshot.empty) {
-                    const userDoc = userSnapshot.docs[0];
-                    const userDocRef = userDoc.ref;
+                if (userData) {
+                                    
+                    // Faz o uploud no firebase
+                    await uploadBytes(storageRef, profileImage, { contentType: 'image/jpeg' })
 
-                    const storageRef = ref(FireStorage, `users_photos/${uid}/profileImage`);
-                    await uploadBytes(storageRef, profileImage);
-
+                    // Pega o link da imagem no firebase
                     const imageURL = await getDownloadURL(storageRef);
 
-                    const userRef = doc(FireStoreDatabase, 'users', userDocRef.id);
-
+                    // Cria o modelo para atualizar o usuario
                     const updateUserIMG = {
-                        UUID: uid,
-                        name: '',
-                        email: '',
-                        password: '',
-                        confirmPassword: '',
-                        role: '',
-                        isAdmin: false,
-                        isAuthor: false,
-                        terms: false,                        
-                        userImageLink: imageURL,
-                        userName: ''
+                        imageLink: imageURL,
                     }
-                    
-                    const UserUid = authContext?.user?.uid;                    
 
-                    await updateUser(updateUserIMG);
+                    // Atualiza o documento do usuário
+                    await updateUser(uid, updateUserIMG as ApiUserModel);
+                    setEditMode(false);
 
-                    await updateDoc(userRef, {
-                        userImageLink: imageURL
-                    });
-
-                } else {
-                    console.error('Documento do usuário não encontrado.');
                 }
 
-                setEditMode(false);
             } catch (error) {
                 console.error('Erro ao atualizar o documento do usuário:', error);
             }
@@ -80,7 +65,7 @@ export function userUtils() {
         const file = acceptedFiles[0];
         setProfileImage(file);
     }, []);
-    
+
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
         accept: 'image/*' as never,
@@ -94,6 +79,7 @@ export function userUtils() {
         saveChanges,
         getRootProps,
         getInputProps,
-        profileImage
+        profileImage,
+        APIuserData
     }
 }
