@@ -2,10 +2,10 @@
 import React, { useContext } from 'react'
 import DarkModeComponent from '../components/DarkModeComponent'
 import BackComponent from '../components/BackComponent'
-import { Col, Container, Figure, Image, Row } from 'react-bootstrap'
+import { Col, Container, Figure, Form, Image, Row } from 'react-bootstrap'
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
-import { BsFillPencilFill } from 'react-icons/bs'
+import { BsFillPencilFill, BsSave, BsTrash } from 'react-icons/bs'
 import { AuthUtils } from './../../utils/auth/authUtils';
 import { userUtils } from './../../utils/auth/user/userUtils';
 import PopupComponent from './../components/PopupComponent';
@@ -23,10 +23,13 @@ function UserPage() {
     resStatus,
     error,
     show,
+    Formik,
+    initialValues,
+    FormValidation,
     toggleEditMode,
     saveChanges,
     getInputProps,
-    getRootProps,
+    getRootProps,    
   } = userUtils();
 
   return (
@@ -43,7 +46,7 @@ function UserPage() {
 
       <Container className={isDarkMode ? 'bg-slate-700 rounded p-5' : 'bg-white rounded p-5'} fluid>
         <Row>
-          <Col sm className='mb-4'>
+          <Col sm className='mt-3'>
             {FirstUserCol()}
           </Col>
           <Col sm>
@@ -56,98 +59,160 @@ function UserPage() {
   )
 
   function FirstUserCol() {
-    return <Row>
-      <Col sm>
-        <div className='flex flex-row justify-center content-center items-center gap-2'>
-          {editMode ? (
-            <>
-
-              <div {...getRootProps()} className='dropzone'>
-                <input {...getInputProps()} />
-                {profileImage ? (
-                  <Container>
-                    <Image src={URL.createObjectURL(profileImage)} className='UserIMG' roundedCircle />
-                  </Container>
-                ) : (
-                  <>
-                    <Figure>
-                      <Figure.Image src={'https://media.istockphoto.com/id/931778082/vector/download-button-vector-icon.jpg?s=612x612&w=0&k=20&c=-SWrynGUHE9RX5j1IfqyDGREWnV4uUIGWodUiY3xdBs='} roundedCircle className='UserIMG' />
-                    </Figure>
-                  </>
-                )}
-              </div>
-            </>
-          ) : (
-            <div>
-              <Figure className='bg-orange_primary hover:bg-orange_secondary p-1 rounded-circle text-light position-absolute top-24' onClick={toggleEditMode}>
-                <BsFillPencilFill className='m-1' />
-              </Figure>
-              <Image src={userData?.imageLink ? userData.imageLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle className='UserIMG' width='80' height='80' />
-            </div>
-          )}
+    return <>
+      <div className='flex justify-between mt-2 items-center'>
+        <div className='editUserCustom gap-2'>
+          {PhotoSaving()}
           <div className='flex flex-col'>
-            <span className={isDarkMode ? 'text-xl text-white' : 'text-xl text-slate-700'}> {userData?.name} </span>
-            <span className={isDarkMode ? 'text-stone-400' : ' text-slate-700'}> 17/02/2023 </span>
+            {editMode ? (
+              <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={saveChanges}>
+                {({handleChange, touched, handleSubmit}) => (
+                <Form noValidate onSubmit={handleSubmit}>
+                <span className={isDarkMode ? 'text-xl text-white form-control bg-transparent border-0' : 'text-xl text-slate-700 form-control border-0'}> {userData?.name} </span>
+                  <Form.Group>
+                    <Form.Control                  
+                      type="text"
+                      placeholder={userData?.role}
+                      onChange={handleChange}
+                      isValid={touched.role}
+                      className={isDarkMode ? 'text-white border-0 bg-transparent placeholder:text-slate-50' : 'text-xl text-slate-700 border-0'}
+                      name="userRole"
+                    />
+                  </Form.Group>
+                </Form> )}
+              </Formik>) : (
+              <>
+                <span className={isDarkMode ? 'text-xl text-white' : 'text-xl text-slate-700'}> {userData?.name} </span>
+                <span className={isDarkMode ? 'text-stone-400' : ' text-slate-700'}> {userData?.role} </span>
+              </>
+            )}
           </div>
         </div>
-        <div className='mt-5 flex flex-col justify-center content-center items-center gap-3' hidden={!editMode}>
-          <button className={isDarkMode ? 'bg-orange_primary text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn' : 'bg-orange_primary border-1 text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn'} onClick={saveChanges}>
-            Salvar Alterações
-          </button>
+        <div hidden={!editMode}>
+          {actionButtons()}
+        </div>
+      </div>
 
-          <button className={isDarkMode ? 'bg-red-600 text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn' : 'bg-red-500 border-1 text-light p-2 rounded-lg hover:bg-red-700 animate__animated animate__fadeIn'} onClick={toggleEditMode}>
-            Descartar Alterações
+      <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-2' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-2'}></div>
+
+      {editMode? (
+        <div className='mt-2'>
+          <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={saveChanges}>
+          {({handleChange, touched, handleSubmit}) => (
+          <Form noValidate onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Control
+                as="textarea"
+                onChange={handleChange}
+                isValid={touched.biography}
+                className={isDarkMode? 'text-white border-0 bg-transparent placeholder:text-white' : ''}
+                placeholder={userData?.biography}
+                name='biography'
+              />
+            </Form.Group>
+          </Form>
+          )}
+          </Formik>
+      </div >
+      ) : (
+        <div>
+          <p className={isDarkMode? 'text-slate-50' : 'text-slate-800'}> {userData?.biography} </p>
+        </div>
+      )}
+    </>
+
+    function actionButtons() {
+      return <div className='mt-5 flex flex-col gap-3 m-3'>
+        <div className={isDarkMode ? 'bg-orange_primary border-1 w-28 border-orange_primary cursor-pointer flex flex-row gap-2 text-end items-center text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn' : 'bg-orange_primary cursor-pointer border-1  flex flex-row gap-2 items-center text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn'}>
+          <button className='flex gap-2 items-center' type='submit' onClick={saveChanges}>
+          <BsSave /> Salvar
           </button>
         </div>
 
-      </Col>
-    </Row>
-  }
+        <div onClick={toggleEditMode} className={isDarkMode ? 'bg-red-600 border-1 w-28 border-red-600 cursor-pointer flex flex-row gap-2 items-center text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn' : 'border-red-500 cursor-pointer flex border-1 flex-row gap-2 items-center text-red-700 p-2 rounded-lg hover:bg-red-700 hover:text-white animate__animated animate__fadeIn'}>
+          <BsTrash />Descartar
+        </div>
+      </div>
 
-  function SecondUserCol() {
-    return <Row>
-      <Col sm>
-        <h1 className={isDarkMode ? 'text-2xl text-white mb-2' : 'text-2xl text-slate-700 mb-2'}> Minhas Receitas </h1>
-        <Row>
-          <Col sm>
-            <ol>
-              <li>
-                <div className='flex flex-row gap-2'>
-                  <Image src='https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSWOjtRJTyt3iHScdM_UazRNQuzKtRH9Fsmn0aHKqGmqhd4mSy4J8CBfqv3BzerJY59' height='120' width='120' className={isDarkMode ? 'shadow-md customBorder shadow-slate-900' : 'shadow-md shadow-slate-300 customBorder'} />
-                  <div className='flex flex-col'>
-                    <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Nome da Receita </span>
-                    <div className={isDarkMode ? 'text-white bg-white h-0.5' : 'text-slate-900 bg-slate-900 h-0.5'}></div>
-                    <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Data da Criação </span>
-                  </div>
-                  <div className='flex flex-col content-end justify-end m-2'>
-                    <a className='bg-orange_primary p-2 text-white rounded hover:bg-orange_secondary'>
-                      <AiOutlineEye />
-                    </a>
-                  </div>
+    }
+}
+
+function PhotoSaving() {
+  return <div>
+    {editMode ? (
+      <>
+        <div {...getRootProps()} className='dropzone'>
+          <input {...getInputProps()} />
+          {profileImage ? (
+            <Container>
+              <Image src={URL.createObjectURL(profileImage)} className='UserIMG' roundedCircle />
+            </Container>
+          ) : (
+            <>
+              <Figure>
+                <Figure.Image src={'https://archive.org/download/placeholder-image/placeholder-image.jpg'} roundedCircle className='UserIMG' />
+              </Figure>
+            </>
+          )}
+        </div>
+      </>
+    ) : (
+      <div>
+        <Figure className='bg-orange_primary hover:bg-orange_secondary p-1 rounded-circle text-light position-absolute top-28' onClick={toggleEditMode}>
+          <BsFillPencilFill className='m-1' />
+        </Figure>
+        <div className='flex flex-row content-center items-center gap-3'>
+          <Image src={userData?.imageLink ? userData.imageLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle className='UserIMG' width='80' height='80' />
+        </div>
+      </div>
+    )}
+  </div>
+}
+
+function SecondUserCol() {
+  return <Row>
+    <Col sm>
+      <h1 className={isDarkMode ? 'text-2xl text-white mb-2' : 'text-2xl text-slate-700 mb-2'}> Minhas Receitas </h1>
+      <Row>
+        <Col sm>
+          <ol>
+            <li>
+              <div className='flex flex-row gap-2'>
+                <Image src='https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSWOjtRJTyt3iHScdM_UazRNQuzKtRH9Fsmn0aHKqGmqhd4mSy4J8CBfqv3BzerJY59' height='120' width='120' className={isDarkMode ? 'shadow-md customBorder shadow-slate-900' : 'shadow-md shadow-slate-300 customBorder'} />
+                <div className='flex flex-col'>
+                  <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Nome da Receita </span>
+                  <div className={isDarkMode ? 'text-white bg-white h-0.5' : 'text-slate-900 bg-slate-900 h-0.5'}></div>
+                  <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Data da Criação </span>
                 </div>
-              </li>
-              <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-3' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-3'}></div>
-              <li>
-                <div className='flex flex-row gap-2'>
-                  <Image src='https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSWOjtRJTyt3iHScdM_UazRNQuzKtRH9Fsmn0aHKqGmqhd4mSy4J8CBfqv3BzerJY59' height='120' width='120' className={isDarkMode ? 'shadow-md customBorder shadow-slate-900' : 'shadow-md shadow-slate-300 customBorder'} />
-                  <div className='flex flex-col'>
-                    <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Nome da Receita </span>
-                    <div className={isDarkMode ? 'text-white bg-white h-0.5' : 'text-slate-900 bg-slate-900 h-0.5'}></div>
-                    <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Data da Criação </span>
-                  </div>
-                  <div className='flex flex-col content-end justify-end m-2'>
-                    <a className='bg-orange_primary p-2 text-white rounded hover:bg-orange_secondary'>
-                      <AiOutlineEye />
-                    </a>
-                  </div>
+                <div className='flex flex-col content-end justify-end m-2'>
+                  <a className='bg-orange_primary p-2 text-white rounded hover:bg-orange_secondary'>
+                    <AiOutlineEye />
+                  </a>
                 </div>
-              </li>
-            </ol>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
-  }
+              </div>
+            </li>
+            <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-3' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-3'}></div>
+            <li>
+              <div className='flex flex-row gap-2'>
+                <Image src='https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSWOjtRJTyt3iHScdM_UazRNQuzKtRH9Fsmn0aHKqGmqhd4mSy4J8CBfqv3BzerJY59' height='120' width='120' className={isDarkMode ? 'shadow-md customBorder shadow-slate-900' : 'shadow-md shadow-slate-300 customBorder'} />
+                <div className='flex flex-col'>
+                  <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Nome da Receita </span>
+                  <div className={isDarkMode ? 'text-white bg-white h-0.5' : 'text-slate-900 bg-slate-900 h-0.5'}></div>
+                  <span className={isDarkMode ? 'text-white' : ' text-slate-700'}> Data da Criação </span>
+                </div>
+                <div className='flex flex-col content-end justify-end m-2'>
+                  <a className='bg-orange_primary p-2 text-white rounded hover:bg-orange_secondary'>
+                    <AiOutlineEye />
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+}
 }
 
 export default UserPage

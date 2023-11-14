@@ -5,13 +5,15 @@ import { FireStorage } from "../Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useDropzone } from "react-dropzone";
 import { getUsersByID, updateUser } from "../../api/apiUtils";
-import { ApiUserModel } from "../../interfaces/Users";
+import { EditedUserModel } from "../../interfaces/Users";
 import { useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { setStates } from "../../redux/appSlice";
 import { setAPIUserData, setEditMode, setProfileImage } from "../../redux/userSlice";
 import { useParams } from "react-router-dom";
+import * as formik from 'formik';
+import * as yup from 'yup'
 
 
 
@@ -19,11 +21,22 @@ export function userUtils() {
 
     const authContext = useContext(AuthContext);
     const { id } = useParams<{ id: string }>();
-
-
     const dispatch = useDispatch();
     const userStates = useSelector((state: RootState) => state.userState);
     const commonStates = useSelector((state: RootState) => state.commonState);
+
+    const { Formik } = formik;
+
+    const initialValues: EditedUserModel = {        
+        role: '',
+        biography: '',
+        imageLink: '',
+    };
+
+    const FormValidation = yup.object().shape({
+        userRole: yup.string(),
+        biography: yup.string()
+    })
 
     const toggleEditMode = () => {
         dispatch(setEditMode(!userStates.editMode));
@@ -43,6 +56,10 @@ export function userUtils() {
     }, [dispatch, id])
 
     const saveChanges = async () => {
+
+        const role = initialValues.role;
+        const biography = initialValues.biography;
+
         if (userStates.profileImage) {
             try {
                 const uid = authContext?.user?.uid;
@@ -79,10 +96,10 @@ export function userUtils() {
                     const imageURL = await getDownloadURL(storageRef);
 
                     // Cria o modelo para atualizar o usuario
-                    const updateUserIMG = { imageLink: imageURL, }
+                    const editedUser = { imageLink: imageURL, role: role, biography: biography }
 
                     // Atualiza o documento do usuário
-                    await updateUser(uid, updateUserIMG as ApiUserModel);
+                    await updateUser(uid, editedUser as never);
 
                     dispatch(setStates({
                         loading: false,
@@ -97,6 +114,8 @@ export function userUtils() {
 
                     dispatch(setStates({ show: false }))
                     dispatch(setEditMode(false));
+
+                    document.location.reload();
                 }
 
             } catch (error) {
@@ -136,6 +155,9 @@ export function userUtils() {
         resStatus: commonStates.resStatus,
         show: commonStates.show,
         profile: userStates.user,
+        Formik,
+        initialValues,
+        FormValidation,
         toggleEditMode,
         saveChanges,
         getRootProps,

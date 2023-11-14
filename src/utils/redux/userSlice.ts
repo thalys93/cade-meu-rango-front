@@ -4,14 +4,20 @@ import { ApiUserModel } from "../interfaces/Users";
 
 interface UserState {
     user: ApiUserModel[],
-    editMode: boolean
-    profileImage: File | null
+    editMode: boolean,
+    profileImage: File | null,
+    userName: string,
+    role: string,
+    biography: string,
 }
 
 const initialState: UserState = {
     user: [],
     editMode: false,
-    profileImage: null
+    profileImage: null,
+    userName: '',
+    role: '',
+    biography: ''
 }
 
 const userSlice = createSlice({
@@ -26,9 +32,20 @@ const userSlice = createSlice({
         },
         setProfileImage: (state, action: PayloadAction<File>) => {
             state.profileImage = action.payload;
-        }
+        },
+        setEditedName: (state, action: PayloadAction<string>) => {
+            state.userName = action.payload
+        },
+        setEditedRole: (state, action: PayloadAction<string>) => {
+            state.role = action.payload
+        },
     }
 });
 
-export const { setAPIUserData, setEditMode, setProfileImage  } = userSlice.actions;
+export const {
+    setAPIUserData,
+    setEditMode,
+    setProfileImage,
+    setEditedName,
+    setEditedRole } = userSlice.actions;
 export default userSlice.reducer;

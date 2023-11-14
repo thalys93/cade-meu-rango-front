@@ -20,8 +20,15 @@ export interface ApiUserModel {
     isAuthor: boolean;
     name: string;
     role: string;
+    biography: string;
     terms: boolean;
     imageLink: string;
+}
+
+export interface EditedUserModel {    
+    role: string;
+    biography: string;  
+    imageLink: string;  
 }
 
 // Usuário Criado no Firebase

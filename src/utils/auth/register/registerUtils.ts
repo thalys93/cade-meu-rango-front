@@ -78,6 +78,7 @@ export function RegisterUtils() {
                 name: userData.name,
                 email: userData.email,
                 role: userData.role,
+                biography: '',
                 imageLink: '',
                 isAdmin: userData.isAdmin,
                 isAuthor: userData.isAuthor,
@@ -93,10 +94,11 @@ export function RegisterUtils() {
                     success: true,
                     resOk: true,
                     error: false,
-
                 }))
 
                 await new Promise(resolve => setTimeout(resolve, 1500));
+
+                dispatch(setStates({show: false}))
 
                 setTimeout(() => {
                     navigate('/');

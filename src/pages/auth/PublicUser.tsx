@@ -18,7 +18,7 @@ function PublicUser() {
     const { profile } = userUtils();
 
     return (
-        <section className='mt-5 p-2'>            
+        <section className='mt-5 p-2'>
             <div className='absolute right-3 mr-5'>
                 <DarkModeComponent />
             </div>
@@ -29,13 +29,13 @@ function PublicUser() {
             <Container className={isDarkMode ? 'bg-slate-700 rounded p-5' : 'bg-white rounded p-5'} fluid>
 
                 <Row>
-                    <Col sm className='mb-4'>
+                    <Col sm className='mt-3'>
                         {FirstUserCol(profile as never)}
                     </Col>
                     <Col sm>
                         {SecondUserCol()}
                     </Col>
-                </Row>                                
+                </Row>
             </Container>
         </section>
     )
@@ -43,14 +43,22 @@ function PublicUser() {
     function FirstUserCol(profile: ApiUserModel) {
         return <Row>
             <Col sm>
-                <div className='flex flex-row justify-center content-center items-center gap-2'>                    
-                        <div>                            
-                            <Image src={profile.imageLink ? profile.imageLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'} roundedCircle className='UserIMG' width='80' height='80' />
-                        </div>                    
-                    <div className='flex flex-col'>
-                        <span className={isDarkMode ? 'text-xl text-white' : 'text-xl text-slate-700'}> {profile.name} </span>
-                        <span className={isDarkMode ? 'text-stone-400' : ' text-slate-700'}> 17/02/2023 </span>
-                    </div>                                
+                <div className='flex justify-start content-center items-center mt-1'>
+                    <div className='flex flex-row content-center items-center gap-3'>
+                        <Image src={profile.imageLink ? profile.imageLink : 'https://t3.ftcdn.net/jpg/03/53/11/00/360_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg'}
+                            roundedCircle className='UserIMG' width='80' height='80' />
+                        <div className='flex flex-col'>
+                            <span className={isDarkMode ? 'text-xl text-white' : 'text-xl text-slate-700'}> {profile.name} </span>
+                            <span className={isDarkMode ? 'text-stone-400' : ' text-slate-700'}>{profile.role}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-2' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-2'}></div>
+
+                <div className='mt-2'>
+                    <p className={isDarkMode ? 'text-white' : 'text text-slate-700'}>{profile.biography}
+                    </p>
                 </div>
             </Col>
         </Row>
