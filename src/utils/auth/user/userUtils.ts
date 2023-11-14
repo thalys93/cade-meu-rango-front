@@ -17,11 +17,11 @@ import { setAPIUserData, setEditMode, setProfileImage } from "../../redux/userSl
 export function userUtils() {
 
     const authContext = useContext(AuthContext);
-    const dispatch = useDispatch();    
+
+    const dispatch = useDispatch();
     const userStates = useSelector((state: RootState) => state.userState);
     const commonStates = useSelector((state: RootState) => state.commonState);
-
-
+    
     const toggleEditMode = () => {
         dispatch(setEditMode(!userStates.editMode));
     }
@@ -44,10 +44,10 @@ export function userUtils() {
                 const userData = await getUsersByID(uid);
                 const storageRef = ref(FireStorage, `users/${uid}/profileImage`);
 
-                dispatch(setStates({                    
+                dispatch(setStates({
                     infoMSG: 'Atualizando o documento do usuário...',
-                    error: false,   
-                    resStatus: 102,                 
+                    error: false,
+                    resStatus: 102,
                     success: false,
                     show: true,
                 }))
@@ -70,7 +70,6 @@ export function userUtils() {
                     // Atualiza o documento do usuário
                     await updateUser(uid, updateUserIMG as ApiUserModel);
 
-                    setTimeout(() => {
                     dispatch(setStates({
                         loading: false,
                         infoMSG: 'Documento do usuário atualizado com sucesso.',
@@ -79,28 +78,32 @@ export function userUtils() {
                         success: true,
                         show: true,
                     }))
-                    }, 2500);
-
-
 
                     setTimeout(() => {
-                        dispatch(setEditMode(false));
                         dispatch(setStates({
-                            show: true,
                             infoMSG: "Recarregando...",
                             resStatus: 102,
                         }))
-                    }, 2500 );
+                    }, 2500);
 
                     setTimeout(() => {
-                        dispatch(setStates({show:false}));
-                    }, 2500);
-                    
-                    
-                    window.location.reload();
+                        dispatch(setEditMode(false));
+                        window.location.reload();
+                    }, 3500);
+
                 }
 
             } catch (error) {
+
+                dispatch(setStates({
+                    loading: false,
+                    infoMSG: 'Erro ao atualizar o documento do usuário.',
+                    resStatus: 500,
+                    error: true,
+                    success: false,
+                    show: true,
+                }))
+
                 console.error('Erro ao atualizar o documento do usuário:', error);
             }
         }
@@ -119,13 +122,13 @@ export function userUtils() {
     });
 
 
-    return {       
-        editMode: userStates.editMode,      
+    return {
+        editMode: userStates.editMode,
         profileImage: userStates.profileImage,
-        infoMSG: commonStates.infoMSG,        
-        error: commonStates.error,        
-        resStatus: commonStates.resStatus,        
-        show: commonStates.show,       
+        infoMSG: commonStates.infoMSG,
+        error: commonStates.error,
+        resStatus: commonStates.resStatus,
+        show: commonStates.show,
         toggleEditMode,
         saveChanges,
         getRootProps,

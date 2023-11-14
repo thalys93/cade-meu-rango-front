@@ -15,14 +15,15 @@ function Register() {
     FormValidation, 
     onSubmit, 
     error, 
-    resStatus , 
-    success, 
+    resStatus,        
+    show, 
     infoMSG,
-    resOk} = RegisterUtils()  
+    success    
+  } = RegisterUtils()  
 
   return (
     <section className='m-3 font-body-rb '>    
-      <div hidden={!success == !error}>
+      <div hidden={!show}>
         {PopupComponent({title: infoMSG , statusCode: resStatus, error: error})}
       </div>
     <div className='absolute right-1/3 mr-5'>
@@ -38,7 +39,7 @@ function Register() {
         <h2 className={isDarkMode? 'text-2xl font-title-sy text-light' : 'text-2xl font-title-sy'}> Tela de Cadastro </h2>
       </div>
       <div className='flex justify-center'>
-        {resOk === undefined ? (
+        {!success ? (
           RegisterForm()
         ) : (
           RegisterFormOK()

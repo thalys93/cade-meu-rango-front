@@ -13,9 +13,9 @@ import PopupComponent from './PopupComponent';
 function OffCanvasComponent() {
 
 
-    const [show, setShow] = React.useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showCanvas, setShowCanvas] = React.useState(false);
+    const handleClose = () => setShowCanvas(false);
+    const handleShow = () => setShowCanvas(true);
 
     const { isDarkMode } = React.useContext(DarkModeContext)
 
@@ -26,7 +26,7 @@ function OffCanvasComponent() {
         </Tooltip>
     );
 
-    const { doLogout, success, infoMSG, resStatus, error, loading } = LoginUtils();
+    const { doLogout, show, infoMSG, resStatus, error, loading } = LoginUtils();
     const authContext = useContext(AuthContext);
 
 
@@ -38,11 +38,11 @@ function OffCanvasComponent() {
                 </button>
             </OverlayTrigger>
 
-            <div hidden={!success === !error}>
+            <div hidden={!show}>
                 {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
             </div>
 
-            <Offcanvas show={show} onHide={handleClose} placement='end' className={isDarkMode ? 'bg-slate-700 text-white' : 'bg-white text-slate-900'}>
+            <Offcanvas show={showCanvas} onHide={handleClose} placement='end' className={isDarkMode ? 'bg-slate-700 text-white' : 'bg-white text-slate-900'}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title> Menu de Ações </Offcanvas.Title>
                 </Offcanvas.Header>

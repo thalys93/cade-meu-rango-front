@@ -26,40 +26,37 @@ export function LoginUtils() {
   const doLogin = async (userData: CreatedUserModel) => {
     try {
       const { email, password } = userData;
-
       dispatch(setStates({ show: true }));
+      dispatch(setStates({ infoMSG: 'Validando Login..', resStatus: 102 }));
 
-      await signInWithEmailAndPassword(Fauth, email, password);
+      await signInWithEmailAndPassword(Fauth, email, password);      
 
-      setTimeout(() => {
-        dispatch(setStates({ infoMSG: 'Validando Login..', resStatus: 102 }));
-
-        setPersistence(Fauth, browserSessionPersistence);
-
-        setTimeout(() => {
-          dispatch(setStates({
-            infoMSG: 'Login realizado com sucesso! Redirecionando...',
-            resStatus: 200,
-            success: true,
-            show: true,
-            loading: false,
-            resOk: true,
-            error: false,
-          }));
-          setTimeout(() => {
-            navigate('/');
-            dispatch(setStates({ show: false }));
-          }, 1500);
-        }, 1500);
-      }, 1500);
-
-    } catch (error) {
-      console.error('Falha ' + error);
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
       dispatch(setStates({
+        infoMSG: 'Login realizado com sucesso! Redirecionando...',
+        resStatus: 200,
+        success: true,
+        show: true,
+        loading: false,
+        resOk: true,
+        error: false,
+      }));
+
+      setPersistence(Fauth, browserSessionPersistence);
+
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      navigate('/');
+      dispatch(setStates({ show: false }));
+
+    } catch (error) {
+      // console.error('Falha ' + error);
+      
+      dispatch(setStates({
         success: false,
-        infoMSG: 'Falha: ' + error.message,
-        resStatus: 400,
+        infoMSG: 'Dados Incorretos ou Usuário não existe!',
+        resStatus: 500,
         resOk: false,
         error: true,
       }))
@@ -68,32 +65,28 @@ export function LoginUtils() {
 
   const doLogout = async () => {
     try {
-      dispatch(setStates({ loading: true, }))
+      dispatch(setStates({ loading: true, show: true }))
 
-      setTimeout(() => {
-        dispatch(setStates({
-          infoMSG: 'Realizando Logout',
-          resStatus: 102,
-        }));
-      }, 1500)
+      dispatch(setStates({
+        infoMSG: 'Realizando Logout',
+        resStatus: 102,
+      }));
 
-      setTimeout(() => {
-        dispatch(setStates({
-          infoMSG: 'Logout realizado com sucesso! Recarregando...',
-          resStatus: 200,
-          success: true,
-          loading: false,
-          resOk: true,
-          error: false,
-        }))
-        setTimeout(() => {
-          signOut(Fauth);
-        }, 500)
-      }, 2000);
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 3700)
+      dispatch(setStates({
+        infoMSG: 'Logout realizado com sucesso!',
+        resStatus: 200,
+        success: true,
+        loading: false,
+        resOk: true,
+        error: false,
+      }))
+
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      dispatch(setStates({ show: false }));
+      signOut(Fauth);
 
     } catch (error) {
       console.error('Falha ao Deslogar: ' + error);
@@ -116,8 +109,7 @@ export function LoginUtils() {
     initialValues,
     loginValidation,
     show: commonStates.show,
-    loading: commonStates.loading,
-    success: commonStates.success,
+    loading: commonStates.loading,    
     infoMSG: commonStates.infoMSG,
     resStatus: commonStates.resStatus,
     resOk: commonStates.resOk,

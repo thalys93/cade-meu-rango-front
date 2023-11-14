@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { setStates } from '../../redux/appSlice';
-
 export function RegisterUtils() {
 
     const { Formik } = formik;
@@ -57,20 +56,22 @@ export function RegisterUtils() {
 
         try {
             dispatch(setStates({
-                success: true,
+                show: true,
                 infoMSG: 'Criando usuário...',
                 resStatus: 102
             }));
 
             const { user } = await createUserWithEmailAndPassword(Fauth, userData.email, userData.password);
 
-            setTimeout(() => {
-                // Conclui Criação do Usuario
-                dispatch(setStates({
-                    resStatus: 201,
-                    infoMSG: 'Passando Dados para API!',
-                }))
-            }, 1500);
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            dispatch(setStates({
+                resStatus: 201,
+                infoMSG: 'Passando Dados para API!',
+            }))
+
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
 
             const RemaingUserData = {
                 UUID: user?.uid,
@@ -82,11 +83,9 @@ export function RegisterUtils() {
                 isAuthor: userData.isAuthor,
                 terms: userData.terms
             }
-            // Faz o Post para a API            
+            // Faz o Post para a API
             const response = await postUser(RemaingUserData);
-            console.log(response.message);
 
-            // Envia dados remanescentes para a API
             if (response.status === 200) {
                 dispatch(setStates({
                     infoMSG: 'Usuário Criado com Sucesso!',
@@ -96,6 +95,8 @@ export function RegisterUtils() {
                     error: false,
 
                 }))
+
+                await new Promise(resolve => setTimeout(resolve, 1500));
 
                 setTimeout(() => {
                     navigate('/');
@@ -109,9 +110,11 @@ export function RegisterUtils() {
                     resOk: false,
                     error: true,
                 }))
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000);
+
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                window.location.reload();
+
             } else {
                 dispatch(setStates({
                     infoMSG: 'Falha ao criar o usuário!! : ' + response.message,
@@ -120,9 +123,9 @@ export function RegisterUtils() {
                     resOk: false,
                     error: true,
                 }))
-                setTimeout(() => {
-                    window.location.reload();
-                }, 3000);
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                window.location.reload();
             }
 
         } catch (error) {
@@ -141,9 +144,10 @@ export function RegisterUtils() {
         initialValues,
         FormValidation, onSubmit,
         error: commonStates.error,
-        success: commonStates.success,
+        show: commonStates.show,
         infoMSG: commonStates.infoMSG,
         resStatus: commonStates.resStatus,
         resOk: commonStates.resOk,
+        success: commonStates.success,
     }
 }

@@ -13,15 +13,15 @@ function Login() {
   const { Formik,
     initialValues,
     loginValidation,
-    doLogin,
-    success,
+    doLogin,    
     infoMSG,
-    resStatus,    
-    error } = LoginUtils()
+    resStatus,
+    error,
+    show } = LoginUtils()
 
   return (
     <section className='m-3 pt-3 font-body-rb '>
-      <div hidden={!success === !error}>
+      <div hidden={!show}>
         {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
       </div>
       <div className='absolute right-1/3 mr-5'>
@@ -39,9 +39,9 @@ function Login() {
           <div className='flex justify-center'>
             {resStatus === 200 ? (
               loginFormLoading()
-              ) : (
+            ) : (
               loginForm()
-              )}
+            )}
           </div>
         </article>
       </Container>
