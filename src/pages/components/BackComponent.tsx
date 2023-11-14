@@ -4,11 +4,11 @@ import { BiArrowBack } from 'react-icons/bi'
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-function BackComponent() {
+function BackComponent(props: { href?: string }) {
   const {isDarkMode} = useContext(DarkModeContext)
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1)
+    navigate(`${props.href}`)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

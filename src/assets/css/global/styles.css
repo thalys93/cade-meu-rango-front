@@ -129,6 +129,12 @@ body::-webkit-scrollbar-thumb{
     object-fit: cover;
 }
 
+.RecipeUserIMG{
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
 
 .iconW{
     width: 100px;

@@ -20,7 +20,8 @@ export interface RecipeAPIModel {
     imageLink: string;
     ingredients: Array<string>;
     instructions: Array<string>;
-    author: {
+    authorUUID: string;
+    author: {        
         name: string,
         imgLink: string
     }

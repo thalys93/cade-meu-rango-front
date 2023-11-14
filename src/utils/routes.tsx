@@ -20,6 +20,7 @@ import Config from '../pages/config/Config'
 import React from "react";
 import PrivacyTerms from "../pages/auth/PrivacyTerms";
 import UserPage from "../pages/auth/UserPage";
+import PublicUser from "../pages/auth/PublicUser";
 
 
 
@@ -98,6 +99,15 @@ const router = createBrowserRouter([
             {
                 path: 'user/:id',
                 element: <UserPage/>
+            }
+        ]
+    },
+    {
+        path: 'public',
+        children:[
+            {
+                path: 'user/:id',
+                element: <PublicUser/>
             }
         ]
     },

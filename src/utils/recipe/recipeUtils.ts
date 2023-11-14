@@ -15,6 +15,7 @@ export function RecipeUtils() {
     const recipeStates = useSelector((state: RootState) => state.recipeState);
 
 
+    // Buscar Receitas e autores
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,7 +29,7 @@ export function RecipeUtils() {
                     const userData = userDataArray[index]
                     return {
                         ...recipe,
-                        author: {
+                        author: {                            
                             name: userData.name,
                             imgLink: userData.imageLink
                         }
@@ -37,10 +38,11 @@ export function RecipeUtils() {
                 })
 
                 dispatch(setRecipe(mappedRecipe));
+                // console.log(mappedRecipe);
 
-                setTimeout(() => {
-                    dispatch(setStates({ loading: false }))
-                }, 1500);
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                dispatch(setStates({ loading: false }))
 
             } catch (e) {
                 console.log(e);

@@ -14,7 +14,6 @@ export function AuthUtils() {
                 const uid = authContext?.user?.uid;
                 if (uid) {
                     const response = await getUsersByID(uid);                    
-                    // console.log(response)
                     if (response) {
                         setUserData(response);                      
                     } else {

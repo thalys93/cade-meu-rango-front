@@ -38,7 +38,7 @@ function UserPage() {
         <DarkModeComponent />
       </div>
       <div className='absolute left-3 m-3 '>
-        <BackComponent />
+        {BackComponent({ href: '/' })}
       </div>
 
       <Container className={isDarkMode ? 'bg-slate-700 rounded p-5' : 'bg-white rounded p-5'} fluid>

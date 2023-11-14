@@ -8,47 +8,47 @@ import PopupComponent from '../components/PopupComponent';
 import '../components/custom/popup.css'
 
 function Register() {
-  const {isDarkMode} = useContext(DarkModeContext)
+  const { isDarkMode } = useContext(DarkModeContext)
 
-  const {Formik, 
-    initialValues, 
-    FormValidation, 
-    onSubmit, 
-    error, 
-    resStatus,        
-    show, 
+  const { Formik,
+    initialValues,
+    FormValidation,
+    onSubmit,
+    error,
+    resStatus,
+    show,
     infoMSG,
-    success    
-  } = RegisterUtils()  
+    success
+  } = RegisterUtils()
 
   return (
-    <section className='m-3 font-body-rb '>    
+    <section className='m-3 font-body-rb '>
       <div hidden={!show}>
-        {PopupComponent({title: infoMSG , statusCode: resStatus, error: error})}
+        {PopupComponent({ title: infoMSG, statusCode: resStatus, error: error })}
       </div>
-    <div className='absolute right-1/3 mr-5'>
-      <DarkModeComponent/>
-    </div>
-    <div className='absolute left-1/3 m-3 '>
-      <BackComponent/>
-    </div>
-    <Container className={isDarkMode? 'bg-slate-700 rounded w-1/3 p-4' : 'bg-white rounded w-1/3 p-4'}>
-    <article>
-      <div className='flex flex-col text-center mb-2 gap-2 justify-center select-none'>
-        <h1 className={isDarkMode? 'text-4xl font-title-sy mt-3 text-light' : 'text-4xl font-title-sy mt-3'}> Cadê Meu Rango </h1>
-        <h2 className={isDarkMode? 'text-2xl font-title-sy text-light' : 'text-2xl font-title-sy'}> Tela de Cadastro </h2>
+      <div className='absolute right-1/3 mr-5'>
+        <DarkModeComponent />
       </div>
-      <div className='flex justify-center'>
-        {!success ? (
-          RegisterForm()
-        ) : (
-          RegisterFormOK()
-        )}
+      <div className='absolute left-1/3 m-3 '>
+        {BackComponent({ href: '/' })}
       </div>
+      <Container className={isDarkMode ? 'bg-slate-700 rounded w-1/3 p-4' : 'bg-white rounded w-1/3 p-4'}>
+        <article>
+          <div className='flex flex-col text-center mb-2 gap-2 justify-center select-none'>
+            <h1 className={isDarkMode ? 'text-4xl font-title-sy mt-3 text-light' : 'text-4xl font-title-sy mt-3'}> Cadê Meu Rango </h1>
+            <h2 className={isDarkMode ? 'text-2xl font-title-sy text-light' : 'text-2xl font-title-sy'}> Tela de Cadastro </h2>
+          </div>
+          <div className='flex justify-center'>
+            {!success ? (
+              RegisterForm()
+            ) : (
+              RegisterFormOK()
+            )}
+          </div>
 
-    </article>
-    </Container>
-  </section>
+        </article>
+      </Container>
+    </section>
   )
 
   function RegisterForm() {
@@ -137,7 +137,7 @@ function Register() {
 
   function RegisterFormOK() {
     return <Row className={isDarkMode ? 'justify-center p-3 text-light' : 'justify-center p-3'}>
-      <Col>       
+      <Col>
         <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={onSubmit}>
           {({ values }) => (
             <Form noValidate>
@@ -146,8 +146,8 @@ function Register() {
                 <Form.Control type="text"
                   placeholder={values.name}
                   name='name'
-                  className='animate-pulse'                  
-                  />                
+                  className='animate-pulse'
+                />
               </Form.Group>
               <Form.Group controlId='formEmailCad' className='pt-2'>
                 <Form.Label className='select-none'>E-mail</Form.Label>
@@ -156,10 +156,10 @@ function Register() {
                   placeholder={values.email}
                   name='email'
                   className='animate-pulse'
-                  />
+                />
                 <Form.Text className={isDarkMode ? "text-stone-300 select-none" : "text-stone-400 select-none"}>
                   EX: email@exemplo.com.br
-                </Form.Text>                
+                </Form.Text>
               </Form.Group>
 
               <br className='select-none' />
@@ -171,7 +171,7 @@ function Register() {
                   placeholder={values.password}
                   name='password'
                   className='animate-pulse'
-                  />                
+                />
               </Form.Group>
               <Form.Group controlId="formUserPasswordConfirm" className='mt-2'>
                 <Form.Label className='select-none'>Confirme sua senha</Form.Label>
@@ -182,7 +182,7 @@ function Register() {
                   className='animate-pulse' />
                 <Form.Text className={isDarkMode ? "text-stone-300 select-none" : "text-stone-400 select-none"}>
                   Nunca Compartilhe sua senha com terceiros
-                </Form.Text>                
+                </Form.Text>
               </Form.Group>
               <Form.Group className='pt-2'>
                 <Form.Check
@@ -198,11 +198,11 @@ function Register() {
                 <Button className='bg-orange_primary border-none w-28 hover:bg-orange-600 disabled:bg-orange-950' type="submit" disabled>
                   Cadastrar
                 </Button>
-              </div>              
-            </Form> 
-          )}          
-          </Formik>          
-      </Col>      
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </Col>
     </Row>
   }
 }

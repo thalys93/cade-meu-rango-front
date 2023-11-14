@@ -13,7 +13,7 @@ function Login() {
   const { Formik,
     initialValues,
     loginValidation,
-    doLogin,    
+    doLogin,
     infoMSG,
     resStatus,
     error,
@@ -28,7 +28,7 @@ function Login() {
         <DarkModeComponent />
       </div>
       <div className='absolute left-1/3 m-3 '>
-        <BackComponent />
+        {BackComponent({ href: '/' })}
       </div>
       <Container className={isDarkMode ? 'bg-slate-700 rounded w-1/3 p-5' : 'bg-white rounded w-1/3 p-5'}>
         <article>

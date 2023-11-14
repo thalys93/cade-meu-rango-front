@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import BannerComponent from '../components/BannerComponent'
 import { RecipeUtils } from '../../utils/recipe/recipeUtils';
 import { useParams } from 'react-router-dom';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Figure, Image, Row } from 'react-bootstrap';
 import { DarkModeContext } from '../../utils/context/DarkModeContext';
 import BackComponent from '../components/BackComponent';
 import { RecipeAPIModel } from '../../utils/interfaces/Recipes';
@@ -20,7 +20,7 @@ function Recipe() {
       <BannerComponent />
       <section className={isDarkMode ? 'bg-slate-700 m-3 rounded' : 'bg-white m-3 rounded'}>
         <div className='absolute p-2'>
-          <BackComponent />
+          {BackComponent({ href: '/' })}
         </div>
         <article className='p-2 pb-5'>
           {recipe.recipes.filter(r => r.title === name).map((r) => (
@@ -29,6 +29,22 @@ function Recipe() {
                 <Row className='items-center'>
                   <Col sm>
                     {RecipeDescription(r)}
+                    <hr />
+                    <div className='flex flex-col gap-2 mt-3'>
+                      <span className='user-select-none'> Autor : </span>
+                      <Figure className='flex items-center gap-2'>
+                        <Figure.Image
+                          alt={r.author.name}
+                          src={r.author.imgLink}
+                          className='rounded-full RecipeUserIMG'
+                        />
+                        <Figure.Caption className='mb-2 user-select-none '>
+                          <a href={'/public/user/' + r.authorUUID}>
+                            <span className={isDarkMode ? 'text-slate-50 hover:text-orange_primary font-bold' : 'hover:text-orange_primary font-bold'}>{r.author.name}</span>
+                          </a>
+                        </Figure.Caption>
+                      </Figure>
+                    </div>
                   </Col>
                   <Col sm>
                     {RecipeImage(r)}

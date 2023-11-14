@@ -3,13 +3,13 @@ import { ApiUserModel } from "../interfaces/Users";
 
 
 interface UserState {
-    user: ApiUserModel,
+    user: ApiUserModel[],
     editMode: boolean
     profileImage: File | null
 }
 
 const initialState: UserState = {
-    user: {} as ApiUserModel,
+    user: [],
     editMode: false,
     profileImage: null
 }
@@ -18,7 +18,7 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setAPIUserData: (state, action: PayloadAction<ApiUserModel>) => {
+        setAPIUserData: (state, action: PayloadAction<ApiUserModel[]>) => {
             state.user = action.payload;
         },
         setEditMode: (state, action: PayloadAction<boolean>) => {

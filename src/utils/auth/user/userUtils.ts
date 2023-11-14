@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthModeContext";
 import { FireStorage } from "../Firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -11,20 +11,36 @@ import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { setStates } from "../../redux/appSlice";
 import { setAPIUserData, setEditMode, setProfileImage } from "../../redux/userSlice";
+import { useParams } from "react-router-dom";
 
 
 
 export function userUtils() {
 
     const authContext = useContext(AuthContext);
+    const { id } = useParams<{ id: string }>();
+
 
     const dispatch = useDispatch();
     const userStates = useSelector((state: RootState) => state.userState);
     const commonStates = useSelector((state: RootState) => state.commonState);
-    
+
     const toggleEditMode = () => {
         dispatch(setEditMode(!userStates.editMode));
     }
+
+    useEffect(() => {
+        const getUserData = async () => {
+            try {
+                const uid = await getUsersByID(id as string);
+                dispatch(setAPIUserData(uid));
+
+            } catch (error) {
+                console.error('Erro ao buscar os dados do usuário:', error);
+            }
+        }
+        getUserData();
+    }, [dispatch, id])
 
     const saveChanges = async () => {
         if (userStates.profileImage) {
@@ -63,9 +79,7 @@ export function userUtils() {
                     const imageURL = await getDownloadURL(storageRef);
 
                     // Cria o modelo para atualizar o usuario
-                    const updateUserIMG = {
-                        imageLink: imageURL,
-                    }
+                    const updateUserIMG = { imageLink: imageURL, }
 
                     // Atualiza o documento do usuário
                     await updateUser(uid, updateUserIMG as ApiUserModel);
@@ -79,18 +93,10 @@ export function userUtils() {
                         show: true,
                     }))
 
-                    setTimeout(() => {
-                        dispatch(setStates({
-                            infoMSG: "Recarregando...",
-                            resStatus: 102,
-                        }))
-                    }, 2500);
+                    await new Promise(resolve => setTimeout(resolve, 1500));
 
-                    setTimeout(() => {
-                        dispatch(setEditMode(false));
-                        window.location.reload();
-                    }, 3500);
-
+                    dispatch(setStates({ show: false }))
+                    dispatch(setEditMode(false));
                 }
 
             } catch (error) {
@@ -129,6 +135,7 @@ export function userUtils() {
         error: commonStates.error,
         resStatus: commonStates.resStatus,
         show: commonStates.show,
+        profile: userStates.user,
         toggleEditMode,
         saveChanges,
         getRootProps,
