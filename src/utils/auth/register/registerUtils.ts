@@ -50,6 +50,7 @@ export function RegisterUtils() {
 
     const onSubmit = async (userData: newUserModel) => {
 
+        // IMPORTANT: Valores que são enviado por padrão no intialValues
         userData.role = initialValues.role;
         userData.isAdmin = initialValues.isAdmin;
         userData.isAuthor = initialValues.isAuthor;

@@ -27,14 +27,14 @@ export function userUtils() {
 
     const { Formik } = formik;
 
-    const initialValues: EditedUserModel = {        
+    const initialValues: EditedUserModel = {
         role: '',
         biography: '',
         imageLink: '',
     };
 
     const FormValidation = yup.object().shape({
-        userRole: yup.string(),
+        role: yup.string(),
         biography: yup.string()
     })
 
@@ -55,11 +55,25 @@ export function userUtils() {
         getUserData();
     }, [dispatch, id])
 
-    const saveChanges = async () => {
+    const onSubmit = async (editedValues: EditedUserModel) => { 
+        try {
+        const userData = {
+            role: editedValues.role,
+            biography: editedValues.biography,
+        }
 
-        const role = initialValues.role;
-        const biography = initialValues.biography;
+        const uid = authContext?.user?.uid;
 
+        await updateUser(uid as string, userData as never);
+
+        console.log(userData)
+
+        } catch (error) {
+            console.error('Erro ao atualizar os dados do usuário:', error);
+        }
+    }
+
+    const saveChanges = async () => {    
         if (userStates.profileImage) {
             try {
                 const uid = authContext?.user?.uid;
@@ -73,10 +87,14 @@ export function userUtils() {
                     console.error('UID do usuário não encontrado.');
                     return;
                 }
-
+                
+                // Recupera os dados do usuário pelo UID dele lá na api
                 const userData = await getUsersByID(uid);
+
+                // Cria a referencia para o storage do firebase
                 const storageRef = ref(FireStorage, `users/${uid}/profileImage`);
 
+                // Atualiza o estado do redux
                 dispatch(setStates({
                     infoMSG: 'Atualizando o documento do usuário...',
                     error: false,
@@ -85,21 +103,22 @@ export function userUtils() {
                     show: true,
                 }))
 
+                // Atualiza o estado do redux com os dados do usuário 
                 dispatch(setAPIUserData(userData));
 
+                // Verifica se o usuário existe
                 if (userData) {
-
                     // Faz o uploud no firebase
                     await uploadBytes(storageRef, userStates.profileImage, { contentType: 'image/jpeg' })
-
+                    
                     // Pega o link da imagem no firebase
                     const imageURL = await getDownloadURL(storageRef);
 
                     // Cria o modelo para atualizar o usuario
-                    const editedUser = { imageLink: imageURL, role: role, biography: biography }
+                    const editedUser = {imageLink: imageURL}
 
-                    // Atualiza o documento do usuário
-                    await updateUser(uid, editedUser as never);
+                    // Atualiza o documento do usuário                    
+                    await updateUser(uid, editedUser as never);                    
 
                     dispatch(setStates({
                         loading: false,
@@ -114,8 +133,6 @@ export function userUtils() {
 
                     dispatch(setStates({ show: false }))
                     dispatch(setEditMode(false));
-
-                    document.location.reload();
                 }
 
             } catch (error) {
@@ -156,6 +173,7 @@ export function userUtils() {
         show: commonStates.show,
         profile: userStates.user,
         Formik,
+        onSubmit,
         initialValues,
         FormValidation,
         toggleEditMode,

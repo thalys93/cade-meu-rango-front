@@ -24,6 +24,7 @@ function UserPage() {
     error,
     show,
     Formik,
+    onSubmit,
     initialValues,
     FormValidation,
     toggleEditMode,
@@ -65,18 +66,17 @@ function UserPage() {
           {PhotoSaving()}
           <div className='flex flex-col'>
             {editMode ? (
-              <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={saveChanges}>
-                {({handleChange, touched, handleSubmit}) => (
+              <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={onSubmit}>
+                {({handleChange, handleSubmit}) => (
                 <Form noValidate onSubmit={handleSubmit}>
                 <span className={isDarkMode ? 'text-xl text-white form-control bg-transparent border-0' : 'text-xl text-slate-700 form-control border-0'}> {userData?.name} </span>
-                  <Form.Group>
-                    <Form.Control                  
+                  <Form.Group controlId='formUserEdit'>
+                    <Form.Control
                       type="text"
-                      placeholder={userData?.role}
-                      onChange={handleChange}
-                      isValid={touched.role}
+                      placeholder={userData?.role}                      
+                      onChange={handleChange}                      
                       className={isDarkMode ? 'text-white border-0 bg-transparent placeholder:text-slate-50' : 'text-xl text-slate-700 border-0'}
-                      name="userRole"
+                      name="role"
                     />
                   </Form.Group>
                 </Form> )}
@@ -87,24 +87,22 @@ function UserPage() {
               </>
             )}
           </div>
-        </div>
-        <div hidden={!editMode}>
+        </div>        
           {actionButtons()}
-        </div>
       </div>
 
       <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-2' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-2'}></div>
 
       {editMode? (
         <div className='mt-2'>
-          <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={saveChanges}>
-          {({handleChange, touched, handleSubmit}) => (
+          <Formik validationSchema={FormValidation} initialValues={initialValues} onSubmit={onSubmit}>
+          {({handleChange, handleSubmit}) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group>
+            <Form.Group controlId='formBioEdit'>
               <Form.Control
                 as="textarea"
-                onChange={handleChange}
-                isValid={touched.biography}
+                type="text"
+                onChange={handleChange}                
                 className={isDarkMode? 'text-white border-0 bg-transparent placeholder:text-white' : ''}
                 placeholder={userData?.biography}
                 name='biography'
@@ -122,9 +120,9 @@ function UserPage() {
     </>
 
     function actionButtons() {
-      return <div className='mt-5 flex flex-col gap-3 m-3'>
+      return <div className='mt-5 flex flex-col gap-3 m-3' hidden={!editMode}>
         <div className={isDarkMode ? 'bg-orange_primary border-1 w-28 border-orange_primary cursor-pointer flex flex-row gap-2 text-end items-center text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn' : 'bg-orange_primary cursor-pointer border-1  flex flex-row gap-2 items-center text-light p-2 rounded-lg hover:bg-orange_secondary animate__animated animate__fadeIn'}>
-          <button className='flex gap-2 items-center' type='submit' onClick={saveChanges}>
+          <button className='flex gap-2 items-center' type='submit' onClick={saveChanges} onClickCapture={() => onSubmit(initialValues)}>
           <BsSave /> Salvar
           </button>
         </div>
@@ -133,7 +131,6 @@ function UserPage() {
           <BsTrash />Descartar
         </div>
       </div>
-
     }
 }
 
