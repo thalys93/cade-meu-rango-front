@@ -78,14 +78,14 @@ export function LoginUtils() {
         infoMSG: 'Logout realizado com sucesso!',
         resStatus: 200,
         success: true,
-        loading: false,
+        loading: true,
         resOk: true,
         error: false,
       }))
 
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      dispatch(setStates({ show: false }));
+      dispatch(setStates({ show: false, loading: false }));
       signOut(Fauth);
 
     } catch (error) {

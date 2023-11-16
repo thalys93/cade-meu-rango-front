@@ -25,13 +25,13 @@ export function userUtils() {
     const userStates = useSelector((state: RootState) => state.userState);
     const commonStates = useSelector((state: RootState) => state.commonState);
 
-    const { Formik } = formik;
-
     const initialValues: EditedUserModel = {
-        role: '',
-        biography: '',
-        imageLink: '',
+        role: userStates.role,
+        biography: userStates.biography,
+        imageLink: userStates.profileImage as never|| '',
     };
+
+    const { Formik } = formik;
 
     const FormValidation = yup.object().shape({
         role: yup.string(),
@@ -56,17 +56,47 @@ export function userUtils() {
     }, [dispatch, id])
 
     const onSubmit = async (editedValues: EditedUserModel) => { 
-        try {
-        const userData = {
-            role: editedValues.role,
-            biography: editedValues.biography,
-        }
 
+        try {
         const uid = authContext?.user?.uid;
 
-        await updateUser(uid as string, userData as never);
+        const updatedField: Partial<EditedUserModel> = {};
 
-        console.log(userData)
+        if (editedValues.biography !== initialValues.biography) {
+            updatedField.biography = editedValues.biography;
+        }
+
+        if (editedValues.role !== initialValues.role) {
+            updatedField.role = editedValues.role;
+        }
+
+        dispatch(setStates({
+            infoMSG: 'Atualizando os dados do usuário...',
+            error: false,
+            resStatus: 102,
+            success: false,
+            show: true,
+        }))
+
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+
+        await updateUser(uid as string, updatedField as never);
+
+        dispatch(setStates({
+            infoMSG: 'Dados do usuário atualizados com sucesso.',
+            error: false,
+            resStatus: 200,
+            success: true,
+            show: true,
+        }))
+
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        dispatch(setStates({ show: false }))
+        dispatch(setEditMode(false));
+
+        document.location.reload();       
 
         } catch (error) {
             console.error('Erro ao atualizar os dados do usuário:', error);

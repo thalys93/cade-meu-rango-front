@@ -6,6 +6,7 @@
 
 
 
+
 * {
     transition-duration: 0.2s;
 }
@@ -142,8 +143,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .editUserCustom {
-    display: flex;
-    flex-direction: row;
+    display: flex;    
     align-items: center;
     gap: 3;
 }

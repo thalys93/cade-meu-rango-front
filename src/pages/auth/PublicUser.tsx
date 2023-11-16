@@ -9,6 +9,8 @@ import { AiOutlineEye } from 'react-icons/ai'
 // import { RecipeAPIModel } from '../../utils/interfaces/Recipes'
 import { userUtils } from '../../utils/auth/user/userUtils'
 import { ApiUserModel } from '../../utils/interfaces/Users'
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
 
 
 function PublicUser() {
@@ -56,9 +58,10 @@ function PublicUser() {
 
                 <div className={isDarkMode ? 'text-white bg-white h-0.5 mt-3 mb-2' : 'text-slate-900 bg-slate-900 h-0.5 mt-3 mb-2'}></div>
 
-                <div className='mt-2'>
-                    <p className={isDarkMode ? 'text-white' : 'text text-slate-700'}>{profile.biography}
-                    </p>
+                <div className={isDarkMode ? 'prose prose-yellow prose-headings:text-slate-50 user-select-none text-slate-50' : 'prose prose-yellow prose-headings:text-slate-800 user-select-none  text-slate-600'}>
+                    <ReactMarkdown rehypePlugins={[remarkGfm]}>
+                        {profile.biography}
+                    </ReactMarkdown>
                 </div>
             </Col>
         </Row>
