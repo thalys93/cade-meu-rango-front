@@ -78,7 +78,7 @@ function UserPage() {
         {({ handleChange, handleSubmit, values }) => (
           <article className='flex flex-row justify-between mt-2 items-center'>
             <Form noValidate onSubmit={handleSubmit}>
-              <div className='flex flex-row content-center items-center align-middle'>
+              <div className='flex flex-col sm:flex-row content-center items-center align-middle'>
                 {PhotoSaving()}
                 <div className='flex flex-row gap-2 content-center items-center align-middle'>
                   <div className='flex flex-col'>
