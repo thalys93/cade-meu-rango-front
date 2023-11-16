@@ -7,6 +7,8 @@ import { RecipeUtils } from '../../utils/recipe/recipeUtils'
 import { Image } from 'react-bootstrap';
 import { DarkModeContext } from '../../utils/context/DarkModeContext'
 import { AiOutlineEye } from 'react-icons/ai'
+import { CiCirclePlus } from "react-icons/ci";
+import { AuthContext } from './../../utils/context/AuthModeContext';
 
 
 /* TODO: 
@@ -22,8 +24,9 @@ import { AiOutlineEye } from 'react-icons/ai'
 
 function RecipesHome() {
   const { recipe } = RecipeUtils();  
-
   const { isDarkMode } = useContext(DarkModeContext)  
+  const authContext = useContext(AuthContext);
+
 
   return (
     <section className={isDarkMode ? 'bg-slate-700 text-white font-body-rb rounded-b-xl' : 'bg-white font-body-rb rounded-b-xl'}>
@@ -40,18 +43,7 @@ function RecipesHome() {
       <Container fluid className='pt-5'>
         <Row>
           <Col sm>
-            {RecipesList({ title: 'Internacional', type: 'Internacional' })}
-            {RecipesList({ title: 'Vegetarianos', type: "Vegetarianos" })}
-          </Col>
-
-          <Col sm>
-            {RecipesList({ title: "Sobremesas", type: "Sobremesas" })}
-            {RecipesList({ title: "Geral", type: "Geral" })}
-          </Col>
-
-          <Col sm>
-            {RecipesList({ title: "Saudáveis", type: "Saudáveis" })}
-            {RecipesList({ title: "Bebidas", type: "Bebidas" })}
+            <RecipesCard title='Cadê Meu Rango LTDA' type='main' />
           </Col>
         </Row>
       </Container>
@@ -59,7 +51,7 @@ function RecipesHome() {
   )
 
 
-  function RecipesList(props: { title?: string, type?: string }) {
+  function RecipesCard(props: { title?: string, type?: string }) {
     return (
       <ListGroup as="ul">
         <h1 className='mb-2 text-xl bg-orange_primary text-white text-center'>{props.title}</h1>
@@ -101,7 +93,15 @@ function RecipesHome() {
 
                 </ListGroup.Item>              
             ))
-          ) : null}
+          ) : 
+          <section hidden={authContext as never && !authContext?.user || null } className='flex justify-center content-center align-middle items-center pb-2'>
+            <article className='rounded-full p-2 bg-orange_primary hover:bg-orange_secondary hover:scale-90'>
+              <a href='/recipe/new' >
+                <CiCirclePlus className='text-2xl'/>
+              </a>
+            </article>
+          </section>
+          }
       </ListGroup>)
   }
 
