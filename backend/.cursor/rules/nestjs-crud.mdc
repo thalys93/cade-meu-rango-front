@@ -1,0 +1,53 @@
+---
+description: CRUD structure and conventions for new NestJS domain modules
+globs: src/**/*.ts
+alwaysApply: false
+---
+
+# NestJS CRUD Pattern
+
+When creating a new domain module, follow this structure:
+
+```
+src/<module>/
+├── <module>.module.ts
+├── <module>.controller.ts
+├── <module>.service.ts
+├── entities/
+│   └── <module>.entity.ts
+└── dto/
+    ├── create-<module>.dto.ts
+    └── update-<module>.dto.ts
+```
+
+## Controller
+
+- Use `@ApiTags` and `@ApiBearerAuth` on protected routes
+- CRUD paths use the `Methods` enum: `create`, `update/:id`, `delete/:id`
+- List endpoints use `@PaginationHelper()` for query params
+- Admin routes: `@RolesDecorator(...ADMIN_ROLES)`
+- User routes: `@RolesDecorator(...USER_ROLES)` when applicable
+
+## Service
+
+- Inject `Repository<Entity>` via `@InjectRepository`
+- Throw `NotFoundException` with i18n keys
+- Pagination: `paginate()` from `nestjs-typeorm-paginate`
+
+## Module
+
+- Register entities with `TypeOrmModule.forFeature([Entity])`
+- Export the service when other modules depend on it
+- Register the module in `app.module.ts`
+
+## Registration example
+
+```typescript
+@Module({
+  imports: [TypeOrmModule.forFeature([Product])],
+  controllers: [ProductController],
+  providers: [ProductService],
+  exports: [ProductService],
+})
+export class ProductModule {}
+```

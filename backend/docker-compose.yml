@@ -1,0 +1,26 @@
+services:
+  cade_meu_rango_db:
+    image: postgres:16
+    container_name: cade_meu_rango_db
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-cade_meu_rango_db}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - cade_meu_rango_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  cade_meu_rango_pgdata:

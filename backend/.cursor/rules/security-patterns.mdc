@@ -1,0 +1,35 @@
+---
+description: Security patterns for NestJS controllers (auth, roles, public routes)
+globs: src/**/*.controller.ts
+alwaysApply: false
+---
+
+# Security Patterns
+
+## Protected routes
+
+```typescript
+@UseGuards(AuthGuard('jwt'), RolesGuard)
+@RolesDecorator(...ADMIN_ROLES)
+```
+
+## Role groups
+
+- `ADMIN_ROLES`: Admin, Developer — administrative operations
+- `USER_ROLES`: User, Guest — authenticated user operations
+
+## Authenticated user
+
+```typescript
+async updateMe(@User() authUser: AuthUser, @Body() dto: UpdateUserDto) {
+  return this.service.update(authUser.id, dto, authUser);
+}
+```
+
+## Public routes
+
+No guards. Use only for register, login, and password recovery.
+
+## Storage and uploads
+
+Cloudinary signature endpoints require JWT + `USER_ROLES`.

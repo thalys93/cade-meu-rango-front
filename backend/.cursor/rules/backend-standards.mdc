@@ -1,0 +1,17 @@
+---
+description: Global NestJS backend standards for the Vogue API
+alwaysApply: true
+---
+
+# Backend Standards
+
+- Use `src/config/app.config.ts` for branding and config values with fallbacks
+- Never hardcode secrets, URLs, or app names in source code
+- One module per domain under `src/<module>/`
+- DTOs must use `class-validator` and Swagger `@ApiProperty` decorators
+- Error messages must use i18n keys (`api.errors.*`, `api.user.*`)
+- Pagination via `PaginationHelper` and `nestjs-typeorm-paginate`
+- Protected routes use `AuthGuard('jwt')` + `RolesGuard` + `@RolesDecorator`
+- Authenticated user via the `@User()` decorator
+- Enums live in `src/enums/`
+- Feature flags via `FeatureFlagsService.isEnabled()`

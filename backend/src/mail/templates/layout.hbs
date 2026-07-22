@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{appName}}{{#if pageTitle}} — {{pageTitle}}{{/if}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet" />
+</head>
+<body style="margin:0;padding:0;background:#f5f0ee;color:#0f172a;font-family:Rubik,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f5f0ee;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:560px;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+          <tr>
+            <td style="height:4px;background:#FD6543;font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="padding:28px 28px 8px;text-align:center;">
+              <img src="{{logoUrl}}" alt="{{appName}}" width="96" style="display:block;margin:0 auto;width:96px;height:auto;border:0;" />
+              <p style="margin:12px 0 0;font-family:Satisfy,cursive;font-size:32px;color:#FD6543;line-height:1.2;">Cadê Meu Rango</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 28px 32px;font-size:16px;line-height:1.55;color:#0f172a;">
+              {{body}}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 28px;background:#b32607;text-align:center;">
+              <p style="margin:0;font-size:13px;color:#f8fafc;">© Cadê Meu Rango. Todos os direitos reservados.</p>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:20px 0 0;font-size:13px;color:#334155;text-align:center;">Mensagem automática — não responda.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
