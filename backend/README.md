@@ -1,122 +1,92 @@
-# NestJS Backend Template
+# Cadê Meu Rango — API
 
-Template (scaffolding) for backend projects with NestJS, TypeORM, PostgreSQL, JWT auth, mail, storage and a modular architecture. Use it as a base for your next API projects.
+API NestJS do Cadê Meu Rango: receitas, dicas, categorias, autenticação JWT, e-mail e upload via Cloudinary.
 
-If this template helped you, consider giving it a **star** on the repository.
+## Stack
 
-## How to run the project
+| Área | Tecnologia |
+|------|------------|
+| Framework | NestJS 11 |
+| Banco | PostgreSQL 16 + TypeORM |
+| Auth | Passport JWT + Local |
+| Docs | Swagger / OpenAPI |
+| Mail | Nodemailer + Handlebars |
+| Storage | Cloudinary (assinaturas) |
 
-### Prerequisites
+## Pré-requisitos
 
-- **Node.js** 20+ (22+ recommended)
-- **npm** (or pnpm / yarn)
-- **Docker** (optional, for PostgreSQL via docker-compose)
+- Node.js 20+ (ou [Bun](https://bun.sh))
+- Docker (PostgreSQL via `docker compose`)
 
-### Installation and running
+## Como rodar
 
 ```bash
-git clone <repo-url>
-cd vogue-backend
-
-npm install
-
+cd backend
 cp .env.example .env
-
 docker compose up -d
-
-npm run start:dev
+bun install   # ou npm install
+bun start:dev # ou npm run start:dev
 ```
 
-Open in your browser:
+URLs locais (com `PORT=3001` e `API_VERSION=v0`):
 
-- API: `http://localhost:3000/api/v0/system-check`
-- Swagger: `http://localhost:3000/api/v0`
+- Health: http://localhost:3001/api/v0/system-check
+- Swagger: http://localhost:3001/api/v0
 
-### Other commands
+## Variáveis de ambiente
+
+Copie `.env.example` → `.env`. Principais:
+
+| Variável | Descrição |
+|----------|-----------|
+| `PORT` | Porta da API (padrão do projeto: `3001`) |
+| `API_VERSION` | Prefixo da API (`v0`) |
+| `FRONTEND_URL` | Origem do CORS (Vite: `http://localhost:5173`) |
+| `DB_*` | Conexão PostgreSQL |
+| `JWT_SECRET_KEY` | Segredo JWT (obrigatório em produção) |
+| `MAIL_DRIVER` | `console` / `ethereal` / `smtp` |
+| `CLOUDINARY_*` | Credenciais de upload |
+| `FEATURE_SEEDING` | Seed de roles/dados no boot |
+
+**Não commite o arquivo `.env`.**
+
+## Scripts
 
 ```bash
-npm run build
-npm run start:prod
-npm run lint
-npm run test
-npm run test:e2e
+bun start:dev   # desenvolvimento com watch
+bun run build
+bun run start:prod
+bun run lint
+bun run test
+bun run test:e2e
 ```
 
-## How the scaffolding works
-
-The project follows a modular, layered structure with well-defined responsibilities (SOLID, KISS, DRY, YAGNI).
-
-### Stack
-
-| Area         | Technology                          |
-| ------------ | ----------------------------------- |
-| Framework    | NestJS 11                           |
-| Database     | PostgreSQL 16, TypeORM              |
-| Auth         | Passport JWT + Local                |
-| API Docs     | Swagger / OpenAPI                   |
-| Mail         | Nodemailer + Handlebars templates   |
-| Storage      | Cloudinary signatures               |
-| Validation   | class-validator, class-transformer  |
-
-### Folder structure
+## Estrutura
 
 ```
 src/
-├── config/           # app.config.ts, orm.config.ts
-├── feature-flags/    # Feature flags via env (FEATURE_*)
-├── auth/             # Login, JWT, password reset
-├── mail/             # SMTP/Ethereal/Console + templates
-├── storage/          # Cloudinary upload signatures
-├── user/             # User CRUD + public registration
-├── roles/            # Role management (RBAC)
-├── seeding/          # Auto-seed roles (FEATURE_SEEDING)
-├── security/         # Guards and decorators
-├── helpers/          # Pagination, regex, tokens
-├── enums/            # Roles, Methods, RoleGroups
-├── app.controller.ts # Health check (/system-check)
-└── main.ts           # Bootstrap, Swagger, CORS
+├── auth/           # login, registro, reset de senha, JWT
+├── user/           # perfil do usuário
+├── recipe/         # receitas
+├── tip/            # dicas
+├── category/       # categorias
+├── mail/           # e-mail + templates
+├── storage/        # assinaturas Cloudinary
+├── roles/          # RBAC
+├── seeding/        # seed opcional
+├── security/       # guards e decorators
+├── config/         # app + ORM
+└── main.ts
 ```
 
-### Environment variables
+## Frontend
 
-Copy `.env.example` to `.env` and customize:
+O app React fica em [`../frontend`](../frontend). Configure:
 
-| Variable | Description | Default |
-| -------- | ----------- | ------- |
-| `APP_NAME` | Application name | Vogue Backend |
-| `API_TITLE` | Swagger title | Vogue Backend API |
-| `SWAGGER_DESCRIPTION` | Swagger description | API documentation |
-| `API_VERSION` | API version prefix | v0 |
-| `PORT` | Server port | 3000 |
-| `FEATURE_SEEDING` | Auto-seed roles on boot | true |
-| `JWT_SECRET_KEY` | JWT signing secret | — |
-| `MAIL_DRIVER` | smtp / ethereal / console | console |
-
-### Adding a new CRUD module
-
-1. Create `src/<module>/` with module, controller, service, entity, DTOs
-2. Register `TypeOrmModule.forFeature([Entity])` in the module
-3. Add the module to `app.module.ts`
-4. Protect routes with `AuthGuard('jwt')`, `RolesGuard`, `@RolesDecorator`
-5. Follow `.cursor/rules/nestjs-crud.mdc` for conventions
-
-### Feature flags
-
-Use `FeatureFlagsService.isEnabled('seeding')` to check flags. Configure via env:
-
-```
-FEATURE_SEEDING=true
+```bash
+VITE_API_URL=http://localhost:3001/api/v0
 ```
 
-### Frontend pairing
+## Licença
 
-Compatible with the [vogue](../vogue) frontend template:
-
-```
-VITE_API_URL=http://localhost:3000
-VITE_API_VERSION=v0
-```
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+MIT — veja [LICENSE](LICENSE).

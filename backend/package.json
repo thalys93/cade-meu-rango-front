@@ -1,7 +1,7 @@
 {
-  "name": "vogue-backend",
+  "name": "cade-meu-rango-api",
   "version": "1.0.0",
-  "description": "NestJS backend template with auth, mail, storage, roles and users",
+  "description": "API NestJS do Cadê Meu Rango — receitas, dicas, auth e storage",
   "author": "thalys93",
   "private": true,
   "license": "MIT",

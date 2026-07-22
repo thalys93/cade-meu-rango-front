@@ -1,41 +1,78 @@
-## Projeto Cadê Meu Rango
+# Cadê Meu Rango — Frontend
 
-[![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat)](https://reactjs.org/)
-[![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+SPA React do Cadê Meu Rango: descobrir, criar e gerenciar receitas e dicas culinárias, com autenticação e tema claro/escuro.
 
+## Stack
 
-# Cadê Meu Rango
-Cade meu rango é uma aplicação SPA **(single page aplication)** que permite aos usuários encontrar receitas e dicas culinárias de acordo com seus interesses e preferências. 
-A aplicação conta com recursos como **autenticação**, **modo escuro**, **criação de receitas e dicas**, **categorização por ingredientes**, e também uma api que busca dados de receitas em um banco de dados mysql. 
-A aplicação foi desenvolvida usando **React no front end** e **node.js no back end.**
+| Área | Tecnologia |
+|------|------------|
+| UI | React 18 + TypeScript |
+| Build | Vite 6 |
+| Estilo | Tailwind CSS 4 + shadcn/ui |
+| Rotas | React Router 6 |
+| HTTP | Axios |
+| Motion | Framer Motion |
+| Upload | Cloudinary (via API) |
 
+## Pré-requisitos
+
+- Node.js 20+ (ou [Bun](https://bun.sh))
+- API do backend rodando (veja [`../backend`](../backend))
+
+## Como rodar
+
+```bash
+cd frontend
+cp .env.example .env
+bun install   # ou npm install
+bun dev       # ou npm run dev
+```
+
+App: http://localhost:5173
+
+## Variáveis de ambiente
+
+| Variável | Descrição | Exemplo |
+|----------|-----------|---------|
+| `VITE_API_URL` | Base URL da API | `http://localhost:3001/api/v0` |
+
+```bash
+cp .env.example .env
+```
+
+## Scripts
+
+```bash
+bun dev       # servidor de desenvolvimento
+bun run build # build de produção
+bun run preview
+bun run lint
+```
 
 ## Funcionalidades
-- Cadastro de Receitas
-- Categorização de Receitas
-- Criação de Dicas Culinárias
-- Categorização de Dicas Culinárias
-- Autenticação de Usuário
-- Modo Escuro
 
-## Tecnologias Utilizadas
-- Front-End : **React + Typescript** 🌐
-- Back-End : **Node.js + Express**☕
-- Banco De Dados : **Mongo DB** 🏦
+- Listagem e filtros de receitas e dicas
+- Detalhe, criação e edição (autenticado)
+- Cadastro / login / perfil
+- Upload de imagens (Cloudinary)
+- Empty, error e loading states
+- Modo escuro
 
-## Como Utilizar 
-Para utilizar a aplicação, é necessário clonar este repositório pelo github desktop ou outra ferramenta adjacente <br />
-Após configurar o ambiente, basta executar o comando **npm install** para instalar as dependências necessárias (caso haja framework), 
-e em seguida, o comando **npm start** para iniciar a aplicação. A aplicação estará disponível na porta configurada.
+## Estrutura
 
-## Contribuindo
-Contribuições são sempre bem-vindas! Caso queira contribuir com o projeto, basta seguir os seguintes passos:
-- Crie uma branch com sua feature (git checkout -b minha-feature)
-- Faça commit das suas alterações (git commit -m 'Adicionando nova feature')
-- Faça o push para a branch (git push origin minha-feature)
-- Abra um Pull Request
+```
+src/
+├── components/   # UI, cards, formulários, layout
+├── pages/        # rotas (home, recipe, tip, auth, me)
+├── lib/api/      # client Axios + services
+├── lib/auth/     # sessão e token
+└── main.tsx
+```
 
-(atenção, esse projeto pode ser automatizado com o **github desktop** não esqueça!!)
+## Backend
+
+A API NestJS fica em [`../backend`](../backend). Em desenvolvimento, use a mesma `VITE_API_URL` do `.env.example`.
 
 ## Licença
-Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE.md para mais detalhes.
+
+MIT.

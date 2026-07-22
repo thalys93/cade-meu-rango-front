@@ -1,9 +1,9 @@
 {
-  "name": "cade-meu-rango",
+  "name": "cade-meu-rango-web",
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "description": "Culinary Website",
+  "description": "Frontend React do Cadê Meu Rango — receitas e dicas culinárias",
   "author": "Little Tooth Tecnologies",
   "license": "MIT",
   "scripts": {
